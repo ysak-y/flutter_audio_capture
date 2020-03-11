@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_audio_capture/flutter_audio_capture.dart';
 
 void main() => runApp(MyApp());
@@ -12,32 +11,27 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+  FlutterAudioCapture _plugin = new FlutterAudioCapture();
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await FlutterAudioCapture.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
+  Future<void> _startCapture() async {
+    await _plugin.start(listener, onError);
+  }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
+  Future<void> _stopCapture() async {
+    await _plugin.stop();
+  }
 
-    setState(() {
-      _platformVersion = platformVersion;
-    });
+  void listener(dynamic obj) {
+    print(obj);
+  }
+
+  void onError(Object e) {
+    print(e);
   }
 
   @override
@@ -45,11 +39,23 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Flutter Audio Capture Plugin'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
-        ),
+        body: Column(children: [
+          Expanded(
+              child: Row(
+            children: [
+              Expanded(
+                  child: Center(
+                      child: FloatingActionButton(
+                          onPressed: _startCapture, child: Text("Start")))),
+              Expanded(
+                  child: Center(
+                      child: FloatingActionButton(
+                          onPressed: _stopCapture, child: Text("Stop")))),
+            ],
+          ))
+        ]),
       ),
     );
   }

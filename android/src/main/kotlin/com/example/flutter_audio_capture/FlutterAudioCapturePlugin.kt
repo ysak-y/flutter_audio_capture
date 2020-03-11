@@ -4,15 +4,21 @@ import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
+import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
 
 /** FlutterAudioCapturePlugin */
 public class FlutterAudioCapturePlugin: FlutterPlugin, MethodCallHandler {
+  private val METHOD_CHANNEL_NAME = "ymd.dev/audio_capture_method_channel"
+  private val audioCaptureStreamHandler: AudioCaptureStreamHandler = AudioCaptureStreamHandler()
+
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    val channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutter_audio_capture")
-    channel.setMethodCallHandler(FlutterAudioCapturePlugin());
+    val messenger = flutterPluginBinding.getBinaryMessenger()
+    val channel = MethodChannel(messenger, METHOD_CHANNEL_NAME)
+    channel.setMethodCallHandler(this)
+    EventChannel(messenger, this.audioCaptureStreamHandler.eventChannelName).setStreamHandler(this.audioCaptureStreamHandler)
   }
 
   // This static function is optional and equivalent to onAttachedToEngine. It supports the old
@@ -27,14 +33,16 @@ public class FlutterAudioCapturePlugin: FlutterPlugin, MethodCallHandler {
   companion object {
     @JvmStatic
     fun registerWith(registrar: Registrar) {
-      val channel = MethodChannel(registrar.messenger(), "flutter_audio_capture")
+      val channel = MethodChannel(registrar.messenger(), "ymd.dev/audio_capture_method_channel")
       channel.setMethodCallHandler(FlutterAudioCapturePlugin())
     }
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
+    if (call.method == "StartCapture") {
+      this.audioCaptureStreamHandler.startRecording()
+    } else if (call.method == "StopCapture") {
+      this.audioCaptureStreamHandler.stopRecording()
     } else {
       result.notImplemented()
     }
