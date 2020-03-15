@@ -11,13 +11,10 @@ import io.flutter.plugin.common.PluginRegistry.Registrar
 
 /** FlutterAudioCapturePlugin */
 public class FlutterAudioCapturePlugin: FlutterPlugin, MethodCallHandler {
-  private val METHOD_CHANNEL_NAME = "ymd.dev/audio_capture_method_channel"
   private val audioCaptureStreamHandler: AudioCaptureStreamHandler = AudioCaptureStreamHandler()
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     val messenger = flutterPluginBinding.getBinaryMessenger()
-    val channel = MethodChannel(messenger, METHOD_CHANNEL_NAME)
-    channel.setMethodCallHandler(this)
     EventChannel(messenger, this.audioCaptureStreamHandler.eventChannelName).setStreamHandler(this.audioCaptureStreamHandler)
   }
 
@@ -33,19 +30,10 @@ public class FlutterAudioCapturePlugin: FlutterPlugin, MethodCallHandler {
   companion object {
     @JvmStatic
     fun registerWith(registrar: Registrar) {
-      val channel = MethodChannel(registrar.messenger(), "ymd.dev/audio_capture_method_channel")
-      channel.setMethodCallHandler(FlutterAudioCapturePlugin())
     }
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "StartCapture") {
-      this.audioCaptureStreamHandler.startRecording()
-    } else if (call.method == "StopCapture") {
-      this.audioCaptureStreamHandler.stopRecording()
-    } else {
-      result.notImplemented()
-    }
   }
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {

@@ -27,10 +27,12 @@ public class AudioCaptureStreamHandler: StreamHandler {
     override fun onListen(arguments: Any?, events: EventSink?) {
       Log.d(TAG, "onListen started")
       this._events = events
+      startRecording()
     }
 
     override fun onCancel(p0: Any?) {
       Log.d(TAG, "onListen canceled")
+      stopRecording()
     }
 
     public fun startRecording() {
