@@ -19,13 +19,11 @@ class FlutterAudioCapture {
     _audioCaptureEventChannelSubscription = _audioCaptureEventChannel
         .receiveBroadcastStream()
         .listen(listener, onError: onError);
-    await _audioCaptureMethodChannel.invokeMethod('StartCapture');
   }
 
   Future<void> stop() async {
     if (_audioCaptureEventChannelSubscription == null) return;
     _audioCaptureEventChannelSubscription.cancel();
     _audioCaptureEventChannelSubscription = null;
-    await _audioCaptureMethodChannel.invokeMethod('StopCapture');
   }
 }
