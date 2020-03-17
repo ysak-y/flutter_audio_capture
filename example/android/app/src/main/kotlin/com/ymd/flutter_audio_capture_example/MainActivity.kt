@@ -1,10 +1,9 @@
-package com.example.flutter_audio_capture_example
+package com.ymd.flutter_audio_capture_example
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugins.GeneratedPluginRegistrant
-import io.flutter.plugin.common.MethodChannel.Result
 
 import android.Manifest
 import android.content.pm.PackageManager

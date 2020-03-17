@@ -1,4 +1,4 @@
-group 'com.example.flutter_audio_capture'
+group 'com.ymd.flutter_audio_capture'
 version '1.0-SNAPSHOT'
 
 buildscript {
