@@ -5,13 +5,13 @@
 Pod::Spec.new do |s|
   s.name             = 'flutter_audio_capture'
   s.version          = '0.0.1'
-  s.summary          = 'A new flutter plugin project.'
+  s.summary          = 'audio stream capture for iOS and Android OS'
   s.description      = <<-DESC
-A new flutter plugin project.
+                        audio stream capture for iOS and Android OS.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://github.com/ysak-y'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Yoshiaki Yamada' => 'yoshiaki.0614@gmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
