@@ -13,7 +13,9 @@ import java.lang.Exception
 
 public class AudioCaptureStreamHandler: StreamHandler {
     public val eventChannelName = "ymd.dev/audio_capture_event_channnel"
-    private val SAMPLE_RATE: Int = 16000
+    private val CHANNEL_CONFIG = AudioFormat.CHANNEL_IN_MONO;
+    private val AUDIO_FORMAT = AudioFormat.ENCODING_PCM_FLOAT;
+    private var SAMPLE_RATE: Int = 44000
     private val TAG: String = "AudioCaptureStream"
     private var isCapturing: Boolean = false
     private var listener = null
@@ -23,6 +25,12 @@ public class AudioCaptureStreamHandler: StreamHandler {
 
     override fun onListen(arguments: Any?, events: EventSink?) {
       Log.d(TAG, "onListen started")
+        if (arguments != null && arguments is Map<*, *>) {
+            val sampleRate = arguments["sampleRate"]
+            if (sampleRate != null && sampleRate is Int) {
+                SAMPLE_RATE = sampleRate
+            }
+        }
       this._events = events
       startRecording()
     }
@@ -54,20 +62,15 @@ public class AudioCaptureStreamHandler: StreamHandler {
     private fun record() {
         android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_AUDIO)
 
-        // Buffer size in bytes: for 0.1 second of audio
-        var bufferSize: Int = (SAMPLE_RATE * 0.1 * 2).toInt()
-        if (bufferSize == AudioRecord.ERROR || bufferSize == AudioRecord.ERROR_BAD_VALUE) {
-            bufferSize = SAMPLE_RATE * 2
-        }
-
+        val bufferSize: Int = AudioRecord.getMinBufferSize(SAMPLE_RATE, CHANNEL_CONFIG, AUDIO_FORMAT)
         val audioBuffer: FloatArray = FloatArray(bufferSize)
         val record: AudioRecord = AudioRecord.Builder()
                         .setAudioSource(MediaRecorder.AudioSource.DEFAULT)
                         .setAudioFormat(
                           AudioFormat.Builder()
-                            .setEncoding(AudioFormat.ENCODING_PCM_FLOAT)
+                            .setEncoding(AUDIO_FORMAT)
                             .setSampleRate(SAMPLE_RATE)
-                            .setChannelMask(AudioFormat.CHANNEL_IN_MONO)
+                            .setChannelMask(CHANNEL_CONFIG)
                             .build()
                         )
                         .setBufferSizeInBytes(bufferSize)

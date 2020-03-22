@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _startCapture() async {
-    await _plugin.start(listener, onError);
+    await _plugin.start(listener, onError, sampleRate: 16000, bufferSize: 3000);
   }
 
   Future<void> _stopCapture() async {

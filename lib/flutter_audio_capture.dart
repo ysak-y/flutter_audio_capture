@@ -9,11 +9,14 @@ class FlutterAudioCapture {
       EventChannel(AUDIO_CAPTURE_EVENT_CHANNEL_NAME);
   StreamSubscription _audioCaptureEventChannelSubscription;
 
-  Future<void> start(Function listener, Function onError) async {
+  Future<void> start(Function listener, Function onError,
+      {int sampleRate = 44000, int bufferSize = 5000}) async {
     if (_audioCaptureEventChannelSubscription != null) return;
     _audioCaptureEventChannelSubscription = _audioCaptureEventChannel
-        .receiveBroadcastStream()
-        .listen(listener, onError: onError);
+        .receiveBroadcastStream({
+      "sampleRate": sampleRate,
+      "bufferSize": bufferSize
+    }).listen(listener, onError: onError);
   }
 
   Future<void> stop() async {
