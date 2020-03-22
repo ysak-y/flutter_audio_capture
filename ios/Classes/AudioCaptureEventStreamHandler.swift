@@ -4,7 +4,7 @@ enum AudioCaptureEventStreamHandlerErrorCode {
 }
 
 class AudioCaptureEventStreamHandler: NSObject, FlutterStreamHandler {
-  public let eventChannelName = "ymd.dev/audio_capture_event_channnel"
+  public let eventChannelName = "ymd.dev/audio_capture_event_channel"
   private let audioCapture: AudioCapture = AudioCapture()
   private var eventSink: FlutterEventSink?
 

@@ -13,7 +13,7 @@ class MockCallbackClass extends Mock implements CallbackClass {}
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   const AUDIO_CAPTURE_EVENT_CHANNEL_NAME =
-      "ymd.dev/audio_capture_event_channnel";
+      "ymd.dev/audio_capture_event_channel";
   MethodChannel channel;
   MockCallbackClass mock;
 
@@ -49,7 +49,7 @@ void main() {
     });
   }
 
-  test('listens stream of ymd.dev/audio_capture_event_channnel channel',
+  test('listens stream of ymd.dev/audio_capture_event_channel channel',
       () async {
     setupMockMethodCallHandlerWithMockFunctions(mock.onListen, mock.onCancel);
 
@@ -59,7 +59,7 @@ void main() {
     verifyNever(mock.onCancel());
   });
 
-  test('cancels to listen stream ymd.dev/audio_capture_event_channnel channel',
+  test('cancels to listen stream ymd.dev/audio_capture_event_channel channel',
       () async {
     setupMockMethodCallHandlerWithMockFunctions(mock.onListen, mock.onCancel);
 

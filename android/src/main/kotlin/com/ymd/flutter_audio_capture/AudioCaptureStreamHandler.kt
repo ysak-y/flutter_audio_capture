@@ -12,7 +12,7 @@ import io.flutter.plugin.common.EventChannel.EventSink
 import java.lang.Exception
 
 public class AudioCaptureStreamHandler: StreamHandler {
-    public val eventChannelName = "ymd.dev/audio_capture_event_channnel"
+    public val eventChannelName = "ymd.dev/audio_capture_event_channel"
     private val CHANNEL_CONFIG = AudioFormat.CHANNEL_IN_MONO;
     private val AUDIO_FORMAT = AudioFormat.ENCODING_PCM_FLOAT;
     private var SAMPLE_RATE: Int = 44000
