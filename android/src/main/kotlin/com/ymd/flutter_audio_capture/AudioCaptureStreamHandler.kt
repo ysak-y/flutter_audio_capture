@@ -24,20 +24,20 @@ public class AudioCaptureStreamHandler: StreamHandler {
     private val uiThreadHandler: Handler = Handler(Looper.getMainLooper())
 
     override fun onListen(arguments: Any?, events: EventSink?) {
-      Log.d(TAG, "onListen started")
+        Log.d(TAG, "onListen started")
         if (arguments != null && arguments is Map<*, *>) {
             val sampleRate = arguments["sampleRate"]
             if (sampleRate != null && sampleRate is Int) {
                 SAMPLE_RATE = sampleRate
             }
         }
-      this._events = events
-      startRecording()
+        this._events = events
+        startRecording()
     }
 
     override fun onCancel(p0: Any?) {
-      Log.d(TAG, "onListen canceled")
-      stopRecording()
+        Log.d(TAG, "onListen canceled")
+        stopRecording()
     }
 
     public fun startRecording() {

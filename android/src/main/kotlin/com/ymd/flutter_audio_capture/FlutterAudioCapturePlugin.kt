@@ -10,7 +10,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar
 
 /** FlutterAudioCapturePlugin */
 public class FlutterAudioCapturePlugin: FlutterPlugin, MethodCallHandler {
-  private val audioCaptureStreamHandler: AudioCaptureStreamHandler = AudioCaptureStreamHandler()
+    private val audioCaptureStreamHandler: AudioCaptureStreamHandler = AudioCaptureStreamHandler()
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     val messenger = flutterPluginBinding.getBinaryMessenger()
