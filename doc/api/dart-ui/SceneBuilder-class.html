@@ -72,6 +72,7 @@
       <li><a href="dart-ui/Gradient-class.html">Gradient</a></li>
       <li><a href="dart-ui/Image-class.html">Image</a></li>
       <li><a href="dart-ui/ImageFilter-class.html">ImageFilter</a></li>
+      <li><a href="dart-ui/ImageFilterEngineLayer-class.html">ImageFilterEngineLayer</a></li>
       <li><a href="dart-ui/ImageShader-class.html">ImageShader</a></li>
       <li><a href="dart-ui/IsolateNameServer-class.html">IsolateNameServer</a></li>
       <li><a href="dart-ui/LineMetrics-class.html">LineMetrics</a></li>
@@ -115,6 +116,7 @@
       <li><a href="dart-ui/Tangent-class.html">Tangent</a></li>
       <li><a href="dart-ui/TextBox-class.html">TextBox</a></li>
       <li><a href="dart-ui/TextDecoration-class.html">TextDecoration</a></li>
+      <li><a href="dart-ui/TextHeightBehavior-class.html">TextHeightBehavior</a></li>
       <li><a href="dart-ui/TextPosition-class.html">TextPosition</a></li>
       <li><a href="dart-ui/TextRange-class.html">TextRange</a></li>
       <li><a href="dart-ui/TextStyle-class.html">TextStyle</a></li>
@@ -125,6 +127,8 @@
     
     
     
+      <li class="section-title"><a href="dart-ui/dart-ui-library.html#constants">Constants</a></li>
+      <li><a href="dart-ui/keepToString-constant.html">keepToString</a></li>
     
       <li class="section-title"><a href="dart-ui/dart-ui-library.html#properties">Properties</a></li>
       <li><a href="dart-ui/channelBuffers.html">channelBuffers</a></li>
@@ -355,6 +359,15 @@ for this application.
           Pushes a color filter operation onto the operation stack. <a href="dart-ui/SceneBuilder/pushColorFilter.html">[...]</a>
                   
 </dd>
+        <dt id="pushImageFilter" class="callable">
+          <span class="name"><a href="dart-ui/SceneBuilder/pushImageFilter.html">pushImageFilter</a></span><span class="signature">(<wbr><span class="parameter" id="pushImageFilter-param-filter"><span class="type-annotation"><a href="dart-ui/ImageFilter-class.html">ImageFilter</a></span> <span class="parameter-name">filter</span>, {</span> <span class="parameter" id="pushImageFilter-param-oldLayer"><span class="type-annotation"><a href="dart-ui/ImageFilterEngineLayer-class.html">ImageFilterEngineLayer</a></span> <span class="parameter-name">oldLayer</span></span> })
+            <span class="returntype parameter">&#8594; <a href="dart-ui/ImageFilterEngineLayer-class.html">ImageFilterEngineLayer</a></span>
+          </span>
+                  </dt>
+        <dd>
+          Pushes an image filter operation onto the operation stack. <a href="dart-ui/SceneBuilder/pushImageFilter.html">[...]</a>
+                  
+</dd>
         <dt id="pushOffset" class="callable">
           <span class="name"><a href="dart-ui/SceneBuilder/pushOffset.html">pushOffset</a></span><span class="signature">(<wbr><span class="parameter" id="pushOffset-param-dx"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">dx</span>, {</span> <span class="parameter" id="pushOffset-param-dy"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">dy</span>, {</span> <span class="parameter" id="pushOffset-param-oldLayer"><span class="type-annotation"><a href="dart-ui/OffsetEngineLayer-class.html">OffsetEngineLayer</a></span> <span class="parameter-name">oldLayer</span></span> })
             <span class="returntype parameter">&#8594; <a href="dart-ui/OffsetEngineLayer-class.html">OffsetEngineLayer</a></span>
@@ -497,6 +510,7 @@ only useful for debugging purposes. <a href="dart-ui/SceneBuilder/setCheckerboar
       <li><a href="dart-ui/SceneBuilder/pushClipRect.html">pushClipRect</a></li>
       <li><a href="dart-ui/SceneBuilder/pushClipRRect.html">pushClipRRect</a></li>
       <li><a href="dart-ui/SceneBuilder/pushColorFilter.html">pushColorFilter</a></li>
+      <li><a href="dart-ui/SceneBuilder/pushImageFilter.html">pushImageFilter</a></li>
       <li><a href="dart-ui/SceneBuilder/pushOffset.html">pushOffset</a></li>
       <li><a href="dart-ui/SceneBuilder/pushOpacity.html">pushOpacity</a></li>
       <li><a href="dart-ui/SceneBuilder/pushPhysicalShape.html">pushPhysicalShape</a></li>
@@ -522,7 +536,7 @@ only useful for debugging purposes. <a href="dart-ui/SceneBuilder/setCheckerboar
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

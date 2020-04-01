@@ -335,18 +335,12 @@ connection.
       <h2>Methods</h2>
       <dl class="callables">
         <dt id="add" class="callable">
-          <span class="name"><a href="dart-io/HttpHeaders/add.html">add</a></span><span class="signature">(<wbr><span class="parameter" id="add-param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="add-param-value"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">value</span></span>)
+          <span class="name"><a href="dart-io/HttpHeaders/add.html">add</a></span><span class="signature">(<wbr><span class="parameter" id="add-param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="add-param-value"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">value</span>, {</span> <span class="parameter" id="add-param-preserveHeaderCase"><span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">preserveHeaderCase</span>: <span class="default-value">false</span></span> })
             <span class="returntype parameter">&#8594; void</span>
           </span>
                   </dt>
         <dd>
-          Adds a header value. The header named <code>name</code> will have the value
-<code>value</code> added to its list of values. Some headers are single
-valued, and for these adding a value will replace the previous
-value. If the value is of type DateTime a HTTP date format will be
-applied. If the value is a <code>List</code> each element of the list will
-be added separately. For all other types the default <code>toString</code>
-method will be used.
+          Adds a header value. <a href="dart-io/HttpHeaders/add.html">[...]</a>
                   
 </dd>
         <dt id="clear" class="callable">
@@ -361,14 +355,12 @@ collection of values for the header.
                   
 </dd>
         <dt id="forEach" class="callable">
-          <span class="name"><a href="dart-io/HttpHeaders/forEach.html">forEach</a></span><span class="signature">(<wbr><span class="parameter" id="forEach-param-f"><span class="type-annotation">void</span> <span class="parameter-name">f</span>(<span class="parameter" id="param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="param-values"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">values</span></span>)</span>)
+          <span class="name"><a href="dart-io/HttpHeaders/forEach.html">forEach</a></span><span class="signature">(<wbr><span class="parameter" id="forEach-param-action"><span class="type-annotation">void</span> <span class="parameter-name">action</span>(<span class="parameter" id="param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="param-values"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">values</span></span>)</span>)
             <span class="returntype parameter">&#8594; void</span>
           </span>
                   </dt>
         <dd>
-          Enumerates the headers, applying the function <code>f</code> to each
-header. The header name passed in <code>name</code> will be all lower
-case.
+          Performs the <code>action</code> on each header. <a href="dart-io/HttpHeaders/forEach.html">[...]</a>
                   
 </dd>
         <dt id="noFolding" class="callable">
@@ -407,13 +399,12 @@ header.
                   
 </dd>
         <dt id="set" class="callable">
-          <span class="name"><a href="dart-io/HttpHeaders/set.html">set</a></span><span class="signature">(<wbr><span class="parameter" id="set-param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="set-param-value"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">value</span></span>)
+          <span class="name"><a href="dart-io/HttpHeaders/set.html">set</a></span><span class="signature">(<wbr><span class="parameter" id="set-param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="set-param-value"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">value</span>, {</span> <span class="parameter" id="set-param-preserveHeaderCase"><span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">preserveHeaderCase</span>: <span class="default-value">false</span></span> })
             <span class="returntype parameter">&#8594; void</span>
           </span>
                   </dt>
         <dd>
-          Sets a header. The header named <code>name</code> will have all its values
-cleared before the value <code>value</code> is added as its value.
+          Sets the header <code>name</code> to <code>value</code>. <a href="dart-io/HttpHeaders/set.html">[...]</a>
                   
 </dd>
         <dt id="value" class="callable">
@@ -1806,7 +1797,7 @@ is no header with the provided name, <code>null</code> will be returned.
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

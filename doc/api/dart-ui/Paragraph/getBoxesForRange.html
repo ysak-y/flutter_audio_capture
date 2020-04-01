@@ -116,7 +116,7 @@ where positive y values indicate down.</p>
       <pre class="language-dart"><code class="language-dart">List&lt;TextBox&gt; getBoxesForRange(int start, int end, {BoxHeightStyle boxHeightStyle = BoxHeightStyle.tight, BoxWidthStyle boxWidthStyle = BoxWidthStyle.tight}) {
   assert(boxHeightStyle != null);
   assert(boxWidthStyle != null);
-  return _getBoxesForRange(start, end, boxHeightStyle.index, boxWidthStyle.index);
+  return _decodeTextBoxes(_getBoxesForRange(start, end, boxHeightStyle.index, boxWidthStyle.index));
 }</code></pre>
     </section>
 
@@ -130,7 +130,7 @@ where positive y values indicate down.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

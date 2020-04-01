@@ -119,6 +119,18 @@
 (<wbr><span class="parameter" id="drawAtlas-param-atlas"><span class="type-annotation"><a href="dart-ui/Image-class.html">Image</a></span> <span class="parameter-name">atlas</span>, </span> <span class="parameter" id="drawAtlas-param-transforms"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-ui/RSTransform-class.html">RSTransform</a></span>&gt;</span></span> <span class="parameter-name">transforms</span>, </span> <span class="parameter" id="drawAtlas-param-rects"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-ui/Rect-class.html">Rect</a></span>&gt;</span></span> <span class="parameter-name">rects</span>, </span> <span class="parameter" id="drawAtlas-param-colors"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-ui/Color-class.html">Color</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span> <span class="parameter" id="drawAtlas-param-blendMode"><span class="type-annotation"><a href="dart-ui/BlendMode-class.html">BlendMode</a></span> <span class="parameter-name">blendMode</span>, </span> <span class="parameter" id="drawAtlas-param-cullRect"><span class="type-annotation"><a href="dart-ui/Rect-class.html">Rect</a></span> <span class="parameter-name">cullRect</span>, </span> <span class="parameter" id="drawAtlas-param-paint"><span class="type-annotation"><a href="dart-ui/Paint-class.html">Paint</a></span> <span class="parameter-name">paint</span></span>)
       
     </section>
+    <section class="desc markdown">
+      <p>Draws part of an image - the <code>atlas</code> - onto the canvas.</p>
+<p>This method allows for optimization when you only want to draw part of an
+image on the canvas, such as when using sprites or zooming. It is more
+efficient than using clips or masks directly.</p>
+<p>All parameters must not be null.</p>
+<p>See also:</p>
+<ul>
+<li><a href="dart-ui/Canvas/drawRawAtlas.html">drawRawAtlas</a>, which takes its arguments as typed data lists rather
+than objects.</li>
+</ul>
+    </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
@@ -183,7 +195,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

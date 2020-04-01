@@ -158,15 +158,7 @@
         </section>
                 <section class="summary source-code" id="source">
           <h2><span>Implementation</span></h2>
-          <pre class="language-dart"><code class="language-dart">int get length {
-  &#47;&#47; Check the length honours the List contract.
-  var len = JS(&#39;&#39;, &#39;#.length&#39;, _jsObject);
-  &#47;&#47; JavaScript arrays have lengths which are unsigned 32-bit integers.
-  if (JS(&#39;bool&#39;, &#39;typeof # === &quot;number&quot; &amp;&amp; (# &gt;&gt;&gt; 0) === #&#39;, len, len, len)) {
-    return JS(&#39;int&#39;, &#39;#&#39;, len);
-  }
-  throw StateError(&#39;Bad JsArray length&#39;);
-}</code></pre>
+          <pre class="language-dart"><code class="language-dart">external int get length;</code></pre>
         </section>
 </section>
         
@@ -187,9 +179,7 @@ the current length, entries are initialized to <code>null</code>.</p>
         </section>
                 <section class="summary source-code" id="source">
           <h2><span>Implementation</span></h2>
-          <pre class="language-dart"><code class="language-dart">void set length(int length) {
-  super[&#39;length&#39;] = length;
-}</code></pre>
+          <pre class="language-dart"><code class="language-dart">external void set length(int length);</code></pre>
         </section>
 </section>
           </div> <!-- /.main-content -->
@@ -202,7 +192,7 @@ the current length, entries are initialized to <code>null</code>.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

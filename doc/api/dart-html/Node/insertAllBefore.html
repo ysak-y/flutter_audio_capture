@@ -120,7 +120,7 @@
       <div><h1><span class="kind-method">insertAllBefore</span> method</h1></div>
 
     <section class="multi-line-signature">
-      <span class="returntype"><a href="dart-html/Node-class.html">Node</a></span>
+      <span class="returntype">void</span>
             <span class="name ">insertAllBefore</span>
 (<wbr><span class="parameter" id="insertAllBefore-param-newNodes"><span class="type-annotation"><a href="dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-html/Node-class.html">Node</a></span>&gt;</span></span> <span class="parameter-name">newNodes</span>, </span> <span class="parameter" id="insertAllBefore-param-refChild"><span class="type-annotation"><a href="dart-html/Node-class.html">Node</a></span> <span class="parameter-name">refChild</span></span>)
       
@@ -135,7 +135,7 @@
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">Node insertAllBefore(Iterable&lt;Node&gt; newNodes, Node refChild) {
+      <pre class="language-dart"><code class="language-dart">void insertAllBefore(Iterable&lt;Node&gt; newNodes, Node refChild) {
   if (newNodes is _ChildNodeListLazy) {
     _ChildNodeListLazy otherList = newNodes;
     if (identical(otherList._this, this)) {
@@ -164,7 +164,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

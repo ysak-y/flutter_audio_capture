@@ -57,6 +57,7 @@
       <li class="section-title"><a href="dart-typed_data/Uint64List-class.html#constructors">Constructors</a></li>
       <li><a href="dart-typed_data/Uint64List/Uint64List.html">Uint64List</a></li>
       <li><a href="dart-typed_data/Uint64List/Uint64List.fromList.html">fromList</a></li>
+      <li><a href="dart-typed_data/Uint64List/Uint64List.sublistView.html">sublistView</a></li>
       <li><a href="dart-typed_data/Uint64List/Uint64List.view.html">view</a></li>
     
       <li class="section-title inherited">
@@ -164,6 +165,20 @@ if <code>offsetInBytes</code> + (<code>length</code> * elementSizeInBytes) is gr
 the length of <code>buffer</code>.</p>
 <p>Throws <a href="dart-core/ArgumentError-class.html">ArgumentError</a> if <code>offsetInBytes</code> is not a multiple of
 <a href="dart-typed_data/Uint64List/bytesPerElement-constant.html">bytesPerElement</a>.</p>
+<p>Note that when creating a view from a <a href="dart-typed_data/TypedData-class.html">TypedData</a> list or byte data,
+that list or byte data may itself be a view on a larger buffer
+with a <a href="dart-typed_data/TypedData/offsetInBytes.html">TypedData.offsetInBytes</a> greater than zero.
+Merely doing <code>Uint64List.view(other.buffer, 0, count)</code> may not
+point to the bytes you intended. Instead you may need to do:</p>
+<pre class="language-dart"><code class="language-dart">Uint64List.view(other.buffer, other.offsetInBytes, count)
+</code></pre>
+<p>Alternatively, use <a href="dart-typed_data/Uint64List/Uint64List.sublistView.html">Uint64List.sublistView</a>
+which includes this computation.</p>
+<pre class="language-dart"><code class="language-dart">Uint64List.sublistView(other, 0, count)
+</code></pre>
+<p>(The third argument is an end index rather than a length, so if
+you start from a position greater than zero, you need not
+reduce the count correspondingly).</p>
     </section>
     
     <section class="summary source-code" id="source">
@@ -184,7 +199,7 @@ the length of <code>buffer</code>.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

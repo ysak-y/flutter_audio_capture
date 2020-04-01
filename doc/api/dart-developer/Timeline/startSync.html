@@ -110,7 +110,7 @@ returning to the event queue.</p>
     _stack.add(null);
     return;
   }
-  var block = new _SyncBlock._(name, _getTraceClock(), _getThreadCpuClock());
+  var block = new _SyncBlock._(name);
   if (arguments != null) {
     block._arguments = arguments;
   }
@@ -118,6 +118,7 @@ returning to the event queue.</p>
     block.flow = flow;
   }
   _stack.add(block);
+  block._startSync();
 }</code></pre>
     </section>
 
@@ -131,7 +132,7 @@ returning to the event queue.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

@@ -126,7 +126,7 @@ an <code>AnimationController</code>.</p>
   assert(t != null);
   if (a == null &amp;&amp; b == null)
     return null;
-  return values[lerpDouble(a?.index ?? normal.index, b?.index ?? normal.index, t).round().clamp(0, 8)];
+  return values[lerpDouble(a?.index ?? normal.index, b?.index ?? normal.index, t).round().clamp(0, 8) as int];
 }</code></pre>
     </section>
 
@@ -140,7 +140,7 @@ an <code>AnimationController</code>.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

@@ -130,18 +130,10 @@ bool operator ==(dynamic other) {
     return true;
   if (other.runtimeType != runtimeType)
     return false;
-  final StrutStyle typedOther = other;
-  if (_fontFamily != typedOther._fontFamily)
-   return false;
-  final Int8List encodedList = _encoded.buffer.asInt8List();
-  final Int8List otherEncodedList = typedOther._encoded.buffer.asInt8List();
-  for (int index = 0; index &lt; _encoded.lengthInBytes; index += 1) {
-    if (encodedList[index] != otherEncodedList[index])
-      return false;
-  }
-  if (!_listEquals&lt;String&gt;(_fontFamilyFallback, typedOther._fontFamilyFallback))
-    return false;
-  return true;
+  return other is StrutStyle
+      &amp;&amp; other._fontFamily == _fontFamily
+      &amp;&amp; _listEquals&lt;String&gt;(other._fontFamilyFallback, _fontFamilyFallback)
+      &amp;&amp; _listEquals&lt;int&gt;(other._encoded.buffer.asInt8List(), _encoded.buffer.asInt8List());
 }</code></pre>
     </section>
 
@@ -155,7 +147,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

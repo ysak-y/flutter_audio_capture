@@ -75,9 +75,6 @@
         <li class="section-title"><a href="dart-ui/Locale-class.html#operators">Operators</a></li>
         <li><a href="dart-ui/Locale/operator_equals.html">operator ==</a></li>
     
-        <li class="section-title"><a href="dart-ui/Locale-class.html#static-properties">Static properties</a></li>
-        <li><a href="dart-ui/Locale/cachedLocale.html">cachedLocale</a></li>
-        <li><a href="dart-ui/Locale/cachedLocaleString.html">cachedLocaleString</a></li>
     
     
     
@@ -136,12 +133,12 @@ the <a href="dart-ui/Locale/hashCode.html">hashCode</a> method as well to mainta
 bool operator ==(dynamic other) {
   if (identical(this, other))
     return true;
-  if (other is! Locale)
-    return false;
-  final Locale typedOther = other;
-  return languageCode == typedOther.languageCode
-      &amp;&amp; scriptCode == typedOther.scriptCode
-      &amp;&amp; countryCode == typedOther.countryCode;
+  return other is Locale
+      &amp;&amp; other.languageCode == languageCode
+      &amp;&amp; other.scriptCode == scriptCode &#47;&#47; scriptCode cannot be &#39;&#39;
+      &amp;&amp; (other.countryCode == countryCode &#47;&#47; Treat &#39;&#39; as equal to null.
+          || other.countryCode != null &amp;&amp; other.countryCode.isEmpty &amp;&amp; countryCode == null
+          || countryCode != null &amp;&amp; countryCode.isEmpty &amp;&amp; other.countryCode == null);
 }</code></pre>
     </section>
 
@@ -155,7 +152,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

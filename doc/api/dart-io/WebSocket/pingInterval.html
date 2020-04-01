@@ -149,11 +149,13 @@
           <div class="features">read / write</div>
         </section>
         <section class="desc markdown">
-          <p>Set and get the interval for sending ping signals. If a ping message is not
-answered by a pong message from the peer, the <code>WebSocket</code> is assumed
-disconnected and the connection is closed with a
-<a class="deprecated" href="dart-io/WebSocketStatus/GOING_AWAY-constant.html">WebSocketStatus.GOING_AWAY</a> close code. When a ping signal is sent, the
-pong message must be received within <a href="dart-io/WebSocket/pingInterval.html">pingInterval</a>.</p>
+          <p>The interval between ping signals.</p>
+<p>A ping message is sent every <a href="dart-io/WebSocket/pingInterval.html">pingInterval</a>, starting at the first
+<a href="dart-io/WebSocket/pingInterval.html">pingInterval</a> after a new value has been assigned or a pong message has
+been received. If a ping message is not answered by a pong message from the
+peer, the <code>WebSocket</code> is assumed disconnected and the connection is closed
+with a <a href="dart-io/WebSocketStatus/goingAway-constant.html">WebSocketStatus.goingAway</a> close code. When a ping signal is sent,
+the pong message must be received within <a href="dart-io/WebSocket/pingInterval.html">pingInterval</a>.</p>
 <p>There are never two outstanding pings at any given time, and the next ping
 timer starts when the pong is received.</p>
 <p>Set the <a href="dart-io/WebSocket/pingInterval.html">pingInterval</a> to <code>null</code> to disable sending ping messages.</p>
@@ -176,7 +178,7 @@ timer starts when the pong is received.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

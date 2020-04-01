@@ -75,9 +75,6 @@
         <li class="section-title"><a href="dart-ui/Locale-class.html#operators">Operators</a></li>
         <li><a href="dart-ui/Locale/operator_equals.html">operator ==</a></li>
     
-        <li class="section-title"><a href="dart-ui/Locale-class.html#static-properties">Static properties</a></li>
-        <li><a href="dart-ui/Locale/cachedLocale.html">cachedLocale</a></li>
-        <li><a href="dart-ui/Locale/cachedLocaleString.html">cachedLocaleString</a></li>
     
     
     
@@ -110,11 +107,11 @@ purposes only. For parseable results, use <a href="dart-ui/Locale/toLanguageTag.
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">@override
 String toString() {
-  if (!identical(cachedLocale, this)) {
-    cachedLocale = this;
-    cachedLocaleString = _rawToString(&#39;_&#39;);
+  if (!identical(_cachedLocale, this)) {
+    _cachedLocale = this;
+    _cachedLocaleString = _rawToString(&#39;_&#39;);
   }
-  return cachedLocaleString;
+  return _cachedLocaleString;
 }</code></pre>
     </section>
 
@@ -128,7 +125,7 @@ String toString() {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

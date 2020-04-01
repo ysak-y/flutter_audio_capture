@@ -129,8 +129,8 @@ the <a href="dart-ui/ParagraphConstraints/hashCode.html">hashCode</a> method as 
 bool operator ==(dynamic other) {
   if (other.runtimeType != runtimeType)
     return false;
-  final ParagraphConstraints typedOther = other;
-  return typedOther.width == width;
+  return other is ParagraphConstraints
+      &amp;&amp; other.width == width;
 }</code></pre>
     </section>
 
@@ -144,7 +144,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

@@ -52,6 +52,7 @@
     <h5>dart:ffi library</h5>
     <ol>
       <li class="section-title"><a href="dart-ffi/dart-ffi-library.html#classes">Classes</a></li>
+      <li><a href="dart-ffi/Dart_CObject-class.html">Dart_CObject</a></li>
       <li><a href="dart-ffi/DartRepresentationOf-class.html">DartRepresentationOf</a></li>
       <li><a href="dart-ffi/Double-class.html">Double</a></li>
       <li><a href="dart-ffi/DynamicLibrary-class.html">DynamicLibrary</a></li>
@@ -61,6 +62,7 @@
       <li><a href="dart-ffi/Int32-class.html">Int32</a></li>
       <li><a href="dart-ffi/Int64-class.html">Int64</a></li>
       <li><a href="dart-ffi/IntPtr-class.html">IntPtr</a></li>
+      <li><a href="dart-ffi/NativeApi-class.html">NativeApi</a></li>
       <li><a href="dart-ffi/NativeFunction-class.html">NativeFunction</a></li>
       <li><a href="dart-ffi/NativeType-class.html">NativeType</a></li>
       <li><a href="dart-ffi/Pointer-class.html">Pointer</a></li>
@@ -74,12 +76,14 @@
     
       <li class="section-title"><a href="dart-ffi/dart-ffi-library.html#extension">Extensions</a></li>
       <li><a href="dart-ffi/DoublePointer.html">DoublePointer</a></li>
+      <li><a href="dart-ffi/DynamicLibraryExtension.html">DynamicLibraryExtension</a></li>
       <li><a href="dart-ffi/FloatPointer.html">FloatPointer</a></li>
       <li><a href="dart-ffi/Int8Pointer.html">Int8Pointer</a></li>
       <li><a href="dart-ffi/Int16Pointer.html">Int16Pointer</a></li>
       <li><a href="dart-ffi/Int32Pointer.html">Int32Pointer</a></li>
       <li><a href="dart-ffi/Int64Pointer.html">Int64Pointer</a></li>
       <li><a href="dart-ffi/IntPtrPointer.html">IntPtrPointer</a></li>
+      <li><a href="dart-ffi/NativeFunctionPointer.html">NativeFunctionPointer</a></li>
       <li><a href="dart-ffi/NativePort.html">NativePort</a></li>
       <li><a href="dart-ffi/PointerPointer.html">PointerPointer</a></li>
       <li><a href="dart-ffi/StructAddressOf.html">StructAddressOf</a></li>
@@ -100,6 +104,8 @@
       <li><a href="dart-ffi/sizeOf.html">sizeOf</a></li>
     
     
+      <li class="section-title"><a href="dart-ffi/dart-ffi-library.html#typedefs">Typedefs</a></li>
+      <li><a href="dart-ffi/Dart_NativeMessageHandler.html">Dart_NativeMessageHandler</a></li>
     
     </ol>
   </div>
@@ -111,6 +117,19 @@
       <p>Represents a dynamically loaded C library.</p>
     </section>
     
+    <section>
+      <dl class="dl-horizontal">
+
+
+
+
+        <dt>Available Extensions</dt>
+        <dd><ul class="comma-separated clazz-relationships">
+          <li><a href="dart-ffi/DynamicLibraryExtension.html">DynamicLibraryExtension</a></li>
+        </ul></dd>
+
+      </dl>
+    </section>
 
     <section class="summary offset-anchor" id="constructors">
       <h2>Constructors</h2>
@@ -184,15 +203,6 @@
 memory. Equivalent of dlsym. <a href="dart-ffi/DynamicLibrary/lookup.html">[...]</a>
                   
 </dd>
-        <dt id="lookupFunction" class="callable">
-          <span class="name"><a href="dart-ffi/DynamicLibrary/lookupFunction.html">lookupFunction</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="dart-core/Function-class.html">Function</a></span>, <span class="type-parameter">F extends <a href="dart-core/Function-class.html">Function</a></span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="lookupFunction-param-symbolName"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">symbolName</span></span>)
-            <span class="returntype parameter">&#8594; F</span>
-          </span>
-                  </dt>
-        <dd>
-          Helper that combines lookup and cast to a Dart function.
-                  
-</dd>
         <dt id="noSuchMethod" class="callable inherited">
           <span class="name"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
             <span class="returntype parameter">&#8594; dynamic</span>
@@ -251,7 +261,6 @@ memory. Equivalent of dlsym. <a href="dart-ffi/DynamicLibrary/lookup.html">[...]
     
       <li class="section-title"><a href="dart-ffi/DynamicLibrary-class.html#instance-methods">Methods</a></li>
       <li><a href="dart-ffi/DynamicLibrary/lookup.html">lookup</a></li>
-      <li><a href="dart-ffi/DynamicLibrary/lookupFunction.html">lookupFunction</a></li>
       <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
       <li class="inherited"><a href="dart-core/Object/toString.html">toString</a></li>
     
@@ -269,7 +278,7 @@ memory. Equivalent of dlsym. <a href="dart-ffi/DynamicLibrary/lookup.html">[...]
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

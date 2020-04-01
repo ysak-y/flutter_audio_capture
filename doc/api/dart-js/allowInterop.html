@@ -52,7 +52,6 @@
     <h5>dart:js library</h5>
     <ol>
       <li class="section-title"><a href="dart-js/dart-js-library.html#classes">Classes</a></li>
-      <li><a href="dart-js/JavaScriptObject-class.html">JavaScriptObject</a></li>
       <li><a href="dart-js/JsArray-class.html">JsArray</a></li>
       <li><a href="dart-js/JsFunction-class.html">JsFunction</a></li>
       <li><a href="dart-js/JsObject-class.html">JsObject</a></li>
@@ -94,14 +93,7 @@ arguments.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">F allowInterop&lt;F extends Function&gt;(F f) {
-  if (JS(&#39;bool&#39;, &#39;typeof(#) == &quot;function&quot;&#39;, f)) {
-    &#47;&#47; Already supports interop, just use the existing function.
-    return f;
-  } else {
-    return _convertDartFunctionFast(f);
-  }
-}</code></pre>
+      <pre class="language-dart"><code class="language-dart">external F allowInterop&lt;F extends Function&gt;(F f);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -114,7 +106,7 @@ arguments.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

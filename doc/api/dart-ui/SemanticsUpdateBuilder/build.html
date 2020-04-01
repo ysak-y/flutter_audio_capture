@@ -98,7 +98,11 @@ update the semantics retained by the system.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">SemanticsUpdate build() native &#39;SemanticsUpdateBuilder_build&#39;;</code></pre>
+      <pre class="language-dart"><code class="language-dart">SemanticsUpdate build() {
+  final SemanticsUpdate semanticsUpdate = SemanticsUpdate._();
+  _build(semanticsUpdate);
+  return semanticsUpdate;
+}</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -111,7 +115,7 @@ update the semantics retained by the system.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

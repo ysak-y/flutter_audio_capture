@@ -106,7 +106,7 @@
     <section class="multi-line-signature">
       <span class="returntype">R</span>
             <span class="name ">runWithIOOverrides</span>
-&lt;<wbr><span class="type-parameter">R</span>&gt;(<wbr><span class="parameter" id="runWithIOOverrides-param-body"><span class="type-annotation">R</span> <span class="parameter-name">body</span>(), </span> <span class="parameter" id="runWithIOOverrides-param-overrides"><span class="type-annotation"><a href="dart-io/IOOverrides-class.html">IOOverrides</a></span> <span class="parameter-name">overrides</span>, {</span> <span class="parameter" id="runWithIOOverrides-param-zoneSpecification"><span class="type-annotation"><a href="dart-async/ZoneSpecification-class.html">ZoneSpecification</a></span> <span class="parameter-name">zoneSpecification</span>, </span> <span class="parameter" id="runWithIOOverrides-param-onError"><span class="type-annotation"><a href="dart-core/Function-class.html">Function</a></span> <span class="parameter-name">onError</span></span> })
+&lt;<wbr><span class="type-parameter">R</span>&gt;(<wbr><span class="parameter" id="runWithIOOverrides-param-body"><span class="type-annotation">R</span> <span class="parameter-name">body</span>(), </span> <span class="parameter" id="runWithIOOverrides-param-overrides"><span class="type-annotation"><a href="dart-io/IOOverrides-class.html">IOOverrides</a></span> <span class="parameter-name">overrides</span></span>)
       
     </section>
     <section class="desc markdown">
@@ -117,12 +117,8 @@
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">static R runWithIOOverrides&lt;R&gt;(R body(), IOOverrides overrides,
-    {ZoneSpecification zoneSpecification, Function onError}) {
-  return _asyncRunZoned&lt;R&gt;(body,
-      zoneValues: {_ioOverridesToken: overrides},
-      zoneSpecification: zoneSpecification,
-      onError: onError);
+      <pre class="language-dart"><code class="language-dart">static R runWithIOOverrides&lt;R&gt;(R body(), IOOverrides overrides) {
+  return _asyncRunZoned&lt;R&gt;(body, zoneValues: {_ioOverridesToken: overrides});
 }</code></pre>
     </section>
 
@@ -136,7 +132,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

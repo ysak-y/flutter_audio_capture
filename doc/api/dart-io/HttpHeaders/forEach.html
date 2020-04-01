@@ -208,18 +208,21 @@
     <section class="multi-line-signature">
       <span class="returntype">void</span>
             <span class="name ">forEach</span>
-(<wbr><span class="parameter" id="forEach-param-f"><span class="type-annotation">void</span> <span class="parameter-name">f</span>(<span class="parameter" id="param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="param-values"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">values</span></span>)</span>)
+(<wbr><span class="parameter" id="forEach-param-action"><span class="type-annotation">void</span> <span class="parameter-name">action</span>(<span class="parameter" id="param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="param-values"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">values</span></span>)</span>)
       
     </section>
     <section class="desc markdown">
-      <p>Enumerates the headers, applying the function <code>f</code> to each
-header. The header name passed in <code>name</code> will be all lower
-case.</p>
+      <p>Performs the <code>action</code> on each header.</p>
+<p>The <code>action</code> function is called with each header's name and a list
+of the header's values. The casing of the name string is determined by
+the last <a href="dart-io/HttpHeaders/add.html">add</a> or <a href="dart-io/HttpHeaders/set.html">set</a> operation for that particular header,
+which defaults to lower-casing the header name unless explicitly
+set to preserve the case.</p>
     </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">void forEach(void f(String name, List&lt;String&gt; values));</code></pre>
+      <pre class="language-dart"><code class="language-dart">void forEach(void action(String name, List&lt;String&gt; values));</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -232,7 +235,7 @@ case.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

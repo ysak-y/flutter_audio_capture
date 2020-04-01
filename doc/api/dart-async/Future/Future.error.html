@@ -105,14 +105,14 @@
 This allows enough time for someone to add an error handler on the future.
 If an error handler isn't added before the future completes, the error
 will be considered unhandled.</p>
-<p>If <code>error</code> is <code>null</code>, it is replaced by a <a href="dart-core/NullThrownError-class.html">NullThrownError</a>.</p>
+<p>The <code>error</code> must not be <code>null</code>.</p>
 <p>Use <a href="dart-async/Completer-class.html">Completer</a> to create a future and complete it later.</p>
     </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">factory Future.error(Object error, [StackTrace stackTrace]) {
-  error = _nonNullError(error);
+  ArgumentError.checkNotNull(error, &quot;error&quot;);
   if (!identical(Zone.current, _rootZone)) {
     AsyncError replacement = Zone.current.errorCallback(error, stackTrace);
     if (replacement != null) {
@@ -120,6 +120,7 @@ will be considered unhandled.</p>
       stackTrace = replacement.stackTrace;
     }
   }
+  stackTrace ??= AsyncError.defaultStackTrace(error);
   return new _Future&lt;T&gt;.immediateError(error, stackTrace);
 }</code></pre>
     </section>
@@ -134,7 +135,7 @@ will be considered unhandled.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

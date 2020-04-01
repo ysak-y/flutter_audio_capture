@@ -149,7 +149,8 @@
       <p>Use <a href="dart-io/Socket/getRawOption.html">getRawOption</a> to get low level information about the <a href="dart-io/RawSocket-class.html">RawSocket</a>. See
 <a href="dart-io/RawSocketOption-class.html">RawSocketOption</a> for available options.</p>
 <p>Returns the <a href="dart-io/RawSocketOption/value.html">RawSocketOption.value</a> on success.</p>
-<p>Throws an <a href="dart-io/OSError-class.html">OSError</a> on failure.</p>
+<p>Throws an <a href="dart-io/OSError-class.html">OSError</a> on failure and a <a href="dart-io/SocketException-class.html">SocketException</a> if the socket has
+been destroyed or upgraded to a secure socket.</p>
     </section>
     
     <section class="summary source-code" id="source">
@@ -167,7 +168,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

@@ -130,9 +130,9 @@ the <a href="dart-ui/TextPosition/hashCode.html">hashCode</a> method as well to 
 bool operator ==(dynamic other) {
   if (other.runtimeType != runtimeType)
     return false;
-  final TextPosition typedOther = other;
-  return typedOther.offset == offset
-      &amp;&amp; typedOther.affinity == affinity;
+  return other is TextPosition
+      &amp;&amp; other.offset == offset
+      &amp;&amp; other.affinity == affinity;
 }</code></pre>
     </section>
 
@@ -146,7 +146,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

@@ -76,11 +76,10 @@
       <div><h1><span class="kind-library">dart:js_util</span> library </h1></div>
 
     <section class="desc markdown">
-      <p>Utility methods to efficiently manipulate typed JSInterop objects in cases
-where the name to call is not known at runtime. You should only use these
-methods when the same effect cannot be achieved with @JS annotations.
-These methods would be extension methods on JSObject if Dart supported
-extension methods.</p>
+      <p>Utility methods to manipulate <code>package:js</code> annotated JavaScript interop
+objects in cases where the name to call is not known at runtime.</p>
+<p>You should only use these methods when the same effect cannot be achieved
+with <code>@JS()</code> annotations.</p>
     </section>
     
 
@@ -143,8 +142,8 @@ extension methods.</p>
           </span>
                   </dt>
         <dd>
-          WARNING: performance of this method is much worse than other util
-methods in this library. Only use this method as a last resort. <a href="dart-js_util/jsify.html">[...]</a>
+          Recursively converts a JSON-like collection to JavaScript compatible
+representation. <a href="dart-js_util/jsify.html">[...]</a>
                   
 </dd>
         <dt id="newObject" class="callable">
@@ -211,7 +210,7 @@ methods in this library. Only use this method as a last resort. <a href="dart-js
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

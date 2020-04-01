@@ -126,11 +126,9 @@
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">@override
 bool operator ==(dynamic other) {
-  if (other is! Offset)
-    return false;
-  final Offset typedOther = other;
-  return dx == typedOther.dx &amp;&amp;
-         dy == typedOther.dy;
+  return other is Offset
+      &amp;&amp; other.dx == dx
+      &amp;&amp; other.dy == dy;
 }</code></pre>
     </section>
 
@@ -144,7 +142,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

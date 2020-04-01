@@ -132,10 +132,8 @@ the <a href="dart-ui/TextDecoration/hashCode.html">hashCode</a> method as well t
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">@override
 bool operator ==(dynamic other) {
-  if (other is! TextDecoration)
-    return false;
-  final TextDecoration typedOther = other;
-  return _mask == typedOther._mask;
+  return other is TextDecoration
+      &amp;&amp; other._mask == _mask;
 }</code></pre>
     </section>
 
@@ -149,7 +147,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

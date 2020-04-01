@@ -27,7 +27,7 @@
     <li><a href="index.html">flutter_audio_capture</a></li>
     <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
     <li><a href="dart-core/ArgumentError-class.html">ArgumentError</a></li>
-    <li class="self-crumb">checkNotNull method</li>
+    <li class="self-crumb">checkNotNull&lt;<wbr><span class="type-parameter">T</span>&gt; method</li>
   </ol>
   <div class="self-name">checkNotNull</div>
   <form class="search navbar-right" role="search">
@@ -48,7 +48,7 @@
       <li><a href="index.html">flutter_audio_capture</a></li>
       <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
       <li><a href="dart-core/ArgumentError-class.html">ArgumentError</a></li>
-      <li class="self-crumb">checkNotNull method</li>
+      <li class="self-crumb">checkNotNull&lt;<wbr><span class="type-parameter">T</span>&gt; method</li>
     </ol>
     
     <h5>ArgumentError class</h5>
@@ -86,7 +86,7 @@
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
-      <div><h1><span class="kind-method">checkNotNull</span> method</h1></div>
+      <div><h1><span class="kind-method">checkNotNull&lt;<wbr><span class="type-parameter">T</span>&gt;</span> method</h1></div>
 
     <section class="multi-line-signature">
       <div>
@@ -94,20 +94,24 @@
           <li>@Since(&quot;2.1&quot;)</li>
         </ol>
       </div>
-      <span class="returntype">void</span>
+      <span class="returntype">T</span>
             <span class="name ">checkNotNull</span>
-(<wbr><span class="parameter" id="checkNotNull-param-argument"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">argument</span>, [</span> <span class="parameter" id="checkNotNull-param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span> ])
+&lt;<wbr><span class="type-parameter">T</span>&gt;(<wbr><span class="parameter" id="checkNotNull-param-argument"><span class="type-annotation">T</span> <span class="parameter-name">argument</span>, [</span> <span class="parameter" id="checkNotNull-param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span> ])
       <div class="features">@Since(&quot;2.1&quot;)</div>
     </section>
     <section class="desc markdown">
       <p>Throws if <code>argument</code> is <code>null</code>.</p>
+<p>If <code>name</code> is supplied, it is used as the parameter name
+in the error message.</p>
+<p>Returns the <code>argument</code> if it is not null.</p>
     </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">@Since(&quot;2.1&quot;)
-static void checkNotNull(Object argument, [String name]) {
+static T checkNotNull&lt;@Since(&quot;2.8&quot;) T&gt;(T argument, [String name]) {
   if (argument == null) throw ArgumentError.notNull(name);
+  return argument;
 }</code></pre>
     </section>
 
@@ -121,7 +125,7 @@ static void checkNotNull(Object argument, [String name]) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

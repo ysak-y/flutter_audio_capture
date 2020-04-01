@@ -208,17 +208,19 @@
     <section class="multi-line-signature">
       <span class="returntype">void</span>
             <span class="name ">set</span>
-(<wbr><span class="parameter" id="set-param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="set-param-value"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">value</span></span>)
+(<wbr><span class="parameter" id="set-param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="set-param-value"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">value</span>, {</span> <span class="parameter" id="set-param-preserveHeaderCase"><span>@Since(&quot;2.8&quot;)</span> <span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">preserveHeaderCase</span>: <span class="default-value">false</span></span> })
       
     </section>
     <section class="desc markdown">
-      <p>Sets a header. The header named <code>name</code> will have all its values
-cleared before the value <code>value</code> is added as its value.</p>
+      <p>Sets the header <code>name</code> to <code>value</code>.</p>
+<p>Removes all existing values for the header named <code>name</code> and
+then <a href="dart-io/HttpHeaders/add.html">add</a>s <code>value</code> to it.</p>
     </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">void set(String name, Object value);</code></pre>
+      <pre class="language-dart"><code class="language-dart">void set(String name, Object value,
+    {@Since(&quot;2.8&quot;) bool preserveHeaderCase = false});</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -231,7 +233,7 @@ cleared before the value <code>value</code> is added as its value.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

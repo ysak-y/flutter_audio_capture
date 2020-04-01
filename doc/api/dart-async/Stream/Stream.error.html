@@ -139,7 +139,8 @@
     <section class="desc markdown">
       <p>Creates a stream which emits a single error event before completing.</p>
 <p>This stream emits a single error event of <code>error</code> and <code>stackTrace</code>
-and then completes with a done event.</p>
+and then completes with a done event.
+The <code>error</code> must not be <code>null</code>.</p>
 <p>Example:</p>
 <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; tryThings(Stream&lt;int&gt; data) async {
   try {
@@ -161,11 +162,13 @@ stack trace as well.</p>
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">@Since(&quot;2.5&quot;)
-factory Stream.error(Object error, [StackTrace stackTrace]) =&gt;
-    (_AsyncStreamController&lt;T&gt;(null, null, null, null)
-          .._addError(error, stackTrace)
-          .._closeUnchecked())
-        .stream;</code></pre>
+factory Stream.error(Object error, [StackTrace stackTrace]) {
+  ArgumentError.checkNotNull(error, &quot;error&quot;);
+  return (_AsyncStreamController&lt;T&gt;(null, null, null, null)
+        .._addError(error, stackTrace ?? AsyncError.defaultStackTrace(error))
+        .._closeUnchecked())
+      .stream;
+}</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -178,7 +181,7 @@ factory Stream.error(Object error, [StackTrace stackTrace]) =&gt;
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

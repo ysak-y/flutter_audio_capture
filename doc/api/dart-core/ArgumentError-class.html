@@ -116,7 +116,7 @@
       <li><a href="dart-core/AbstractClassInstantiationError-class.html">AbstractClassInstantiationError</a></li>
       <li><a href="dart-core/ArgumentError-class.html">ArgumentError</a></li>
       <li><a href="dart-core/AssertionError-class.html">AssertionError</a></li>
-      <li><a href="dart-core/CastError-class.html">CastError</a></li>
+      <li><a class="deprecated" href="dart-core/CastError-class.html">CastError</a></li>
       <li><a href="dart-core/ConcurrentModificationError-class.html">ConcurrentModificationError</a></li>
       <li><a href="dart-core/CyclicInitializationError-class.html">CyclicInitializationError</a></li>
       <li><a href="dart-core/Error-class.html">Error</a></li>
@@ -290,12 +290,12 @@
       <h2>Static Methods</h2>
       <dl class="callables">
         <dt id="checkNotNull" class="callable">
-          <span class="name"><a href="dart-core/ArgumentError/checkNotNull.html">checkNotNull</a></span><span class="signature">(<wbr><span class="parameter" id="checkNotNull-param-argument"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">argument</span>, [</span> <span class="parameter" id="checkNotNull-param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span> ])
-            <span class="returntype parameter">&#8594; void</span>
+          <span class="name"><a href="dart-core/ArgumentError/checkNotNull.html">checkNotNull</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="checkNotNull-param-argument"><span class="type-annotation">T</span> <span class="parameter-name">argument</span>, [</span> <span class="parameter" id="checkNotNull-param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span> ])
+            <span class="returntype parameter">&#8594; T</span>
           </span>
                   </dt>
         <dd>
-          Throws if <code>argument</code> is <code>null</code>.
+          Throws if <code>argument</code> is <code>null</code>. <a href="dart-core/ArgumentError/checkNotNull.html">[...]</a>
                   <div class="features">@Since(&quot;2.1&quot;)</div>
 </dd>
       </dl>
@@ -342,7 +342,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

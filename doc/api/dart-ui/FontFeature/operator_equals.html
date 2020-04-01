@@ -140,9 +140,9 @@ bool operator ==(dynamic other) {
     return true;
   if (other.runtimeType != runtimeType)
     return false;
-  final FontFeature typedOther = other;
-  return feature == typedOther.feature
-         &amp;&amp; value == typedOther.value;
+  return other is FontFeature
+      &amp;&amp; other.feature == feature
+      &amp;&amp; other.value == value;
 }</code></pre>
     </section>
 
@@ -156,7 +156,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

@@ -100,13 +100,7 @@
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">String toString() {
-  try {
-    return JS(&#39;String&#39;, &#39;String(#)&#39;, _jsObject);
-  } catch (e) {
-    return super.toString();
-  }
-}</code></pre>
+      <pre class="language-dart"><code class="language-dart">external String toString();</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -119,7 +113,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

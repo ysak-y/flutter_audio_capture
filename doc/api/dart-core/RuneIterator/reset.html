@@ -110,7 +110,7 @@ is an error. So is setting it in the middle of a surrogate pair.</p>
   RangeError.checkValueInInterval(rawIndex, 0, string.length, &quot;rawIndex&quot;);
   _checkSplitSurrogate(rawIndex);
   _position = _nextPosition = rawIndex;
-  _currentCodePoint = null;
+  _currentCodePoint = -1;
 }</code></pre>
     </section>
 
@@ -124,7 +124,7 @@ is an error. So is setting it in the middle of a surrogate pair.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

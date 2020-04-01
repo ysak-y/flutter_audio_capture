@@ -85,6 +85,21 @@
       <span class="name ">Vertices.raw</span>(<wbr><span class="parameter" id="raw-param-mode"><span class="type-annotation"><a href="dart-ui/VertexMode-class.html">VertexMode</a></span> <span class="parameter-name">mode</span>, </span> <span class="parameter" id="raw-param-positions"><span class="type-annotation"><a href="dart-typed_data/Float32List-class.html">Float32List</a></span> <span class="parameter-name">positions</span>, {</span> <span class="parameter" id="raw-param-textureCoordinates"><span class="type-annotation"><a href="dart-typed_data/Float32List-class.html">Float32List</a></span> <span class="parameter-name">textureCoordinates</span>, </span> <span class="parameter" id="raw-param-colors"><span class="type-annotation"><a href="dart-typed_data/Int32List-class.html">Int32List</a></span> <span class="parameter-name">colors</span>, </span> <span class="parameter" id="raw-param-indices"><span class="type-annotation"><a href="dart-typed_data/Uint16List-class.html">Uint16List</a></span> <span class="parameter-name">indices</span></span> })
     </section>
 
+    <section class="desc markdown">
+      <p>Creates a set of vertex data for use with <a href="dart-ui/Canvas/drawVertices.html">Canvas.drawVertices</a>, directly
+using the encoding methods of <a href="dart-ui/Vertices/Vertices.html">new Vertices</a>.</p>
+<p>The <code>mode</code> parameter must not be null.</p>
+<p>The <code>positions</code> list is interpreted as a list of repeated pairs of x,y
+coordinates. It must not be null.</p>
+<p>The <code>textureCoordinates</code> list is interpreted as a list of repeated pairs
+of x,y coordinates, and must be the same length of <code>positions</code> if it
+is not null.</p>
+<p>The <code>colors</code> list is interpreted as a list of RGBA encoded colors, similar
+to <a href="dart-ui/Color/value.html">Color.value</a>. It must be half length of <code>positions</code> if it is not
+null.</p>
+<p>If the <code>indices</code> list is provided, all values in the list must be
+valid index values for <code>positions</code>.</p>
+    </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
@@ -119,7 +134,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

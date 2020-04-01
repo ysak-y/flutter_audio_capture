@@ -138,7 +138,7 @@ uncaught asynchronous error.</p>
   &#47;&#47; Handle an error from any of the futures.
   &#47;&#47; TODO(jmesserly): use `void` return type once it can be inferred for the
   &#47;&#47; `then` call below.
-  handleError(theError, StackTrace theStackTrace) {
+  handleError(Object theError, StackTrace theStackTrace) {
     remaining--;
     if (values != null) {
       if (cleanUp != null) {
@@ -229,7 +229,7 @@ uncaught asynchronous error.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

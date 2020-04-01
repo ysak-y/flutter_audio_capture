@@ -81,21 +81,24 @@
 (<wbr><span class="parameter" id="jsify-param-object"><span class="type-annotation">dynamic</span> <span class="parameter-name">object</span></span>)
     </section>
     <section class="desc markdown">
-      <p>WARNING: performance of this method is much worse than other util
-methods in this library. Only use this method as a last resort.</p>
-<p>Recursively converts a JSON-like collection of Dart objects to a
-collection of JavaScript objects and returns a <a href="dart-js/JsObject-class.html">JsObject</a> proxy to it.</p>
-<p><code>object</code> must be a <a href="dart-core/Map-class.html">Map</a> or <a href="dart-core/Iterable-class.html">Iterable</a>, the contents of which are also
-converted. Maps and Iterables are copied to a new JavaScript object.
-Primitives and other transferable values are directly converted to their
-JavaScript type, and all other objects are proxied.</p>
+      <p>Recursively converts a JSON-like collection to JavaScript compatible
+representation.</p>
+<p>WARNING: performance of this method is much worse than other util
+methods in this library. Only use this method as a last resort. Prefer
+instead to use <code>@anonymous</code> <code>@JS()</code> annotated classes to create map-like
+objects for JS interop.</p>
+<p>The argument must be a <a href="dart-core/Map-class.html">Map</a> or <a href="dart-core/Iterable-class.html">Iterable</a>, the contents of which are also
+deeply converted. Maps are converted into JavaScript Objects. Iterables are
+converted into arrays. Strings, numbers, bools, and <code>@JS()</code> annotated
+objects are passed through unmodified. Dart objects are also passed through
+unmodified, but their members aren't usable from JavaScript.</p>
     </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">jsify(object) {
   if ((object is! Map) &amp;&amp; (object is! Iterable)) {
-    throw new ArgumentError(&quot;object must be a Map or Iterable&quot;);
+    throw ArgumentError(&quot;object must be a Map or Iterable&quot;);
   }
   return _convertDataTree(object);
 }</code></pre>
@@ -111,7 +114,7 @@ JavaScript type, and all other objects are proxied.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

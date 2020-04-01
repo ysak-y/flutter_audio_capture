@@ -106,7 +106,7 @@ and sets <a href="dart-core/RuneIterator/current.html">current</a> to null if th
       <pre class="language-dart"><code class="language-dart">bool movePrevious() {
   _nextPosition = _position;
   if (_position == 0) {
-    _currentCodePoint = null;
+    _currentCodePoint = -1;
     return false;
   }
   int position = _position - 1;
@@ -135,7 +135,7 @@ and sets <a href="dart-core/RuneIterator/current.html">current</a> to null if th
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

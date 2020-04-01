@@ -83,7 +83,7 @@
       <div><h1><span class="kind-method">matchAll</span> method</h1></div>
 
     <section class="multi-line-signature">
-      <span class="returntype"><a href="dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-html/Client-class.html">Client</a></span>&gt;</span></span>&gt;</span></span>
+      <span class="returntype"><a href="dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/List-class.html">List</a></span>&gt;</span></span>
             <span class="name ">matchAll</span>
 (<wbr>[<span class="parameter" id="matchAll-param-options"><span class="type-annotation"><a href="dart-core/Map-class.html">Map</a></span> <span class="parameter-name">options</span></span> ])
       
@@ -91,12 +91,12 @@
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;Client&gt;&gt; matchAll([Map options]) {
+      <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;dynamic&gt;&gt; matchAll([Map options]) {
   var options_dict = null;
   if (options != null) {
     options_dict = convertDartToNative_Dictionary(options);
   }
-  return promiseToFuture&lt;List&lt;Client&gt;&gt;(
+  return promiseToFuture&lt;List&lt;dynamic&gt;&gt;(
       JS(&quot;&quot;, &quot;#.matchAll(#)&quot;, this, options_dict));
 }</code></pre>
     </section>
@@ -111,7 +111,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

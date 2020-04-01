@@ -84,6 +84,8 @@
       <li class="section-title inherited"><a href="dart-ui/Paint-class.html#operators">Operators</a></li>
       <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
     
+      <li class="section-title"><a href="dart-ui/Paint-class.html#static-properties">Static properties</a></li>
+      <li><a href="dart-ui/Paint/enableDithering.html">enableDithering</a></li>
     
     
     
@@ -98,8 +100,19 @@
       <span class="name ">Paint</span>(<wbr>)
     </section>
 
+    <section class="desc markdown">
+      <p>Constructs an empty <a href="dart-ui/Paint-class.html">Paint</a> object with all fields initialized to
+their defaults.</p>
+    </section>
     
-    
+    <section class="summary source-code" id="source">
+      <h2><span>Implementation</span></h2>
+      <pre class="language-dart"><code class="language-dart">Paint() {
+  if (enableDithering) {
+    _dither = true;
+  }
+}</code></pre>
+    </section>
 
   </div> <!-- /.main-content -->
 
@@ -111,7 +124,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

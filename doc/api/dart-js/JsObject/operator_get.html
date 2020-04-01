@@ -102,12 +102,7 @@ object.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">dynamic operator [](property) {
-  if (property is! String &amp;&amp; property is! num) {
-    throw ArgumentError(&quot;property is not a String or num&quot;);
-  }
-  return _convertToDart(JS(&#39;&#39;, &#39;#[#]&#39;, _jsObject, property));
-}</code></pre>
+      <pre class="language-dart"><code class="language-dart">external dynamic operator [](property);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -120,7 +115,7 @@ object.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

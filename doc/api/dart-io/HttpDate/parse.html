@@ -130,38 +130,6 @@ Thu Jan  1 00:00:00 1970
     &quot;Nov&quot;,
     &quot;Dec&quot;
   ];
-  const List wkdaysLowerCase = const [
-    &quot;mon&quot;,
-    &quot;tue&quot;,
-    &quot;wed&quot;,
-    &quot;thu&quot;,
-    &quot;fri&quot;,
-    &quot;sat&quot;,
-    &quot;sun&quot;
-  ];
-  const List weekdaysLowerCase = const [
-    &quot;monday&quot;,
-    &quot;tuesday&quot;,
-    &quot;wednesday&quot;,
-    &quot;thursday&quot;,
-    &quot;friday&quot;,
-    &quot;saturday&quot;,
-    &quot;sunday&quot;
-  ];
-  const List monthsLowerCase = const [
-    &quot;jan&quot;,
-    &quot;feb&quot;,
-    &quot;mar&quot;,
-    &quot;apr&quot;,
-    &quot;may&quot;,
-    &quot;jun&quot;,
-    &quot;jul&quot;,
-    &quot;aug&quot;,
-    &quot;sep&quot;,
-    &quot;oct&quot;,
-    &quot;nov&quot;,
-    &quot;dec&quot;
-  ];
 
   final int formatRfc1123 = 0;
   final int formatRfc850 = 1;
@@ -235,7 +203,7 @@ Thu Jan  1 00:00:00 1970
     try {
       int value = int.parse(tmp);
       return value;
-    } on FormatException catch (e) {
+    } on FormatException {
       throw new HttpException(&quot;Invalid HTTP date $date&quot;);
     }
   }
@@ -286,7 +254,7 @@ Thu Jan  1 00:00:00 1970
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

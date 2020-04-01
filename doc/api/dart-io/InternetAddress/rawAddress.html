@@ -56,6 +56,7 @@
     
         <li class="section-title"><a href="dart-io/InternetAddress-class.html#constructors">Constructors</a></li>
         <li><a href="dart-io/InternetAddress/InternetAddress.html">InternetAddress</a></li>
+        <li><a href="dart-io/InternetAddress/InternetAddress.fromRawAddress.html">fromRawAddress</a></li>
     
         <li class="section-title">
             <a href="dart-io/InternetAddress-class.html#instance-properties">Properties</a>
@@ -109,9 +110,12 @@
 </section>
         
                 <section class="desc markdown">
-          <p>Get the raw address of this <a href="dart-io/InternetAddress-class.html">InternetAddress</a>. The result is either a
-4 or 16 byte long list. The returned list is a copy, making it possible
-to change the list without modifying the <a href="dart-io/InternetAddress-class.html">InternetAddress</a>.</p>
+          <p>The raw address of this <a href="dart-io/InternetAddress-class.html">InternetAddress</a>.</p>
+<p>For an IP address, the result is either a 4 or 16 byte long list.
+For a Unix domain address, UTF-8 encoded byte sequences that represents
+<a href="dart-io/InternetAddress/address.html">address</a> is returned.</p>
+<p>The returned list is a fresh copy, making it possible to change the list without
+modifying the <a href="dart-io/InternetAddress-class.html">InternetAddress</a>.</p>
         </section>
                 <section class="summary source-code" id="source">
           <h2><span>Implementation</span></h2>
@@ -129,7 +133,7 @@ to change the list without modifying the <a href="dart-io/InternetAddress-class.
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

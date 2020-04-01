@@ -106,7 +106,7 @@
         
                         <section class="summary source-code" id="source">
           <h2><span>Implementation</span></h2>
-          <pre class="language-dart"><code class="language-dart">String get returnValue =&gt; JS(&quot;String&quot;, &quot;#.returnValue&quot;, this);</code></pre>
+          <pre class="language-dart"><code class="language-dart">String get returnValue native;</code></pre>
         </section>
 </section>
         
@@ -121,9 +121,7 @@
         
                         <section class="summary source-code" id="source">
           <h2><span>Implementation</span></h2>
-          <pre class="language-dart"><code class="language-dart">set returnValue(String value) {
-  JS(&quot;void&quot;, &quot;#.returnValue = #&quot;, this, value);
-}</code></pre>
+          <pre class="language-dart"><code class="language-dart">set returnValue(String value) native;</code></pre>
         </section>
 </section>
           </div> <!-- /.main-content -->
@@ -136,7 +134,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

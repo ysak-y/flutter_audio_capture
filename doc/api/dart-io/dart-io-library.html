@@ -477,14 +477,16 @@ from the server to the client in response to an HTTP request. <a href="dart-io/H
           <span class="name "><a href="dart-io/InternetAddress-class.html">InternetAddress</a></span>         
         </dt>
         <dd>
-          An internet address. <a href="dart-io/InternetAddress-class.html">[...]</a>
+          An internet address or a Unix domain address. <a href="dart-io/InternetAddress-class.html">[...]</a>
         </dd>
         <dt id="InternetAddressType">
           <span class="name "><a href="dart-io/InternetAddressType-class.html">InternetAddressType</a></span>         
         </dt>
         <dd>
           <a href="dart-io/InternetAddressType-class.html">InternetAddressType</a> is the type an <a href="dart-io/InternetAddress-class.html">InternetAddress</a>. Currently,
-IP version 4 (IPv4) and IP version 6 (IPv6) are supported.
+IP version 4 (IPv4), IP version 6 (IPv6) and Unix domain address are
+supported. Unix domain sockets are available only on Linux, MacOS and
+Android.
         </dd>
         <dt id="IOOverrides">
           <span class="name "><a href="dart-io/IOOverrides-class.html">IOOverrides</a></span>         
@@ -1254,7 +1256,7 @@ TLS/SSL protocol.
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

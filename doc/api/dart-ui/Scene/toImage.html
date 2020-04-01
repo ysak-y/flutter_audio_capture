@@ -94,11 +94,10 @@ This is a slow operation that is performed on a background thread.</p>
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">Future&lt;Image&gt; toImage(int width, int height) {
-  if (width &lt;= 0 || height &lt;= 0)
+  if (width &lt;= 0 || height &lt;= 0) {
     throw Exception(&#39;Invalid image dimensions.&#39;);
-  return _futurize(
-    (_Callback&lt;Image&gt; callback) =&gt; _toImage(width, height, callback)
-  );
+  }
+  return _futurize((_Callback&lt;Image&gt; callback) =&gt; _toImage(width, height, callback));
 }</code></pre>
     </section>
 
@@ -112,7 +111,7 @@ This is a slow operation that is performed on a background thread.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

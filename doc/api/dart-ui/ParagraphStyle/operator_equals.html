@@ -130,19 +130,14 @@ bool operator ==(dynamic other) {
     return true;
   if (other.runtimeType != runtimeType)
     return false;
-  final ParagraphStyle typedOther = other;
-  if (_fontFamily != typedOther._fontFamily ||
-      _fontSize != typedOther._fontSize ||
-      _height != typedOther._height ||
-      _strutStyle != typedOther._strutStyle ||
-      _ellipsis != typedOther._ellipsis ||
-      _locale != typedOther._locale)
-   return false;
-  for (int index = 0; index &lt; _encoded.length; index += 1) {
-    if (_encoded[index] != typedOther._encoded[index])
-      return false;
-  }
-  return true;
+  return other is ParagraphStyle
+      &amp;&amp; other._fontFamily == _fontFamily
+      &amp;&amp; other._fontSize == _fontSize
+      &amp;&amp; other._height == _height
+      &amp;&amp; other._strutStyle == _strutStyle
+      &amp;&amp; other._ellipsis == _ellipsis
+      &amp;&amp; other._locale == _locale
+      &amp;&amp; _listEquals&lt;int&gt;(other._encoded, _encoded);
 }</code></pre>
     </section>
 
@@ -156,7 +151,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

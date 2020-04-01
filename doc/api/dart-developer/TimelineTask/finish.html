@@ -105,6 +105,10 @@ Optionally takes a <a href="dart-core/Map-class.html">Map</a> of <code>arguments
   if (_stack.length == 0) {
     throw new StateError(&#39;Uneven calls to start and finish&#39;);
   }
+  if (_filterKey != null) {
+    arguments ??= {};
+    arguments[_kFilterKey] = _filterKey;
+  }
   &#47;&#47; Pop top item off of stack.
   var block = _stack.removeLast();
   block._finish(arguments);
@@ -121,7 +125,7 @@ Optionally takes a <a href="dart-core/Map-class.html">Map</a> of <code>arguments
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

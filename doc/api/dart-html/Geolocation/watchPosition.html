@@ -103,24 +103,21 @@
   }
 
   int watchId;
-  &#47;&#47; TODO(jacobr): it seems like a bug that we have to specifiy the static
-  &#47;&#47; type here for controller.stream to have the right type.
-  &#47;&#47; dartbug.com&#47;26278
-  StreamController&lt;Geoposition&gt; controller;
-  controller = new StreamController&lt;Geoposition&gt;(
-      sync: true,
-      onListen: () {
-        assert(watchId == null);
-        watchId = _watchPosition((position) {
-          controller.add(_ensurePosition(position));
-        }, (error) {
-          controller.addError(error);
-        }, options);
-      },
-      onCancel: () {
-        assert(watchId != null);
-        _clearWatch(watchId);
-      });
+  StreamController&lt;Geoposition&gt; controller =
+      new StreamController&lt;Geoposition&gt;(
+          sync: true,
+          onCancel: () {
+            assert(watchId != null);
+            _clearWatch(watchId);
+          });
+  controller.onListen = () {
+    assert(watchId == null);
+    watchId = _watchPosition((position) {
+      controller.add(_ensurePosition(position));
+    }, (error) {
+      controller.addError(error);
+    }, options);
+  };
 
   return controller.stream;
 }</code></pre>
@@ -136,7 +133,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

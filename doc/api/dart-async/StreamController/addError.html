@@ -103,7 +103,7 @@
     </section>
     <section class="desc markdown">
       <p>Sends or enqueues an error event.</p>
-<p>If <code>error</code> is <code>null</code>, it is replaced by a <a href="dart-core/NullThrownError-class.html">NullThrownError</a>.</p>
+<p>The <code>error</code> must not be <code>null</code>.</p>
 <p>Listeners receive this event at a later microtask. This behavior can be
 overridden by using <code>sync</code> controllers. Note, however, that sync
 controllers have to satisfy the preconditions mentioned in the
@@ -125,7 +125,7 @@ documentation of the constructors.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

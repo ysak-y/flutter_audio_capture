@@ -102,7 +102,11 @@ cannot be used further.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">Paragraph build() native &#39;ParagraphBuilder_build&#39;;</code></pre>
+      <pre class="language-dart"><code class="language-dart">Paragraph build() {
+  final Paragraph paragraph = Paragraph._();
+  _build(paragraph);
+  return paragraph;
+}</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -115,7 +119,7 @@ cannot be used further.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

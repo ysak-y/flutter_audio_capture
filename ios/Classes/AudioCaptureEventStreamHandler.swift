@@ -11,10 +11,23 @@ class AudioCaptureEventStreamHandler: NSObject, FlutterStreamHandler {
   public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
     self.eventSink = events
 
-    let bufferSize: UInt32 = self._bufferSize(arguments: arguments)
+    var bufferSize: UInt32 = 4000
+    var sampleRate: Double = 16000.0
+    if let args = arguments as? Dictionary<String, Any> {
+      if args.keys.contains("bufferSize"),
+          let bufSize = args["bufferSize"] as? UInt32 {
+        bufferSize = bufSize
+      }
+      
+      if args.keys.contains("sampleRate"),
+          let rate = args["sampleRate"] as? Double {
+        sampleRate = rate
+      }
+    }
+    
     if let sink: FlutterEventSink = self.eventSink {
       do {
-        try self.audioCapture.startSession(bufferSize: bufferSize) { buffer in
+        try self.audioCapture.startSession(bufferSize: bufferSize, sampleRate: sampleRate) { buffer in
           sink(buffer)
         }
       } catch {
@@ -37,21 +50,5 @@ class AudioCaptureEventStreamHandler: NSObject, FlutterStreamHandler {
       }
     }
     return nil
-  }
-  
-  private func _bufferSize(arguments: Any?) -> UInt32 {
-    var bufferSize: UInt32 = 4000
-    if let args = arguments {
-      if args is Dictionary<String, UInt32> {
-        let dic = args as! Dictionary<String, UInt32>
-        if dic.keys.contains("bufferSize") {
-          if let bufSize = dic["bufferSize"] {
-            bufferSize = bufSize
-          }
-        }
-      }
-    }
-    
-    return bufferSize
   }
 }

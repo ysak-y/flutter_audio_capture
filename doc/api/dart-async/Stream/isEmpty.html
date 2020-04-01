@@ -139,9 +139,9 @@
                 <section class="desc markdown">
           <p>Whether this stream contains any elements.</p>
 <p>Waits for the first element of this stream, then completes the returned
-future with <code>true</code>.
+future with <code>false</code>.
 If this stream ends without emitting any elements, the returned future is
-completed with <code>false</code>.</p>
+completed with <code>true</code>.</p>
 <p>If the first event is an error, the returned future is completed with that
 error.</p>
 <p>This operation listens to this stream, and a non-broadcast stream cannot
@@ -176,7 +176,7 @@ be reused after checking whether it is empty.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

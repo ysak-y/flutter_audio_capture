@@ -77,6 +77,7 @@
         <li><a href="dart-ui/SceneBuilder/pushClipRect.html">pushClipRect</a></li>
         <li><a href="dart-ui/SceneBuilder/pushClipRRect.html">pushClipRRect</a></li>
         <li><a href="dart-ui/SceneBuilder/pushColorFilter.html">pushColorFilter</a></li>
+        <li><a href="dart-ui/SceneBuilder/pushImageFilter.html">pushImageFilter</a></li>
         <li><a href="dart-ui/SceneBuilder/pushOffset.html">pushOffset</a></li>
         <li><a href="dart-ui/SceneBuilder/pushOpacity.html">pushOpacity</a></li>
         <li><a href="dart-ui/SceneBuilder/pushPhysicalShape.html">pushPhysicalShape</a></li>
@@ -131,14 +132,24 @@ original object.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">ShaderMaskEngineLayer pushShaderMask(Shader shader, Rect maskRect, BlendMode blendMode, { ShaderMaskEngineLayer oldLayer }) {
+      <pre class="language-dart"><code class="language-dart">ShaderMaskEngineLayer pushShaderMask(
+  Shader shader,
+  Rect maskRect,
+  BlendMode blendMode, {
+  ShaderMaskEngineLayer oldLayer,
+}) {
   assert(_debugCheckCanBeUsedAsOldLayer(oldLayer, &#39;pushShaderMask&#39;));
-  final ShaderMaskEngineLayer layer = ShaderMaskEngineLayer._(_pushShaderMask(shader,
-                         maskRect.left,
-                         maskRect.right,
-                         maskRect.top,
-                         maskRect.bottom,
-                         blendMode.index));
+  final EngineLayer engineLayer = EngineLayer._();
+  _pushShaderMask(
+    engineLayer,
+    shader,
+    maskRect.left,
+    maskRect.right,
+    maskRect.top,
+    maskRect.bottom,
+    blendMode.index,
+  );
+  final ShaderMaskEngineLayer layer = ShaderMaskEngineLayer._(engineLayer);
   assert(_debugPushLayer(layer));
   return layer;
 }</code></pre>
@@ -154,7 +165,7 @@ original object.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

@@ -84,6 +84,8 @@
         <li class="section-title inherited"><a href="dart-ui/Paint-class.html#operators">Operators</a></li>
         <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
     
+        <li class="section-title"><a href="dart-ui/Paint-class.html#static-properties">Static properties</a></li>
+        <li><a href="dart-ui/Paint/enableDithering.html">enableDithering</a></li>
     
     
     
@@ -113,6 +115,9 @@
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">@override
 String toString() {
+  if (const bool.fromEnvironment(&#39;dart.vm.product&#39;, defaultValue: false)) {
+    return super.toString();
+  }
   final StringBuffer result = StringBuffer();
   String semicolon = &#39;&#39;;
   result.write(&#39;Paint(&#39;);
@@ -169,6 +174,8 @@ String toString() {
   }
   if (invertColors)
     result.write(&#39;${semicolon}invert: $invertColors&#39;);
+  if (_dither)
+    result.write(&#39;${semicolon}dither: $_dither&#39;);
   result.write(&#39;)&#39;);
   return result.toString();
 }</code></pre>
@@ -184,7 +191,7 @@ String toString() {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

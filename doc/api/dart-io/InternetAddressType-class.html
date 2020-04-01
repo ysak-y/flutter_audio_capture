@@ -188,7 +188,9 @@
 
     <section class="desc markdown">
       <p><a href="dart-io/InternetAddressType-class.html">InternetAddressType</a> is the type an <a href="dart-io/InternetAddress-class.html">InternetAddress</a>. Currently,
-IP version 4 (IPv4) and IP version 6 (IPv6) are supported.</p>
+IP version 4 (IPv4), IP version 6 (IPv6) and Unix domain address are
+supported. Unix domain sockets are available only on Linux, MacOS and
+Android.</p>
     </section>
     
 
@@ -335,6 +337,17 @@ IP version 4 (IPv4) and IP version 6 (IPv6) are supported.</p>
             <span class="signature"><code>const InternetAddressType._(1)</code></span>
           </div>
         </dd>
+        <dt id="unix" class="constant">
+          <span class="name "><a href="dart-io/InternetAddressType/unix-constant.html">unix</a></span>
+          <span class="signature">&#8594; const <a href="dart-io/InternetAddressType-class.html">InternetAddressType</a></span>
+                  </dt>
+        <dd>
+          
+                  <div class="features">@Since(&quot;2.8&quot;)</div>
+  <div>
+            <span class="signature"><code>const InternetAddressType._(2)</code></span>
+          </div>
+        </dd>
       </dl>
     </section>
 
@@ -367,6 +380,7 @@ IP version 4 (IPv4) and IP version 6 (IPv6) are supported.</p>
       <li><a class="deprecated" href="dart-io/InternetAddressType/IP_V6-constant.html">IP_V6</a></li>
       <li><a href="dart-io/InternetAddressType/IPv4-constant.html">IPv4</a></li>
       <li><a href="dart-io/InternetAddressType/IPv6-constant.html">IPv6</a></li>
+      <li><a href="dart-io/InternetAddressType/unix-constant.html">unix</a></li>
     
     </ol>
   </div><!--/.sidebar-offcanvas-->
@@ -376,7 +390,7 @@ IP version 4 (IPv4) and IP version 6 (IPv6) are supported.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

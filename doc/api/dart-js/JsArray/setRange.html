@@ -174,15 +174,8 @@ made.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">void setRange(int start, int end, Iterable&lt;E&gt; iterable, [int skipCount = 0]) {
-  _checkRange(start, end, this.length);
-  int length = end - start;
-  if (length == 0) return;
-  if (skipCount &lt; 0) throw ArgumentError(skipCount);
-  var args = &lt;dynamic&gt;[start, length]
-    ..addAll(iterable.skip(skipCount).take(length));
-  callMethod(&#39;splice&#39;, args);
-}</code></pre>
+      <pre class="language-dart"><code class="language-dart">external void setRange(int start, int end, Iterable&lt;E&gt; iterable,
+    [int skipCount = 0]);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -195,7 +188,7 @@ made.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

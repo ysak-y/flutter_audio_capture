@@ -157,12 +157,7 @@ Throws an <a href="dart-core/UnsupportedError-class.html">UnsupportedError</a> i
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">void addAll(Iterable&lt;E&gt; iterable) {
-  var list = (JS(&#39;bool&#39;, &#39;# instanceof Array&#39;, iterable))
-      ? iterable
-      : List.from(iterable);
-  callMethod(&#39;push&#39;, list);
-}</code></pre>
+      <pre class="language-dart"><code class="language-dart">external void addAll(Iterable&lt;E&gt; iterable);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -175,7 +170,7 @@ Throws an <a href="dart-core/UnsupportedError-class.html">UnsupportedError</a> i
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

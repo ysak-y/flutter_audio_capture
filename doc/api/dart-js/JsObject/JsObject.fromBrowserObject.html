@@ -104,12 +104,7 @@ is normally automatically converted into a native Dart object.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">factory JsObject.fromBrowserObject(object) {
-  if (object is num || object is String || object is bool || object == null) {
-    throw ArgumentError(&quot;object cannot be a num, string, bool, or null&quot;);
-  }
-  return _wrapToDart(_convertToJS(object));
-}</code></pre>
+      <pre class="language-dart"><code class="language-dart">external factory JsObject.fromBrowserObject(object);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -122,7 +117,7 @@ is normally automatically converted into a native Dart object.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->
