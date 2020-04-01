@@ -100,12 +100,7 @@ supplied it is the value of <code>this</code> for the invocation.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">dynamic apply(List args, {thisArg}) =&gt; _convertToDart(JS(
-    &#39;&#39;,
-    &#39;#.apply(#, #)&#39;,
-    _jsObject,
-    _convertToJS(thisArg),
-    args == null ? null : List.from(args.map(_convertToJS))));</code></pre>
+      <pre class="language-dart"><code class="language-dart">external dynamic apply(List args, {thisArg});</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -118,7 +113,7 @@ supplied it is the value of <code>this</code> for the invocation.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

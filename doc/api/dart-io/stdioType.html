@@ -203,7 +203,12 @@ something else.</p>
     object = object._stream;
   } else if (object == stdout || object == stderr) {
     int stdiofd = object == stdout ? _stdoutFD : _stderrFD;
-    switch (_StdIOUtils._getStdioHandleType(stdiofd)) {
+    final type = _StdIOUtils._getStdioHandleType(stdiofd);
+    if (type is OSError) {
+      throw FileSystemException(
+          &quot;Failed to get type of stdio handle (fd $stdiofd)&quot;, &quot;&quot;, type);
+    }
+    switch (type) {
       case _stdioHandleTypeTerminal:
         return StdioType.terminal;
       case _stdioHandleTypePipe:
@@ -250,7 +255,7 @@ something else.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

@@ -98,7 +98,11 @@ and the canvas objects are invalid and cannot be used further.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">Picture endRecording() native &#39;PictureRecorder_endRecording&#39;;</code></pre>
+      <pre class="language-dart"><code class="language-dart">Picture endRecording() {
+  final Picture picture = Picture._();
+  _endRecording(picture);
+  return picture;
+}</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -111,7 +115,7 @@ and the canvas objects are invalid and cannot be used further.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

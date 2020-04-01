@@ -73,6 +73,8 @@
       <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
     
     
+      <li class="section-title"><a href="dart-async/AsyncError-class.html#static-methods">Static methods</a></li>
+      <li><a href="dart-async/AsyncError/defaultStackTrace.html">defaultStackTrace</a></li>
     
     
     </ol>
@@ -89,7 +91,10 @@
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">AsyncError(this.error, this.stackTrace);</code></pre>
+      <pre class="language-dart"><code class="language-dart">AsyncError(this.error, StackTrace stackTrace)
+    : stackTrace = stackTrace ?? defaultStackTrace(error) {
+  ArgumentError.checkNotNull(error, &quot;error&quot;);
+}</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -102,7 +107,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

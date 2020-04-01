@@ -72,6 +72,7 @@
       <li><a href="dart-ui/Gradient-class.html">Gradient</a></li>
       <li><a href="dart-ui/Image-class.html">Image</a></li>
       <li><a href="dart-ui/ImageFilter-class.html">ImageFilter</a></li>
+      <li><a href="dart-ui/ImageFilterEngineLayer-class.html">ImageFilterEngineLayer</a></li>
       <li><a href="dart-ui/ImageShader-class.html">ImageShader</a></li>
       <li><a href="dart-ui/IsolateNameServer-class.html">IsolateNameServer</a></li>
       <li><a href="dart-ui/LineMetrics-class.html">LineMetrics</a></li>
@@ -115,6 +116,7 @@
       <li><a href="dart-ui/Tangent-class.html">Tangent</a></li>
       <li><a href="dart-ui/TextBox-class.html">TextBox</a></li>
       <li><a href="dart-ui/TextDecoration-class.html">TextDecoration</a></li>
+      <li><a href="dart-ui/TextHeightBehavior-class.html">TextHeightBehavior</a></li>
       <li><a href="dart-ui/TextPosition-class.html">TextPosition</a></li>
       <li><a href="dart-ui/TextRange-class.html">TextRange</a></li>
       <li><a href="dart-ui/TextStyle-class.html">TextStyle</a></li>
@@ -125,6 +127,8 @@
     
     
     
+      <li class="section-title"><a href="dart-ui/dart-ui-library.html#constants">Constants</a></li>
+      <li><a href="dart-ui/keepToString-constant.html">keepToString</a></li>
     
       <li class="section-title"><a href="dart-ui/dart-ui-library.html#properties">Properties</a></li>
       <li><a href="dart-ui/channelBuffers.html">channelBuffers</a></li>
@@ -194,8 +198,11 @@
 <p>See also:</p>
 <ul>
 <li><code>BackdropFilter</code>, a widget that applies <a href="dart-ui/ImageFilter-class.html">ImageFilter</a> to its rendering.</li>
+<li><code>ImageFiltered</code>, a widget that applies <a href="dart-ui/ImageFilter-class.html">ImageFilter</a> to its children.</li>
 <li><a href="dart-ui/SceneBuilder/pushBackdropFilter.html">SceneBuilder.pushBackdropFilter</a>, which is the low-level API for using
-this class.</li>
+this class as a backdrop filter.</li>
+<li><a href="dart-ui/SceneBuilder/pushImageFilter.html">SceneBuilder.pushImageFilter</a>, which is the low-level API for using
+this class as a child layer filter.</li>
 </ul>
     </section>
     
@@ -317,7 +324,7 @@ this class.</li>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

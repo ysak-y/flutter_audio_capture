@@ -124,7 +124,9 @@ the <code>source</code> path or the path returned by this constructor are modifi
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">factory Path.from(Path source) {
-  return source._clone();
+  final Path clonedPath = Path._();
+  source._clone(clonedPath);
+  return clonedPath;
 }</code></pre>
     </section>
 
@@ -138,7 +140,7 @@ the <code>source</code> path or the path returned by this constructor are modifi
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

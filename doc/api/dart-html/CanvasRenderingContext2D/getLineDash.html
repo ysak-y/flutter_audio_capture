@@ -184,6 +184,7 @@ List&lt;num&gt; getLineDash() {
   } else if (JS(&#39;bool&#39;, &#39;!!#.webkitLineDash&#39;, this)) {
     return JS(&#39;List&lt;num&gt;&#39;, &#39;#.webkitLineDash&#39;, this);
   }
+  return [];
 }</code></pre>
     </section>
 
@@ -197,7 +198,7 @@ List&lt;num&gt; getLineDash() {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

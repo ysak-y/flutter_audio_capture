@@ -86,7 +86,7 @@
 
     <section class="multi-line-signature">
       
-      <span class="name ">TimelineTask.withTaskId</span>(<wbr><span class="parameter" id="withTaskId-param-taskId"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">taskId</span></span>)
+      <span class="name ">TimelineTask.withTaskId</span>(<wbr><span class="parameter" id="withTaskId-param-taskId"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">taskId</span>, {</span> <span class="parameter" id="withTaskId-param-filterKey"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">filterKey</span></span> })
     </section>
 
     <section class="desc markdown">
@@ -95,12 +95,16 @@ passing a task from one isolate to another.</p>
 <p>Important note: only provide task IDs which have been obtained as a
 result of invoking <a href="dart-developer/TimelineTask/pass.html">TimelineTask.pass</a>. Specifying a custom ID can lead
 to ID collisions, resulting in incorrect rendering of timeline events.</p>
+<p>If <code>filterKey</code> is provided, a property named <code>filterKey</code> will be inserted
+into the arguments of each event associated with this task. The
+<code>filterKey</code> will be set to the value of <code>filterKey</code>.</p>
     </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">TimelineTask.withTaskId(int taskId)
+      <pre class="language-dart"><code class="language-dart">TimelineTask.withTaskId(int taskId, {String filterKey})
     : _parent = null,
+      _filterKey = filterKey,
       _taskId = taskId {
   ArgumentError.checkNotNull(taskId, &#39;taskId&#39;);
 }</code></pre>
@@ -116,7 +120,7 @@ to ID collisions, resulting in incorrect rendering of timeline events.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

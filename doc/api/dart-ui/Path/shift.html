@@ -126,7 +126,9 @@ sub-path translated by the given offset.</p>
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">Path shift(Offset offset) {
   assert(_offsetIsValid(offset));
-  return _shift(offset.dx, offset.dy);
+  final Path path = Path._();
+  _shift(path, offset.dx, offset.dy);
+  return path;
 }</code></pre>
     </section>
 
@@ -140,7 +142,7 @@ sub-path translated by the given offset.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

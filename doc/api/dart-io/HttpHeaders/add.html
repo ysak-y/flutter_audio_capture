@@ -208,22 +208,30 @@
     <section class="multi-line-signature">
       <span class="returntype">void</span>
             <span class="name ">add</span>
-(<wbr><span class="parameter" id="add-param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="add-param-value"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">value</span></span>)
+(<wbr><span class="parameter" id="add-param-name"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="add-param-value"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">value</span>, {</span> <span class="parameter" id="add-param-preserveHeaderCase"><span>@Since(&quot;2.8&quot;)</span> <span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">preserveHeaderCase</span>: <span class="default-value">false</span></span> })
       
     </section>
     <section class="desc markdown">
-      <p>Adds a header value. The header named <code>name</code> will have the value
-<code>value</code> added to its list of values. Some headers are single
-valued, and for these adding a value will replace the previous
-value. If the value is of type DateTime a HTTP date format will be
-applied. If the value is a <code>List</code> each element of the list will
-be added separately. For all other types the default <code>toString</code>
-method will be used.</p>
+      <p>Adds a header value.</p>
+<p>The header named <code>name</code> will have a string value derived from <code>value</code>
+added to its list of values.</p>
+<p>Some headers are single valued, and for these, adding a value will
+replace a previous value. If the <code>value</code> is a <a href="dart-core/DateTime-class.html">DateTime</a>, an
+HTTP date format will be applied. If the value is an <a href="dart-core/Iterable-class.html">Iterable</a>,
+each element will be added separately. For all other
+types the default <a href="dart-core/Object/toString.html">Object.toString</a> method will be used.</p>
+<p>Header names are converted to lower-case unless
+<code>preserveHeaderCase</code> is set to true. If two header names are
+the same when converted to lower-case, they are considered to be
+the same header, with one set of values.</p>
+<p>The current case of the a header name is that of the name used by
+the last <a href="dart-io/HttpHeaders/set.html">set</a> or <a href="dart-io/HttpHeaders/add.html">add</a> call for that header.</p>
     </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">void add(String name, Object value);</code></pre>
+      <pre class="language-dart"><code class="language-dart">void add(String name, Object value,
+    {@Since(&quot;2.8&quot;) bool preserveHeaderCase = false});</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -236,7 +244,7 @@ method will be used.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

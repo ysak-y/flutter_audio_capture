@@ -113,7 +113,8 @@ equivalently to <code>new Future&lt;T&gt;.sync(() =&gt; value)</code>.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">factory Future.value([FutureOr&lt;T&gt; value]) {
+      <pre class="language-dart"><code class="language-dart">@pragma(&quot;vm:entry-point&quot;)
+factory Future.value([FutureOr&lt;T&gt; value]) {
   return new _Future&lt;T&gt;.immediate(value);
 }</code></pre>
     </section>
@@ -128,7 +129,7 @@ equivalently to <code>new Future&lt;T&gt;.sync(() =&gt; value)</code>.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

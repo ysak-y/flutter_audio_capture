@@ -72,6 +72,7 @@
       <li><a href="dart-ui/Gradient-class.html">Gradient</a></li>
       <li><a href="dart-ui/Image-class.html">Image</a></li>
       <li><a href="dart-ui/ImageFilter-class.html">ImageFilter</a></li>
+      <li><a href="dart-ui/ImageFilterEngineLayer-class.html">ImageFilterEngineLayer</a></li>
       <li><a href="dart-ui/ImageShader-class.html">ImageShader</a></li>
       <li><a href="dart-ui/IsolateNameServer-class.html">IsolateNameServer</a></li>
       <li><a href="dart-ui/LineMetrics-class.html">LineMetrics</a></li>
@@ -115,6 +116,7 @@
       <li><a href="dart-ui/Tangent-class.html">Tangent</a></li>
       <li><a href="dart-ui/TextBox-class.html">TextBox</a></li>
       <li><a href="dart-ui/TextDecoration-class.html">TextDecoration</a></li>
+      <li><a href="dart-ui/TextHeightBehavior-class.html">TextHeightBehavior</a></li>
       <li><a href="dart-ui/TextPosition-class.html">TextPosition</a></li>
       <li><a href="dart-ui/TextRange-class.html">TextRange</a></li>
       <li><a href="dart-ui/TextStyle-class.html">TextStyle</a></li>
@@ -125,6 +127,8 @@
     
     
     
+      <li class="section-title"><a href="dart-ui/dart-ui-library.html#constants">Constants</a></li>
+      <li><a href="dart-ui/keepToString-constant.html">keepToString</a></li>
     
       <li class="section-title"><a href="dart-ui/dart-ui-library.html#properties">Properties</a></li>
       <li><a href="dart-ui/channelBuffers.html">channelBuffers</a></li>
@@ -202,13 +206,14 @@
           <span class="name"><a href="dart-ui/Vertices/Vertices.html">Vertices</a></span><span class="signature">(<span class="parameter" id="-param-mode"><span class="type-annotation"><a href="dart-ui/VertexMode-class.html">VertexMode</a></span> <span class="parameter-name">mode</span>, </span> <span class="parameter" id="-param-positions"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-ui/Offset-class.html">Offset</a></span>&gt;</span></span> <span class="parameter-name">positions</span>, {</span> <span class="parameter" id="-param-textureCoordinates"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-ui/Offset-class.html">Offset</a></span>&gt;</span></span> <span class="parameter-name">textureCoordinates</span>, </span> <span class="parameter" id="-param-colors"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-ui/Color-class.html">Color</a></span>&gt;</span></span> <span class="parameter-name">colors</span>, </span> <span class="parameter" id="-param-indices"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">indices</span></span> })</span>
         </dt>
         <dd>
-          
+          Creates a set of vertex data for use with <a href="dart-ui/Canvas/drawVertices.html">Canvas.drawVertices</a>. <a href="dart-ui/Vertices/Vertices.html">[...]</a>
         </dd>
         <dt id="Vertices.raw" class="callable">
           <span class="name"><a href="dart-ui/Vertices/Vertices.raw.html">Vertices.raw</a></span><span class="signature">(<span class="parameter" id="raw-param-mode"><span class="type-annotation"><a href="dart-ui/VertexMode-class.html">VertexMode</a></span> <span class="parameter-name">mode</span>, </span> <span class="parameter" id="raw-param-positions"><span class="type-annotation"><a href="dart-typed_data/Float32List-class.html">Float32List</a></span> <span class="parameter-name">positions</span>, {</span> <span class="parameter" id="raw-param-textureCoordinates"><span class="type-annotation"><a href="dart-typed_data/Float32List-class.html">Float32List</a></span> <span class="parameter-name">textureCoordinates</span>, </span> <span class="parameter" id="raw-param-colors"><span class="type-annotation"><a href="dart-typed_data/Int32List-class.html">Int32List</a></span> <span class="parameter-name">colors</span>, </span> <span class="parameter" id="raw-param-indices"><span class="type-annotation"><a href="dart-typed_data/Uint16List-class.html">Uint16List</a></span> <span class="parameter-name">indices</span></span> })</span>
         </dt>
         <dd>
-          
+          Creates a set of vertex data for use with <a href="dart-ui/Canvas/drawVertices.html">Canvas.drawVertices</a>, directly
+using the encoding methods of <a href="dart-ui/Vertices/Vertices.html">new Vertices</a>. <a href="dart-ui/Vertices/Vertices.raw.html">[...]</a>
         </dd>
       </dl>
     </section>
@@ -311,7 +316,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

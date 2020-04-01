@@ -126,11 +126,9 @@ the <a href="dart-ui/MaskFilter/hashCode.html">hashCode</a> method as well to ma
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">@override
 bool operator ==(dynamic other) {
-  if (other is! MaskFilter)
-    return false;
-  final MaskFilter typedOther = other;
-  return _style == typedOther._style &amp;&amp;
-         _sigma == typedOther._sigma;
+  return other is MaskFilter
+      &amp;&amp; other._style == _style
+      &amp;&amp; other._sigma == _sigma;
 }</code></pre>
     </section>
 
@@ -144,7 +142,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

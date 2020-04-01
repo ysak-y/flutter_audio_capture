@@ -56,6 +56,7 @@
     
         <li class="section-title"><a href="dart-io/InternetAddress-class.html#constructors">Constructors</a></li>
         <li><a href="dart-io/InternetAddress/InternetAddress.html">InternetAddress</a></li>
+        <li><a href="dart-io/InternetAddress/InternetAddress.fromRawAddress.html">fromRawAddress</a></li>
     
         <li class="section-title">
             <a href="dart-io/InternetAddress-class.html#instance-properties">Properties</a>
@@ -106,8 +107,11 @@
       
     </section>
     <section class="desc markdown">
-      <p>Perform a reverse dns lookup on the <a href="dart-io/InternetAddress/address.html">address</a>, creating a new
-<a href="dart-io/InternetAddress-class.html">InternetAddress</a> where the host field set to the result.</p>
+      <p>Perform a reverse DNS lookup on this <a href="dart-io/InternetAddress/address.html">address</a></p>
+<p>Returns a new <a href="dart-io/InternetAddress-class.html">InternetAddress</a> with the same address, but where the <a href="dart-io/InternetAddress/host.html">host</a>
+field set to the result of the lookup.</p>
+<p>If this address is Unix domain addresses, no lookup is performed and this
+address is returned directly.</p>
     </section>
     
     <section class="summary source-code" id="source">
@@ -125,7 +129,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

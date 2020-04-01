@@ -97,12 +97,7 @@
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">void operator []=(property, value) {
-  if (property is! String &amp;&amp; property is! num) {
-    throw ArgumentError(&quot;property is not a String or num&quot;);
-  }
-  JS(&#39;&#39;, &#39;#[#] = #&#39;, _jsObject, property, _convertToJS(value));
-}</code></pre>
+      <pre class="language-dart"><code class="language-dart">external void operator []=(property, value);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -115,7 +110,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

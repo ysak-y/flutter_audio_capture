@@ -127,19 +127,10 @@ the <a href="dart-ui/ImageFilter/hashCode.html">hashCode</a> method as well to m
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">@override
 bool operator ==(dynamic other) {
-  if (other is! ImageFilter) {
-    return false;
-  }
-  final ImageFilter typedOther = other;
-
-  if (_type != typedOther._type) {
-    return false;
-  }
-  if (!_listEquals&lt;double&gt;(_data, typedOther._data)) {
-    return false;
-  }
-
-  return _filterQuality == typedOther._filterQuality;
+  return other is ImageFilter
+      &amp;&amp; other._type == _type
+      &amp;&amp; _listEquals&lt;double&gt;(other._data, _data)
+      &amp;&amp; other._filterQuality == _filterQuality;
 }</code></pre>
     </section>
 
@@ -153,7 +144,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

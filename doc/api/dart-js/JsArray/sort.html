@@ -175,10 +175,7 @@ print(numbers);  // [one, two, four, three] OR [two, one, four, three]
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">void sort([int compare(E a, E b)]) {
-  &#47;&#47; Note: arr.sort(null) is a type error in FF
-  callMethod(&#39;sort&#39;, compare == null ? [] : [compare]);
-}</code></pre>
+      <pre class="language-dart"><code class="language-dart">external void sort([int compare(E a, E b)]);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -191,7 +188,7 @@ print(numbers);  // [one, two, four, three] OR [two, one, four, three]
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

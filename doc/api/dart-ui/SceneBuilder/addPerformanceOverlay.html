@@ -77,6 +77,7 @@
         <li><a href="dart-ui/SceneBuilder/pushClipRect.html">pushClipRect</a></li>
         <li><a href="dart-ui/SceneBuilder/pushClipRRect.html">pushClipRRect</a></li>
         <li><a href="dart-ui/SceneBuilder/pushColorFilter.html">pushColorFilter</a></li>
+        <li><a href="dart-ui/SceneBuilder/pushImageFilter.html">pushImageFilter</a></li>
         <li><a href="dart-ui/SceneBuilder/pushOffset.html">pushOffset</a></li>
         <li><a href="dart-ui/SceneBuilder/pushOpacity.html">pushOpacity</a></li>
         <li><a href="dart-ui/SceneBuilder/pushPhysicalShape.html">pushPhysicalShape</a></li>
@@ -114,8 +115,8 @@ The enabledOptions controls which statistics are displayed. The bounds
 controls where the statistics are displayed.</p>
 <p>enabledOptions is a bit field with the following bits defined:</p>
 <ul>
-<li>0x01: displayRasterizerStatistics - show GPU thread frame time</li>
-<li>0x02: visualizeRasterizerStatistics - graph GPU thread frame times</li>
+<li>0x01: displayRasterizerStatistics - show raster thread frame time</li>
+<li>0x02: visualizeRasterizerStatistics - graph raster thread frame times</li>
 <li>0x04: displayEngineStatistics - show UI thread frame time</li>
 <li>0x08: visualizeEngineStatistics - graph UI thread frame times
 Set enabledOptions to 0x0F to enable all the currently defined features.</li>
@@ -123,7 +124,7 @@ Set enabledOptions to 0x0F to enable all the currently defined features.</li>
 <p>The "UI thread" is the thread that includes all the execution of
 the main Dart isolate (the isolate that can call
 <a href="dart-ui/Window/render.html">Window.render</a>). The UI thread frame time is the total time
-spent executing the <a href="dart-ui/Window/onBeginFrame.html">Window.onBeginFrame</a> callback. The "GPU
+spent executing the <a href="dart-ui/Window/onBeginFrame.html">Window.onBeginFrame</a> callback. The "raster
 thread" is the thread (running on the CPU) that subsequently
 processes the <a href="dart-ui/Scene-class.html">Scene</a> provided by the Dart code to turn it into
 GPU commands and send it to the GPU.</p>
@@ -135,11 +136,7 @@ for more details.</p>
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">&#47;&#47; Values above must match constants in &#47;&#47;engine&#47;src&#47;sky&#47;compositor&#47;performance_overlay_layer.h
 void addPerformanceOverlay(int enabledOptions, Rect bounds) {
-  _addPerformanceOverlay(enabledOptions,
-                         bounds.left,
-                         bounds.right,
-                         bounds.top,
-                         bounds.bottom);
+  _addPerformanceOverlay(enabledOptions, bounds.left, bounds.right, bounds.top, bounds.bottom);
 }</code></pre>
     </section>
 
@@ -153,7 +150,7 @@ void addPerformanceOverlay(int enabledOptions, Rect bounds) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

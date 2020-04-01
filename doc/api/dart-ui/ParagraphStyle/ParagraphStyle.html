@@ -81,7 +81,7 @@
 
     <section class="multi-line-signature">
       
-      <span class="name ">ParagraphStyle</span>(<wbr>{<span class="parameter" id="-param-textAlign"><span class="type-annotation"><a href="dart-ui/TextAlign-class.html">TextAlign</a></span> <span class="parameter-name">textAlign</span>, </span> <span class="parameter" id="-param-textDirection"><span class="type-annotation"><a href="dart-ui/TextDirection-class.html">TextDirection</a></span> <span class="parameter-name">textDirection</span>, </span> <span class="parameter" id="-param-maxLines"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">maxLines</span>, </span> <span class="parameter" id="-param-fontFamily"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">fontFamily</span>, </span> <span class="parameter" id="-param-fontSize"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">fontSize</span>, </span> <span class="parameter" id="-param-height"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">height</span>, </span> <span class="parameter" id="-param-fontWeight"><span class="type-annotation"><a href="dart-ui/FontWeight-class.html">FontWeight</a></span> <span class="parameter-name">fontWeight</span>, </span> <span class="parameter" id="-param-fontStyle"><span class="type-annotation"><a href="dart-ui/FontStyle-class.html">FontStyle</a></span> <span class="parameter-name">fontStyle</span>, </span> <span class="parameter" id="-param-strutStyle"><span class="type-annotation"><a href="dart-ui/StrutStyle-class.html">StrutStyle</a></span> <span class="parameter-name">strutStyle</span>, </span> <span class="parameter" id="-param-ellipsis"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">ellipsis</span>, </span> <span class="parameter" id="-param-locale"><span class="type-annotation"><a href="dart-ui/Locale-class.html">Locale</a></span> <span class="parameter-name">locale</span></span> })
+      <span class="name ">ParagraphStyle</span>(<wbr>{<span class="parameter" id="-param-textAlign"><span class="type-annotation"><a href="dart-ui/TextAlign-class.html">TextAlign</a></span> <span class="parameter-name">textAlign</span>, </span> <span class="parameter" id="-param-textDirection"><span class="type-annotation"><a href="dart-ui/TextDirection-class.html">TextDirection</a></span> <span class="parameter-name">textDirection</span>, </span> <span class="parameter" id="-param-maxLines"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">maxLines</span>, </span> <span class="parameter" id="-param-fontFamily"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">fontFamily</span>, </span> <span class="parameter" id="-param-fontSize"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">fontSize</span>, </span> <span class="parameter" id="-param-height"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">height</span>, </span> <span class="parameter" id="-param-textHeightBehavior"><span class="type-annotation"><a href="dart-ui/TextHeightBehavior-class.html">TextHeightBehavior</a></span> <span class="parameter-name">textHeightBehavior</span>, </span> <span class="parameter" id="-param-fontWeight"><span class="type-annotation"><a href="dart-ui/FontWeight-class.html">FontWeight</a></span> <span class="parameter-name">fontWeight</span>, </span> <span class="parameter" id="-param-fontStyle"><span class="type-annotation"><a href="dart-ui/FontStyle-class.html">FontStyle</a></span> <span class="parameter-name">fontStyle</span>, </span> <span class="parameter" id="-param-strutStyle"><span class="type-annotation"><a href="dart-ui/StrutStyle-class.html">StrutStyle</a></span> <span class="parameter-name">strutStyle</span>, </span> <span class="parameter" id="-param-ellipsis"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">ellipsis</span>, </span> <span class="parameter" id="-param-locale"><span class="type-annotation"><a href="dart-ui/Locale-class.html">Locale</a></span> <span class="parameter-name">locale</span></span> })
     </section>
 
     <section class="desc markdown">
@@ -121,6 +121,10 @@ size. The fallback height is used when no height is provided through
 <code>TextStyle.height</code>. Omitting <code>height</code> here and in <a href="dart-ui/TextStyle-class.html">TextStyle</a> will allow
 the line height to take the height as defined by the font, which may not
 be exactly the height of the <code>fontSize</code>.</p>
+</li>
+<li>
+<p><code>textHeightBehavior</code>: Specifies how the <code>height</code> multiplier is
+applied to ascent of the first line and the descent of the last line.</p>
 </li>
 <li>
 <p><code>fontWeight</code>: The typeface thickness to use when painting the text
@@ -179,6 +183,9 @@ considered equivalent and turn off this behavior.</p>
 &#47;&#47;&#47;   the line height to take the height as defined by the font, which may not
 &#47;&#47;&#47;   be exactly the height of the `fontSize`.
 &#47;&#47;&#47;
+&#47;&#47;&#47; * `textHeightBehavior`: Specifies how the `height` multiplier is
+&#47;&#47;&#47;   applied to ascent of the first line and the descent of the last line.
+&#47;&#47;&#47;
 &#47;&#47;&#47; * `fontWeight`: The typeface thickness to use when painting the text
 &#47;&#47;&#47;   (e.g., bold).
 &#47;&#47;&#47;
@@ -206,6 +213,7 @@ ParagraphStyle({
   String fontFamily,
   double fontSize,
   double height,
+  TextHeightBehavior textHeightBehavior,
   FontWeight fontWeight,
   FontStyle fontStyle,
   StrutStyle strutStyle,
@@ -218,6 +226,7 @@ ParagraphStyle({
        fontFamily,
        fontSize,
        height,
+       textHeightBehavior,
        fontWeight,
        fontStyle,
        strutStyle,
@@ -242,7 +251,7 @@ ParagraphStyle({
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

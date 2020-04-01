@@ -138,12 +138,10 @@ the <a href="dart-ui/Shadow/hashCode.html">hashCode</a> method as well to mainta
 bool operator ==(dynamic other) {
   if (identical(this, other))
     return true;
-  if (other is! Shadow)
-    return false;
-  final Shadow typedOther = other;
-  return color == typedOther.color &amp;&amp;
-         offset == typedOther.offset &amp;&amp;
-         blurRadius == typedOther.blurRadius;
+  return other is Shadow
+      &amp;&amp; other.color == color
+      &amp;&amp; other.offset == offset
+      &amp;&amp; other.blurRadius == blurRadius;
 }</code></pre>
     </section>
 
@@ -157,7 +155,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

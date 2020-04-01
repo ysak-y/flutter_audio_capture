@@ -294,6 +294,15 @@ calls. <a href="dart-async/Zone-class.html">[...]</a>
           Runs <code>body</code> in its own zone. <a href="dart-async/runZoned.html">[...]</a>
                   
 </dd>
+        <dt id="runZonedGuarded" class="callable">
+          <span class="name"><a href="dart-async/runZonedGuarded.html">runZonedGuarded</a></span><span class="signature">&lt;<wbr><span class="type-parameter">R</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="runZonedGuarded-param-body"><span class="type-annotation">R</span> <span class="parameter-name">body</span>(), </span> <span class="parameter" id="runZonedGuarded-param-onError"><span class="type-annotation">void</span> <span class="parameter-name">onError</span>(<span class="parameter" id="param-error"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">error</span>, </span> <span class="parameter" id="param-stack"><span class="type-annotation"><a href="dart-core/StackTrace-class.html">StackTrace</a></span> <span class="parameter-name">stack</span></span>), {</span> <span class="parameter" id="runZonedGuarded-param-zoneValues"><span class="type-annotation"><a href="dart-core/Map-class.html">Map</a></span> <span class="parameter-name">zoneValues</span>, </span> <span class="parameter" id="runZonedGuarded-param-zoneSpecification"><span class="type-annotation"><a href="dart-async/ZoneSpecification-class.html">ZoneSpecification</a></span> <span class="parameter-name">zoneSpecification</span></span> })
+            <span class="returntype parameter">&#8594; R</span>
+          </span>
+                  </dt>
+        <dd>
+          Runs <code>body</code> in its own error zone. <a href="dart-async/runZonedGuarded.html">[...]</a>
+                  <div class="features">@Since(&quot;2.8&quot;)</div>
+</dd>
         <dt id="scheduleMicrotask" class="callable">
           <span class="name"><a href="dart-async/scheduleMicrotask.html">scheduleMicrotask</a></span><span class="signature">(<wbr><span class="parameter" id="scheduleMicrotask-param-callback"><span class="type-annotation">void</span> <span class="parameter-name">callback</span>()</span>)
             <span class="returntype parameter">&#8594; void</span>
@@ -533,6 +542,7 @@ calls. <a href="dart-async/Zone-class.html">[...]</a>
     
       <li class="section-title"><a href="dart-async/dart-async-library.html#functions">Functions</a></li>
       <li><a href="dart-async/runZoned.html">runZoned</a></li>
+      <li><a href="dart-async/runZonedGuarded.html">runZonedGuarded</a></li>
       <li><a href="dart-async/scheduleMicrotask.html">scheduleMicrotask</a></li>
     
     
@@ -568,7 +578,7 @@ calls. <a href="dart-async/Zone-class.html">[...]</a>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

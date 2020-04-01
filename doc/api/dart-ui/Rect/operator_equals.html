@@ -169,11 +169,11 @@ bool operator ==(dynamic other) {
     return true;
   if (runtimeType != other.runtimeType)
     return false;
-  final Rect typedOther = other;
-  return left   == typedOther.left   &amp;&amp;
-         top    == typedOther.top    &amp;&amp;
-         right  == typedOther.right  &amp;&amp;
-         bottom == typedOther.bottom;
+  return other is Rect
+      &amp;&amp; other.left   == left
+      &amp;&amp; other.top    == top
+      &amp;&amp; other.right  == right
+      &amp;&amp; other.bottom == bottom;
 }</code></pre>
     </section>
 
@@ -187,7 +187,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

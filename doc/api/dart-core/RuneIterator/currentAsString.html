@@ -101,13 +101,13 @@
                 <section class="desc markdown">
           <p>A string containing the current rune.</p>
 <p>For runes outside the basic multilingual plane, this will be
-a String of length 2, containing two code units.</p>
-<p>Returns null if <a href="dart-core/RuneIterator/current.html">current</a> is null.</p>
+a <a href="dart-core/String-class.html">String</a> of length 2, containing two code units.</p>
+<p>Returns an empty string if there is no current rune (<a href="dart-core/RuneIterator/current.html">current</a> is -1).</p>
         </section>
                 <section class="summary source-code" id="source">
           <h2><span>Implementation</span></h2>
           <pre class="language-dart"><code class="language-dart">String get currentAsString {
-  if (_position == _nextPosition) return null;
+  if (_position == _nextPosition) return &quot;&quot;;
   if (_position + 1 == _nextPosition) return string[_position];
   return string.substring(_position, _nextPosition);
 }</code></pre>
@@ -124,7 +124,7 @@ a String of length 2, containing two code units.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

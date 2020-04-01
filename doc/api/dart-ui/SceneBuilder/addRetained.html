@@ -77,6 +77,7 @@
         <li><a href="dart-ui/SceneBuilder/pushClipRect.html">pushClipRect</a></li>
         <li><a href="dart-ui/SceneBuilder/pushClipRRect.html">pushClipRRect</a></li>
         <li><a href="dart-ui/SceneBuilder/pushColorFilter.html">pushColorFilter</a></li>
+        <li><a href="dart-ui/SceneBuilder/pushImageFilter.html">pushImageFilter</a></li>
         <li><a href="dart-ui/SceneBuilder/pushOffset.html">pushOffset</a></li>
         <li><a href="dart-ui/SceneBuilder/pushOpacity.html">pushOpacity</a></li>
         <li><a href="dart-ui/SceneBuilder/pushPhysicalShape.html">pushPhysicalShape</a></li>
@@ -133,7 +134,7 @@ original object.</p>
       <pre class="language-dart"><code class="language-dart">void addRetained(EngineLayer retainedLayer) {
   assert(retainedLayer is _EngineLayerWrapper);
   assert(() {
-    final _EngineLayerWrapper layer = retainedLayer;
+    final _EngineLayerWrapper layer = retainedLayer as _EngineLayerWrapper;
 
     void recursivelyCheckChildrenUsedOnce(_EngineLayerWrapper parentLayer) {
       _debugCheckUsedOnce(parentLayer, &#39;retained layer&#39;);
@@ -151,7 +152,7 @@ original object.</p>
     return true;
   }());
 
-  final _EngineLayerWrapper wrapper = retainedLayer;
+  final _EngineLayerWrapper wrapper = retainedLayer as _EngineLayerWrapper;
   _addRetained(wrapper._nativeLayer);
 }</code></pre>
     </section>
@@ -166,7 +167,7 @@ original object.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

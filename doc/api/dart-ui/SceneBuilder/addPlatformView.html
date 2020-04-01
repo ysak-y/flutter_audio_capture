@@ -77,6 +77,7 @@
         <li><a href="dart-ui/SceneBuilder/pushClipRect.html">pushClipRect</a></li>
         <li><a href="dart-ui/SceneBuilder/pushClipRRect.html">pushClipRRect</a></li>
         <li><a href="dart-ui/SceneBuilder/pushColorFilter.html">pushColorFilter</a></li>
+        <li><a href="dart-ui/SceneBuilder/pushImageFilter.html">pushImageFilter</a></li>
         <li><a href="dart-ui/SceneBuilder/pushOffset.html">pushOffset</a></li>
         <li><a href="dart-ui/SceneBuilder/pushOpacity.html">pushOpacity</a></li>
         <li><a href="dart-ui/SceneBuilder/pushPhysicalShape.html">pushPhysicalShape</a></li>
@@ -123,7 +124,12 @@ synchronized with the UIView frames adding additional performance overhead.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">void addPlatformView(int viewId, { Offset offset = Offset.zero, double width = 0.0, double height = 0.0}) {
+      <pre class="language-dart"><code class="language-dart">void addPlatformView(
+  int viewId, {
+  Offset offset = Offset.zero,
+  double width = 0.0,
+  double height = 0.0,
+}) {
   assert(offset != null, &#39;Offset argument was null&#39;);
   _addPlatformView(offset.dx, offset.dy, width, height, viewId);
 }</code></pre>
@@ -139,7 +145,7 @@ synchronized with the UIView frames adding additional performance overhead.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

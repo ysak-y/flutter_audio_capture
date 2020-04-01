@@ -105,11 +105,14 @@ String toString() {
            &#39;fontWeight: ${    _encoded[0] &amp; 0x008 == 0x008 ? FontWeight.values[_encoded[3]]    : &quot;unspecified&quot;}, &#39;
            &#39;fontStyle: ${     _encoded[0] &amp; 0x010 == 0x010 ? FontStyle.values[_encoded[4]]     : &quot;unspecified&quot;}, &#39;
            &#39;maxLines: ${      _encoded[0] &amp; 0x020 == 0x020 ? _encoded[5]                       : &quot;unspecified&quot;}, &#39;
-           &#39;fontFamily: ${    _encoded[0] &amp; 0x040 == 0x040 ? _fontFamily                       : &quot;unspecified&quot;}, &#39;
-           &#39;fontSize: ${      _encoded[0] &amp; 0x080 == 0x080 ? _fontSize                         : &quot;unspecified&quot;}, &#39;
-           &#39;height: ${        _encoded[0] &amp; 0x100 == 0x100 ? &quot;${_height}x&quot;                     : &quot;unspecified&quot;}, &#39;
-           &#39;ellipsis: ${      _encoded[0] &amp; 0x200 == 0x200 ? &quot;\&quot;$_ellipsis\&quot;&quot;                  : &quot;unspecified&quot;}, &#39;
-           &#39;locale: ${        _encoded[0] &amp; 0x400 == 0x400 ? _locale                           : &quot;unspecified&quot;}&#39;
+           &#39;textHeightBehavior: ${
+                              _encoded[0] &amp; 0x040 == 0x040 ?
+                                        TextHeightBehavior.fromEncoded(_encoded[6]).toString() : &quot;unspecified&quot;}, &#39;
+           &#39;fontFamily: ${    _encoded[0] &amp; 0x080 == 0x080 ? _fontFamily                       : &quot;unspecified&quot;}, &#39;
+           &#39;fontSize: ${      _encoded[0] &amp; 0x100 == 0x100 ? _fontSize                         : &quot;unspecified&quot;}, &#39;
+           &#39;height: ${        _encoded[0] &amp; 0x200 == 0x200 ? &quot;${_height}x&quot;                     : &quot;unspecified&quot;}, &#39;
+           &#39;ellipsis: ${      _encoded[0] &amp; 0x400 == 0x400 ? &quot;\&quot;$_ellipsis\&quot;&quot;                  : &quot;unspecified&quot;}, &#39;
+           &#39;locale: ${        _encoded[0] &amp; 0x800 == 0x800 ? _locale                           : &quot;unspecified&quot;}&#39;
          &#39;)&#39;;
 }</code></pre>
     </section>
@@ -124,7 +127,7 @@ String toString() {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

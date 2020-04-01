@@ -127,8 +127,7 @@ the <a href="dart-js/JsObject/hashCode.html">hashCode</a> method as well to main
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">bool operator ==(other) =&gt;
-    other is JsObject &amp;&amp; JS(&#39;bool&#39;, &#39;# === #&#39;, _jsObject, other._jsObject);</code></pre>
+      <pre class="language-dart"><code class="language-dart">external bool operator ==(other);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -141,7 +140,7 @@ the <a href="dart-js/JsObject/hashCode.html">hashCode</a> method as well to main
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

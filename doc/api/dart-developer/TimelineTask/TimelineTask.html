@@ -86,7 +86,7 @@
 
     <section class="multi-line-signature">
       
-      <span class="name ">TimelineTask</span>(<wbr>{<span class="parameter" id="-param-parent"><span class="type-annotation"><a href="dart-developer/TimelineTask-class.html">TimelineTask</a></span> <span class="parameter-name">parent</span></span> })
+      <span class="name ">TimelineTask</span>(<wbr>{<span class="parameter" id="-param-parent"><span class="type-annotation"><a href="dart-developer/TimelineTask-class.html">TimelineTask</a></span> <span class="parameter-name">parent</span>, </span> <span class="parameter" id="-param-filterKey"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">filterKey</span></span> })
     </section>
 
     <section class="desc markdown">
@@ -94,12 +94,16 @@
 <p>If <code>parent</code> is provided, the parent's task ID is provided as argument
 'parentId' when <a href="dart-developer/TimelineTask/start.html">start</a> is called. In DevTools, this argument will result
 in this <a href="dart-developer/TimelineTask-class.html">TimelineTask</a> being linked to the <code>parent</code> <a href="dart-developer/TimelineTask-class.html">TimelineTask</a>.</p>
+<p>If <code>filterKey</code> is provided, a property named <code>filterKey</code> will be inserted
+into the arguments of each event associated with this task. The
+<code>filterKey</code> will be set to the value of <code>filterKey</code>.</p>
     </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">TimelineTask({TimelineTask parent})
+      <pre class="language-dart"><code class="language-dart">TimelineTask({TimelineTask parent, String filterKey})
     : _parent = parent,
+      _filterKey = filterKey,
       _taskId = _getNextAsyncId() {}</code></pre>
     </section>
 
@@ -113,7 +117,7 @@ in this <a href="dart-developer/TimelineTask-class.html">TimelineTask</a> being 
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

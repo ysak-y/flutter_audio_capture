@@ -149,6 +149,8 @@
       <p>Use <a href="dart-io/Socket/setOption.html">setOption</a> to customize the <a href="dart-io/RawSocket-class.html">RawSocket</a>. See <a href="dart-io/SocketOption-class.html">SocketOption</a> for
 available options.</p>
 <p>Returns <code>true</code> if the option was set successfully, false otherwise.</p>
+<p>Throws a <a href="dart-io/SocketException-class.html">SocketException</a> if the socket has been destroyed or upgraded to
+a secure socket.</p>
     </section>
     
     <section class="summary source-code" id="source">
@@ -166,7 +168,7 @@ available options.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

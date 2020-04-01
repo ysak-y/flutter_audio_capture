@@ -118,7 +118,30 @@
       
     </section>
     <section class="desc markdown">
-      <p>Creates a <a href="dart-ui/PathMetrics-class.html">PathMetrics</a> object for this path.</p>
+      <p>Creates a <a href="dart-ui/PathMetrics-class.html">PathMetrics</a> object for this path, which can describe various
+properties about the contours of the path.</p>
+<p>A <a href="dart-ui/Path-class.html">Path</a> is made up of zero or more contours. A contour is made up of
+connected curves and segments, created via methods like <a href="dart-ui/Path/lineTo.html">lineTo</a>,
+<a href="dart-ui/Path/cubicTo.html">cubicTo</a>, <a href="dart-ui/Path/arcTo.html">arcTo</a>, <a href="dart-ui/Path/quadraticBezierTo.html">quadraticBezierTo</a>, their relative counterparts, as
+well as the add* methods such as <a href="dart-ui/Path/addRect.html">addRect</a>. Creating a new <a href="dart-ui/Path-class.html">Path</a> starts
+a new contour once it has any drawing instructions, and another new
+contour is started for each <a href="dart-ui/Path/moveTo.html">moveTo</a> instruction.</p>
+<p>A <a href="dart-ui/PathMetric-class.html">PathMetric</a> object describes properties of an individual contour,
+such as its length, whether it is closed, what the tangent vector of a
+particular offset along the path is. It also provides a method for
+creating sub-paths: <a href="dart-ui/PathMetric/extractPath.html">PathMetric.extractPath</a>.</p>
+<p>Calculating <a href="dart-ui/PathMetric-class.html">PathMetric</a> objects is not trivial. The <a href="dart-ui/PathMetrics-class.html">PathMetrics</a> object
+returned by this method is a lazy <a href="dart-core/Iterable-class.html">Iterable</a>, meaning it only performs
+calculations when the iterator is moved to the next <a href="dart-ui/PathMetric-class.html">PathMetric</a>. Callers
+that wish to memoize this iterable can easily do so by using
+<a href="dart-core/Iterable/toList.html">Iterable.toList</a> on the result of this method. In particular, callers
+looking for information about how many contours are in the path should
+either store the result of <code>path.computeMetrics().length</code>, or should use
+<code>path.computeMetrics().toList()</code> so they can repeatedly check the length,
+since calling <code>Iterable.length</code> causes traversal of the entire iterable.</p>
+<p>In particular, callers should be aware that <a href="dart-core/Iterable/length.html">PathMetrics.length</a> is the
+number of contours, <strong>not the length of the path</strong>. To get the length of
+a contour in a path, use <a href="dart-ui/PathMetric/length.html">PathMetric.length</a>.</p>
 <p>If <code>forceClosed</code> is set to true, the contours of the path will be measured
 as if they had been closed, even if they were not explicitly closed.</p>
     </section>
@@ -140,7 +163,7 @@ as if they had been closed, even if they were not explicitly closed.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

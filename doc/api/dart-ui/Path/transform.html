@@ -126,7 +126,9 @@ sub-path transformed by the given matrix.</p>
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">Path transform(Float64List matrix4) {
   assert(_matrix4IsValid(matrix4));
-  return _transform(matrix4);
+  final Path path = Path._();
+  _transform(path, matrix4);
+  return path;
 }</code></pre>
     </section>
 
@@ -140,7 +142,7 @@ sub-path transformed by the given matrix.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

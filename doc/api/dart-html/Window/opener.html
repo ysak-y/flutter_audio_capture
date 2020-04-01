@@ -292,15 +292,13 @@ print(otherWindow.opener == thisWindow); // 'true'
         <section class="multi-line-signature">
           <span class="returntype">void</span>
                     <span class="name ">opener=</span>
-<span class="signature">(<wbr><span class="parameter" id="opener=-param-value"><span class="type-annotation"><a href="dart-html/Window-class.html">Window</a></span> <span class="parameter-name">value</span></span>)</span>
+<span class="signature">(<wbr><span class="parameter" id="opener=-param-value"><span class="type-annotation"><a href="dart-html/WindowBase-class.html">WindowBase</a></span> <span class="parameter-name">value</span></span>)</span>
                   
 </section>
         
                         <section class="summary source-code" id="source">
           <h2><span>Implementation</span></h2>
-          <pre class="language-dart"><code class="language-dart">set opener(Window value) {
-  JS(&quot;void&quot;, &quot;#.opener = #&quot;, this, value);
-}</code></pre>
+          <pre class="language-dart"><code class="language-dart">set opener(WindowBase value) native;</code></pre>
         </section>
 </section>
           </div> <!-- /.main-content -->
@@ -313,7 +311,7 @@ print(otherWindow.opener == thisWindow); // 'true'
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

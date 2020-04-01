@@ -103,12 +103,7 @@ JavaScript type, and all other objects are proxied.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">factory JsObject.jsify(object) {
-  if ((object is! Map) &amp;&amp; (object is! Iterable)) {
-    throw ArgumentError(&quot;object must be a Map or Iterable&quot;);
-  }
-  return _wrapToDart(_convertDataTree(object));
-}</code></pre>
+      <pre class="language-dart"><code class="language-dart">external factory JsObject.jsify(object);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -121,7 +116,7 @@ JavaScript type, and all other objects are proxied.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

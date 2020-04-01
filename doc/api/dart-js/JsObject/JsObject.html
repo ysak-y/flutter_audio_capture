@@ -99,67 +99,7 @@ a proxy to it.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">factory JsObject(JsFunction constructor, [List arguments]) {
-  var ctor = _convertToJS(constructor);
-  if (arguments == null) {
-    return _wrapToDart(JS(&#39;&#39;, &#39;new #()&#39;, ctor));
-  }
-
-  if (JS(&#39;bool&#39;, &#39;# instanceof Array&#39;, arguments)) {
-    int argumentCount = JS(&#39;int&#39;, &#39;#.length&#39;, arguments);
-    switch (argumentCount) {
-      case 0:
-        return _wrapToDart(JS(&#39;&#39;, &#39;new #()&#39;, ctor));
-
-      case 1:
-        var arg0 = _convertToJS(JS(&#39;&#39;, &#39;#[0]&#39;, arguments));
-        return _wrapToDart(JS(&#39;&#39;, &#39;new #(#)&#39;, ctor, arg0));
-
-      case 2:
-        var arg0 = _convertToJS(JS(&#39;&#39;, &#39;#[0]&#39;, arguments));
-        var arg1 = _convertToJS(JS(&#39;&#39;, &#39;#[1]&#39;, arguments));
-        return _wrapToDart(JS(&#39;&#39;, &#39;new #(#, #)&#39;, ctor, arg0, arg1));
-
-      case 3:
-        var arg0 = _convertToJS(JS(&#39;&#39;, &#39;#[0]&#39;, arguments));
-        var arg1 = _convertToJS(JS(&#39;&#39;, &#39;#[1]&#39;, arguments));
-        var arg2 = _convertToJS(JS(&#39;&#39;, &#39;#[2]&#39;, arguments));
-        return _wrapToDart(JS(&#39;&#39;, &#39;new #(#, #, #)&#39;, ctor, arg0, arg1, arg2));
-
-      case 4:
-        var arg0 = _convertToJS(JS(&#39;&#39;, &#39;#[0]&#39;, arguments));
-        var arg1 = _convertToJS(JS(&#39;&#39;, &#39;#[1]&#39;, arguments));
-        var arg2 = _convertToJS(JS(&#39;&#39;, &#39;#[2]&#39;, arguments));
-        var arg3 = _convertToJS(JS(&#39;&#39;, &#39;#[3]&#39;, arguments));
-        return _wrapToDart(
-            JS(&#39;&#39;, &#39;new #(#, #, #, #)&#39;, ctor, arg0, arg1, arg2, arg3));
-    }
-  }
-
-  &#47;&#47; The following code solves the problem of invoking a JavaScript
-  &#47;&#47; constructor with an unknown number arguments.
-  &#47;&#47; First bind the constructor to the argument list using bind.apply().
-  &#47;&#47; The first argument to bind() is the binding of &#39;this&#39;, so add &#39;null&#39; to
-  &#47;&#47; the arguments list passed to apply().
-  &#47;&#47; After that, use the JavaScript &#39;new&#39; operator which overrides any binding
-  &#47;&#47; of &#39;this&#39; with the new instance.
-  var args = &lt;dynamic&gt;[null]..addAll(arguments.map(_convertToJS));
-  var factoryFunction = JS(&#39;&#39;, &#39;#.bind.apply(#, #)&#39;, ctor, ctor, args);
-  &#47;&#47; Without this line, calling factoryFunction as a constructor throws
-  JS(&#39;String&#39;, &#39;String(#)&#39;, factoryFunction);
-  &#47;&#47; This could return an UnknownJavaScriptObject, or a native
-  &#47;&#47; object for which there is an interceptor
-  var jsObj = JS(&#39;&#39;, &#39;new #()&#39;, factoryFunction);
-
-  return _wrapToDart(jsObj);
-
-  &#47;&#47; TODO(sra): Investigate:
-  &#47;&#47;
-  &#47;&#47;     var jsObj = JS(&#39;&#39;, &#39;Object.create(#.prototype)&#39;, ctor);
-  &#47;&#47;     JS(&#39;&#39;, &#39;#.apply(#, #)&#39;, ctor, jsObj,
-  &#47;&#47;         []..addAll(arguments.map(_convertToJS)));
-  &#47;&#47;     return _wrapToDart(jsObj);
-}</code></pre>
+      <pre class="language-dart"><code class="language-dart">external factory JsObject(JsFunction constructor, [List arguments]);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -172,7 +112,7 @@ a proxy to it.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

@@ -108,8 +108,8 @@
     value = 0;
   }
   final Uint8List list = Uint8List(4);
-  final buffer = ByteData.view(list.buffer);
-  buffer.setInt32(0, value);
+  final buffer = ByteData.view(list.buffer, list.offsetInBytes);
+  buffer.setInt32(0, value, Endian.host);
   return RawSocketOption(level, option, list);
 }</code></pre>
     </section>
@@ -124,7 +124,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

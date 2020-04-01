@@ -177,19 +177,19 @@ bool operator ==(dynamic other) {
     return true;
   if (runtimeType != other.runtimeType)
     return false;
-  final RRect typedOther = other;
-  return left      == typedOther.left      &amp;&amp;
-         top       == typedOther.top       &amp;&amp;
-         right     == typedOther.right     &amp;&amp;
-         bottom    == typedOther.bottom    &amp;&amp;
-         tlRadiusX == typedOther.tlRadiusX &amp;&amp;
-         tlRadiusY == typedOther.tlRadiusY &amp;&amp;
-         trRadiusX == typedOther.trRadiusX &amp;&amp;
-         trRadiusY == typedOther.trRadiusY &amp;&amp;
-         blRadiusX == typedOther.blRadiusX &amp;&amp;
-         blRadiusY == typedOther.blRadiusY &amp;&amp;
-         brRadiusX == typedOther.brRadiusX &amp;&amp;
-         brRadiusY == typedOther.brRadiusY;
+  return other is RRect
+      &amp;&amp; other.left      == left
+      &amp;&amp; other.top       == top
+      &amp;&amp; other.right     == right
+      &amp;&amp; other.bottom    == bottom
+      &amp;&amp; other.tlRadiusX == tlRadiusX
+      &amp;&amp; other.tlRadiusY == tlRadiusY
+      &amp;&amp; other.trRadiusX == trRadiusX
+      &amp;&amp; other.trRadiusY == trRadiusY
+      &amp;&amp; other.blRadiusX == blRadiusX
+      &amp;&amp; other.blRadiusY == blRadiusY
+      &amp;&amp; other.brRadiusX == brRadiusX
+      &amp;&amp; other.brRadiusY == brRadiusY;
 }</code></pre>
     </section>
 
@@ -203,7 +203,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

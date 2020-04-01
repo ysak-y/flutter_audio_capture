@@ -105,8 +105,12 @@ Optionally takes a <a href="dart-core/Map-class.html">Map</a> of <code>arguments
   if (arguments != null) {
     instantArguments = new Map.from(arguments);
   }
-  _reportTaskEvent(_getTraceClock(), _taskId, &#39;n&#39;, &#39;Dart&#39;, name,
-      _argumentsAsJson(instantArguments));
+  if (_filterKey != null) {
+    instantArguments ??= {};
+    instantArguments[_kFilterKey] = _filterKey;
+  }
+  _reportTaskEvent(
+      _taskId, &#39;n&#39;, &#39;Dart&#39;, name, _argumentsAsJson(instantArguments));
 }</code></pre>
     </section>
 
@@ -120,7 +124,7 @@ Optionally takes a <a href="dart-core/Map-class.html">Map</a> of <code>arguments
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

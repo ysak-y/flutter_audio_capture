@@ -78,6 +78,7 @@
     
       <li class="section-title"><a href="dart-async/dart-async-library.html#functions">Functions</a></li>
       <li><a href="dart-async/runZoned.html">runZoned</a></li>
+      <li><a href="dart-async/runZonedGuarded.html">runZonedGuarded</a></li>
       <li><a href="dart-async/scheduleMicrotask.html">scheduleMicrotask</a></li>
     
     
@@ -114,7 +115,7 @@
     <section class="multi-line-signature">
         <span class="returntype">R</span>
                 <span class="name ">runZoned</span>
-&lt;<wbr><span class="type-parameter">R</span>&gt;(<wbr><span class="parameter" id="runZoned-param-body"><span class="type-annotation">R</span> <span class="parameter-name">body</span>(), {</span> <span class="parameter" id="runZoned-param-zoneValues"><span class="type-annotation"><a href="dart-core/Map-class.html">Map</a></span> <span class="parameter-name">zoneValues</span>, </span> <span class="parameter" id="runZoned-param-zoneSpecification"><span class="type-annotation"><a href="dart-async/ZoneSpecification-class.html">ZoneSpecification</a></span> <span class="parameter-name">zoneSpecification</span>, </span> <span class="parameter" id="runZoned-param-onError"><span class="type-annotation"><a href="dart-core/Function-class.html">Function</a></span> <span class="parameter-name">onError</span></span> })
+&lt;<wbr><span class="type-parameter">R</span>&gt;(<wbr><span class="parameter" id="runZoned-param-body"><span class="type-annotation">R</span> <span class="parameter-name">body</span>(), {</span> <span class="parameter" id="runZoned-param-zoneValues"><span class="type-annotation"><a href="dart-core/Map-class.html">Map</a></span> <span class="parameter-name">zoneValues</span>, </span> <span class="parameter" id="runZoned-param-zoneSpecification"><span class="type-annotation"><a href="dart-async/ZoneSpecification-class.html">ZoneSpecification</a></span> <span class="parameter-name">zoneSpecification</span>, </span> <span class="parameter" id="runZoned-param-onError"><span>@<a href="dart-core/Deprecated-class.html">Deprecated</a>(&quot;Use runZonedGuarded instead&quot;)</span> <span class="type-annotation"><a href="dart-core/Function-class.html">Function</a></span> <span class="parameter-name">onError</span></span> })
     </section>
     <section class="desc markdown">
       <p>Runs <code>body</code> in its own zone.</p>
@@ -142,13 +143,13 @@ runZoned(() {
   var future2 = future.then((_) { throw "error in first error-zone"; });
   runZoned(() {
     var future3 = future2.catchError((e) { print("Never reached!"); });
-  }, onError: (e) { print("unused error handler"); });
-}, onError: (e) { print("catches error of first error-zone."); });
+  }, onError: (e, s) { print("unused error handler"); });
+}, onError: (e, s) { print("catches error of first error-zone."); });
 </code></pre>
 <p>Example:</p>
 <pre class="language-dart"><code>runZoned(() {
   new Future(() { throw "asynchronous error"; });
-}, onError: print);  // Will print "asynchronous error".
+}, onError: (e, s) =&gt; print(e));  // Will print "asynchronous error".
 </code></pre>
 <p>It is possible to manually pass an error from one error zone to another
 by re-throwing it in the new zone. If <code>onError</code> throws, that error will
@@ -158,55 +159,25 @@ occur in the original zone where <a href="dart-async/runZoned.html">runZoned</a>
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">R runZoned&lt;R&gt;(R body(),
-    {Map zoneValues, ZoneSpecification zoneSpecification, Function onError}) {
-  if (onError == null) {
-    return _runZoned&lt;R&gt;(body, zoneValues, zoneSpecification);
-  }
-  void Function(Object) unaryOnError;
-  void Function(Object, StackTrace) binaryOnError;
-  if (onError is void Function(Object, StackTrace)) {
-    binaryOnError = onError;
-  } else if (onError is void Function(Object)) {
-    unaryOnError = onError;
-  } else {
-    throw new ArgumentError(&quot;onError callback must take either an Object &quot;
-        &quot;(the error), or both an Object (the error) and a StackTrace.&quot;);
-  }
-  HandleUncaughtErrorHandler errorHandler = (Zone self, ZoneDelegate parent,
-      Zone zone, error, StackTrace stackTrace) {
-    try {
-      if (binaryOnError != null) {
-        self.parent.runBinary(binaryOnError, error, stackTrace);
-      } else {
-        assert(unaryOnError != null);
-        self.parent.runUnary(unaryOnError, error);
-      }
-    } catch (e, s) {
-      if (identical(e, error)) {
-        parent.handleUncaughtError(zone, error, stackTrace);
-      } else {
-        parent.handleUncaughtError(zone, e, s);
-      }
-    }
-  };
-  if (zoneSpecification == null) {
-    zoneSpecification =
-        new ZoneSpecification(handleUncaughtError: errorHandler);
-  } else {
-    zoneSpecification = new ZoneSpecification.from(zoneSpecification,
-        handleUncaughtError: errorHandler);
-  }
-  try {
-    return _runZoned&lt;R&gt;(body, zoneValues, zoneSpecification);
-  } catch (e, stackTrace) {
-    if (binaryOnError != null) {
-      binaryOnError(e, stackTrace);
+    {Map zoneValues,
+    ZoneSpecification zoneSpecification,
+    @Deprecated(&quot;Use runZonedGuarded instead&quot;) Function onError}) {
+  ArgumentError.checkNotNull(body, &quot;body&quot;);
+
+  if (onError != null) {
+    void Function(Object, StackTrace) typedOnError;
+    if (onError is void Function(Object, StackTrace)) {
+      typedOnError = onError;
+    } else if (onError is void Function(Object)) {
+      typedOnError = (Object e, StackTrace _) =&gt; onError(e);
     } else {
-      assert(unaryOnError != null);
-      unaryOnError(e);
+      throw ArgumentError.value(onError, &quot;onError&quot;,
+          &quot;Should accept one error, or one error and a stack trace&quot;);
     }
+    return runZonedGuarded(body, typedOnError,
+        zoneValues: zoneValues, zoneSpecification: zoneSpecification);
   }
-  return null;
+  return _runZoned&lt;R&gt;(body, zoneValues, zoneSpecification);
 }</code></pre>
     </section>
 
@@ -220,7 +191,7 @@ occur in the original zone where <a href="dart-async/runZoned.html">runZoned</a>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

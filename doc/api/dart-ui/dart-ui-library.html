@@ -212,6 +212,12 @@ entire layer is merged with the destination. <a href="dart-ui/ColorFilter-class.
         <dd>
           A filter operation to apply to a raster image. <a href="dart-ui/ImageFilter-class.html">[...]</a>
         </dd>
+        <dt id="ImageFilterEngineLayer">
+          <span class="name "><a href="dart-ui/ImageFilterEngineLayer-class.html">ImageFilterEngineLayer</a></span>         
+        </dt>
+        <dd>
+          An opaque handle to an image filter engine layer. <a href="dart-ui/ImageFilterEngineLayer-class.html">[...]</a>
+        </dd>
         <dt id="ImageShader">
           <span class="name "><a href="dart-ui/ImageShader-class.html">ImageShader</a></span>         
         </dt>
@@ -317,7 +323,8 @@ a distance as a two-dimensional axis-aligned vector.
           <span class="name "><a href="dart-ui/PathMetricIterator-class.html">PathMetricIterator</a></span>         
         </dt>
         <dd>
-          Tracks iteration from one segment of a path to the next for measurement.
+          Used by <a href="dart-ui/PathMetrics-class.html">PathMetrics</a> to track iteration from one segment of a path to the
+next for measurement.
         </dd>
         <dt id="PathMetrics">
           <span class="name "><a href="dart-ui/PathMetrics-class.html">PathMetrics</a></span>         
@@ -478,6 +485,13 @@ correspond to shaders as used by <a href="dart-ui/Paint/shader.html">Paint.shade
         <dd>
           A linear decoration to draw near the text.
         </dd>
+        <dt id="TextHeightBehavior">
+          <span class="name "><a href="dart-ui/TextHeightBehavior-class.html">TextHeightBehavior</a></span>         
+        </dt>
+        <dd>
+          Defines how the paragraph will apply <code>TextStyle.height</code> to the ascent of the
+first line and descent of the last line. <a href="dart-ui/TextHeightBehavior-class.html">[...]</a>
+        </dd>
         <dt id="TextPosition">
           <span class="name "><a href="dart-ui/TextPosition-class.html">TextPosition</a></span>         
         </dt>
@@ -529,6 +543,24 @@ around their user interface, as exposed by <a href="dart-ui/Window/viewInsets.ht
 
 
 
+    <section class="summary offset-anchor" id="constants">
+      <h2>Constants</h2>
+
+      <dl class="properties">
+        <dt id="keepToString" class="constant">
+          <span class="name "><a href="dart-ui/keepToString-constant.html">keepToString</a></span>
+          <span class="signature">&#8594; const _KeepToString</span>
+                  </dt>
+        <dd>
+          Annotation used by Flutter's Dart compiler to indicate that an
+<a href="dart-core/Object/toString.html">Object.toString</a> override should not be replaced with a supercall. <a href="dart-ui/keepToString-constant.html">[...]</a>
+                  
+  <div>
+            <span class="signature"><code>const _KeepToString()</code></span>
+          </div>
+        </dd>
+      </dl>
+    </section>
 
     <section class="summary offset-anchor" id="properties">
       <h2>Properties</h2>
@@ -663,14 +695,14 @@ given null as if given an empty list.
         </dt>
         <dd>
           Defines various ways to vertically bound the boxes returned by
-<a href="dart-ui/Paragraph/getBoxesForRange.html">Paragraph.getBoxesForRange</a>.
+<a href="dart-ui/Paragraph/getBoxesForRange.html">Paragraph.getBoxesForRange</a>. <a href="dart-ui/BoxHeightStyle-class.html">[...]</a>
         </dd>
         <dt id="BoxWidthStyle">
           <span class="name "><a href="dart-ui/BoxWidthStyle-class.html">BoxWidthStyle</a></span>         
         </dt>
         <dd>
           Defines various ways to horizontally bound the boxes returned by
-<a href="dart-ui/Paragraph/getBoxesForRange.html">Paragraph.getBoxesForRange</a>.
+<a href="dart-ui/Paragraph/getBoxesForRange.html">Paragraph.getBoxesForRange</a>. <a href="dart-ui/BoxWidthStyle-class.html">[...]</a>
         </dd>
         <dt id="Brightness">
           <span class="name "><a href="dart-ui/Brightness-class.html">Brightness</a></span>         
@@ -944,6 +976,7 @@ different locations in the rendered string. <a href="dart-ui/TextAffinity-class.
       <li><a href="dart-ui/Gradient-class.html">Gradient</a></li>
       <li><a href="dart-ui/Image-class.html">Image</a></li>
       <li><a href="dart-ui/ImageFilter-class.html">ImageFilter</a></li>
+      <li><a href="dart-ui/ImageFilterEngineLayer-class.html">ImageFilterEngineLayer</a></li>
       <li><a href="dart-ui/ImageShader-class.html">ImageShader</a></li>
       <li><a href="dart-ui/IsolateNameServer-class.html">IsolateNameServer</a></li>
       <li><a href="dart-ui/LineMetrics-class.html">LineMetrics</a></li>
@@ -987,6 +1020,7 @@ different locations in the rendered string. <a href="dart-ui/TextAffinity-class.
       <li><a href="dart-ui/Tangent-class.html">Tangent</a></li>
       <li><a href="dart-ui/TextBox-class.html">TextBox</a></li>
       <li><a href="dart-ui/TextDecoration-class.html">TextDecoration</a></li>
+      <li><a href="dart-ui/TextHeightBehavior-class.html">TextHeightBehavior</a></li>
       <li><a href="dart-ui/TextPosition-class.html">TextPosition</a></li>
       <li><a href="dart-ui/TextRange-class.html">TextRange</a></li>
       <li><a href="dart-ui/TextStyle-class.html">TextStyle</a></li>
@@ -997,6 +1031,8 @@ different locations in the rendered string. <a href="dart-ui/TextAffinity-class.
     
     
     
+      <li class="section-title"><a href="dart-ui/dart-ui-library.html#constants">Constants</a></li>
+      <li><a href="dart-ui/keepToString-constant.html">keepToString</a></li>
     
       <li class="section-title"><a href="dart-ui/dart-ui-library.html#properties">Properties</a></li>
       <li><a href="dart-ui/channelBuffers.html">channelBuffers</a></li>
@@ -1063,7 +1099,7 @@ different locations in the rendered string. <a href="dart-ui/TextAffinity-class.
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

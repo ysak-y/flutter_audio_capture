@@ -57,6 +57,7 @@
       <li class="section-title"><a href="dart-typed_data/Uint32List-class.html#constructors">Constructors</a></li>
       <li><a href="dart-typed_data/Uint32List/Uint32List.html">Uint32List</a></li>
       <li><a href="dart-typed_data/Uint32List/Uint32List.fromList.html">fromList</a></li>
+      <li><a href="dart-typed_data/Uint32List/Uint32List.sublistView.html">sublistView</a></li>
       <li><a href="dart-typed_data/Uint32List/Uint32List.view.html">view</a></li>
     
       <li class="section-title inherited">
@@ -155,6 +156,8 @@
 and copies over the elements.</p>
 <p>Values are truncated to fit in the list when they are copied,
 the same way storing values truncates them.</p>
+<p>The list is backed by a <a href="dart-typed_data/ByteBuffer-class.html">ByteBuffer</a> containing precisely
+<code>elements.length</code> times 4 bytes.</p>
     </section>
     
     <section class="summary source-code" id="source">
@@ -172,7 +175,7 @@ the same way storing values truncates them.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

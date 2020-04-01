@@ -91,7 +91,7 @@
       <div><h1><span class="kind-method">getRegistrations</span> method</h1></div>
 
     <section class="multi-line-signature">
-      <span class="returntype"><a href="dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-html/ServiceWorkerRegistration-class.html">ServiceWorkerRegistration</a></span>&gt;</span></span>&gt;</span></span>
+      <span class="returntype"><a href="dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/List-class.html">List</a></span>&gt;</span></span>
             <span class="name ">getRegistrations</span>
 (<wbr>)
       
@@ -99,9 +99,8 @@
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;ServiceWorkerRegistration&gt;&gt; getRegistrations() =&gt;
-    promiseToFuture&lt;List&lt;ServiceWorkerRegistration&gt;&gt;(
-        JS(&quot;&quot;, &quot;#.getRegistrations()&quot;, this));</code></pre>
+      <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;dynamic&gt;&gt; getRegistrations() =&gt;
+    promiseToFuture&lt;List&lt;dynamic&gt;&gt;(JS(&quot;&quot;, &quot;#.getRegistrations()&quot;, this));</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -114,7 +113,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

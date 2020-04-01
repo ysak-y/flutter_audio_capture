@@ -82,7 +82,7 @@
       <div><h1><span class="kind-method">detect</span> method</h1></div>
 
     <section class="multi-line-signature">
-      <span class="returntype"><a href="dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-html/DetectedBarcode-class.html">DetectedBarcode</a></span>&gt;</span></span>&gt;</span></span>
+      <span class="returntype"><a href="dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/List-class.html">List</a></span>&gt;</span></span>
             <span class="name ">detect</span>
 (<wbr><span class="parameter" id="detect-param-image"><span class="type-annotation">dynamic</span> <span class="parameter-name">image</span></span>)
       
@@ -90,9 +90,8 @@
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;DetectedBarcode&gt;&gt; detect(&#47;*ImageBitmapSource*&#47; image) =&gt;
-    promiseToFuture&lt;List&lt;DetectedBarcode&gt;&gt;(
-        JS(&quot;&quot;, &quot;#.detect(#)&quot;, this, image));</code></pre>
+      <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;dynamic&gt;&gt; detect(&#47;*ImageBitmapSource*&#47; image) =&gt;
+    promiseToFuture&lt;List&lt;dynamic&gt;&gt;(JS(&quot;&quot;, &quot;#.detect(#)&quot;, this, image));</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -105,7 +104,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

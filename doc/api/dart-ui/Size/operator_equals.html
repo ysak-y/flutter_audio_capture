@@ -139,11 +139,9 @@
       <pre class="language-dart"><code class="language-dart">&#47;&#47; We don&#39;t compare the runtimeType because of _DebugSize in the framework.
 @override
 bool operator ==(dynamic other) {
-  if (other is! Size)
-    return false;
-  final Size typedOther = other;
-  return _dx == typedOther._dx &amp;&amp;
-         _dy == typedOther._dy;
+  return other is Size
+      &amp;&amp; other._dx == _dx
+      &amp;&amp; other._dy == _dy;
 }</code></pre>
     </section>
 
@@ -157,7 +155,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

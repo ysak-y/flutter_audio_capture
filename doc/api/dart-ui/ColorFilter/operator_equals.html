@@ -129,19 +129,11 @@ the <a href="dart-ui/ColorFilter/hashCode.html">hashCode</a> method as well to m
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">@override
 bool operator ==(dynamic other) {
-  if (other is! ColorFilter) {
-    return false;
-  }
-  final ColorFilter typedOther = other;
-
-  if (_type != typedOther._type) {
-    return false;
-  }
-  if (!_listEquals&lt;double&gt;(_matrix, typedOther._matrix)) {
-    return false;
-  }
-
-  return _color == typedOther._color &amp;&amp; _blendMode == typedOther._blendMode;
+  return other is ColorFilter
+      &amp;&amp; other._type == _type
+      &amp;&amp; _listEquals&lt;double&gt;(other._matrix, _matrix)
+      &amp;&amp; other._color == _color
+      &amp;&amp; other._blendMode == _blendMode;
 }</code></pre>
     </section>
 
@@ -155,7 +147,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

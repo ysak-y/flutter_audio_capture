@@ -52,7 +52,6 @@
     <h5>dart:js library</h5>
     <ol>
       <li class="section-title"><a href="dart-js/dart-js-library.html#classes">Classes</a></li>
-      <li><a href="dart-js/JavaScriptObject-class.html">JavaScriptObject</a></li>
       <li><a href="dart-js/JsArray-class.html">JsArray</a></li>
       <li><a href="dart-js/JsFunction-class.html">JsFunction</a></li>
       <li><a href="dart-js/JsObject-class.html">JsObject</a></li>
@@ -75,20 +74,24 @@
   <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
       <div><h1><span class="kind-top-level-property">context</span> top-level property </h1></div>
 
+
+        <section id="getter">
+        
         <section class="multi-line-signature">
           <span class="returntype"><a href="dart-js/JsObject-class.html">JsObject</a></span>
-          <span class="name ">context</span>
-          <div class="features">final</div>
-        </section>
-        <section class="desc markdown">
+                  <span class="name ">context</span>
+          
+</section>
+        
+                <section class="desc markdown">
           <p>The JavaScript global object, usually <code>window</code>.</p>
         </section>
                 <section class="summary source-code" id="source">
           <h2><span>Implementation</span></h2>
-          <pre class="language-dart"><code class="language-dart">final JsObject context = _wrapToDart(JS(&#39;&#39;, &#39;self&#39;))</code></pre>
+          <pre class="language-dart"><code class="language-dart">external JsObject get context;</code></pre>
         </section>
-
-
+</section>
+        
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-right" class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
@@ -99,7 +102,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

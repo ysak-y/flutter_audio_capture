@@ -144,8 +144,10 @@ bool operator ==(dynamic other) {
     return true;
   if (runtimeType != other.runtimeType)
     return false;
-  final Radius typedOther = other;
-  return typedOther.x == x &amp;&amp; typedOther.y == y;
+
+  return other is Radius
+      &amp;&amp; other.x == x
+      &amp;&amp; other.y == y;
 }</code></pre>
     </section>
 
@@ -159,7 +161,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

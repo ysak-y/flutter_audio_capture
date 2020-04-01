@@ -109,7 +109,26 @@ to repeatedly call this. Instead, cache the results.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">List&lt;LineMetrics&gt; computeLineMetrics() native &#39;Paragraph_computeLineMetrics&#39;;</code></pre>
+      <pre class="language-dart"><code class="language-dart">List&lt;LineMetrics&gt; computeLineMetrics() {
+  final Float64List encoded = _computeLineMetrics();
+  final int count = encoded.length ~&#47; 9;
+  int position = 0;
+  final List&lt;LineMetrics&gt; metrics = List&lt;LineMetrics&gt;(count);
+  for (int index = 0; index &lt; metrics.length; index += 1) {
+    metrics[index] = LineMetrics(
+      hardBreak:      encoded[position++] != 0,
+      ascent:         encoded[position++],
+      descent:        encoded[position++],
+      unscaledAscent: encoded[position++],
+      height:         encoded[position++],
+      width:          encoded[position++],
+      left:           encoded[position++],
+      baseline:       encoded[position++],
+      lineNumber:     encoded[position++].toInt(),
+    );
+  }
+  return metrics;
+}</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -122,7 +141,7 @@ to repeatedly call this. Instead, cache the results.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

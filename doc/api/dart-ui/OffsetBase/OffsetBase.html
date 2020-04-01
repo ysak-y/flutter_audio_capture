@@ -87,7 +87,7 @@
 
     <section class="multi-line-signature">
       const
-      <span class="name ">OffsetBase</span>(<wbr><span class="parameter" id="-param-_dx"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">_dx</span></span> <span class="parameter" id="-param-_dy"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">_dy</span></span>)
+      <span class="name ">OffsetBase</span>(<wbr><span class="parameter" id="-param-dx"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">dx</span></span> <span class="parameter" id="-param-dy"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">dy</span></span>)
     </section>
 
     <section class="desc markdown">
@@ -99,7 +99,11 @@ vertical component.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">const OffsetBase(this._dx, this._dy);</code></pre>
+      <pre class="language-dart"><code class="language-dart">const OffsetBase(double dx, double dy)
+    : _dx = dx ?? 0.0,
+      _dy = dy ?? 0.0,
+      assert(dx != null),
+      assert(dy != null);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -112,7 +116,7 @@ vertical component.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

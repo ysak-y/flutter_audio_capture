@@ -72,6 +72,7 @@
       <li><a href="dart-ui/Gradient-class.html">Gradient</a></li>
       <li><a href="dart-ui/Image-class.html">Image</a></li>
       <li><a href="dart-ui/ImageFilter-class.html">ImageFilter</a></li>
+      <li><a href="dart-ui/ImageFilterEngineLayer-class.html">ImageFilterEngineLayer</a></li>
       <li><a href="dart-ui/ImageShader-class.html">ImageShader</a></li>
       <li><a href="dart-ui/IsolateNameServer-class.html">IsolateNameServer</a></li>
       <li><a href="dart-ui/LineMetrics-class.html">LineMetrics</a></li>
@@ -115,6 +116,7 @@
       <li><a href="dart-ui/Tangent-class.html">Tangent</a></li>
       <li><a href="dart-ui/TextBox-class.html">TextBox</a></li>
       <li><a href="dart-ui/TextDecoration-class.html">TextDecoration</a></li>
+      <li><a href="dart-ui/TextHeightBehavior-class.html">TextHeightBehavior</a></li>
       <li><a href="dart-ui/TextPosition-class.html">TextPosition</a></li>
       <li><a href="dart-ui/TextRange-class.html">TextRange</a></li>
       <li><a href="dart-ui/TextStyle-class.html">TextStyle</a></li>
@@ -125,6 +127,8 @@
     
     
     
+      <li class="section-title"><a href="dart-ui/dart-ui-library.html#constants">Constants</a></li>
+      <li><a href="dart-ui/keepToString-constant.html">keepToString</a></li>
     
       <li class="section-title"><a href="dart-ui/dart-ui-library.html#properties">Properties</a></li>
       <li><a href="dart-ui/channelBuffers.html">channelBuffers</a></li>
@@ -204,12 +208,6 @@
         <dd>
           Creates a host for a child scene's content. <a href="dart-ui/SceneHost/SceneHost.html">[...]</a>
         </dd>
-        <dt id="SceneHost.fromViewHolderToken" class="callable">
-          <span class="name"><a href="dart-ui/SceneHost/SceneHost.fromViewHolderToken.html">SceneHost.fromViewHolderToken</a></span><span class="signature">(<span class="parameter" id="fromViewHolderToken-param-viewHolderToken"><span class="type-annotation">dynamic</span> <span class="parameter-name">viewHolderToken</span>, </span> <span class="parameter" id="fromViewHolderToken-param-viewConnectedCallback"><span class="type-annotation">void</span> <span class="parameter-name">viewConnectedCallback</span>(), </span> <span class="parameter" id="fromViewHolderToken-param-viewDisconnectedCallback"><span class="type-annotation">void</span> <span class="parameter-name">viewDisconnectedCallback</span>(), </span> <span class="parameter" id="fromViewHolderToken-param-viewStateChangedCallback"><span class="type-annotation">void</span> <span class="parameter-name">viewStateChangedCallback</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span></span>)</span>)</span>
-        </dt>
-        <dd>
-          
-        </dd>
       </dl>
     </section>
 
@@ -246,16 +244,6 @@
                   </dt>
         <dd>
           Releases the resources associated with the SceneHost. <a href="dart-ui/SceneHost/dispose.html">[...]</a>
-                  
-</dd>
-        <dt id="setOpacity" class="callable">
-          <span class="name"><a href="dart-ui/SceneHost/setOpacity.html">setOpacity</a></span><span class="signature">(<wbr><span class="parameter" id="setOpacity-param-opacity"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">opacity</span></span>)
-            <span class="returntype parameter">&#8594; void</span>
-          </span>
-                  </dt>
-        <dd>
-          Set the opacity of the linked scene.  This opacity value is applied only
-once, when the child scene is composited into our own.
                   
 </dd>
         <dt id="setProperties" class="callable">
@@ -314,7 +302,6 @@ as well as whether it can be the target of focus events or not.
     
       <li class="section-title"><a href="dart-ui/SceneHost-class.html#constructors">Constructors</a></li>
       <li><a href="dart-ui/SceneHost/SceneHost.html">SceneHost</a></li>
-      <li><a href="dart-ui/SceneHost/SceneHost.fromViewHolderToken.html">fromViewHolderToken</a></li>
     
       <li class="section-title inherited">
         <a href="dart-ui/SceneHost-class.html#instance-properties">Properties</a>
@@ -324,7 +311,6 @@ as well as whether it can be the target of focus events or not.
     
       <li class="section-title"><a href="dart-ui/SceneHost-class.html#instance-methods">Methods</a></li>
       <li><a href="dart-ui/SceneHost/dispose.html">dispose</a></li>
-      <li><a href="dart-ui/SceneHost/setOpacity.html">setOpacity</a></li>
       <li><a href="dart-ui/SceneHost/setProperties.html">setProperties</a></li>
       <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
       <li class="inherited"><a href="dart-core/Object/toString.html">toString</a></li>
@@ -343,7 +329,7 @@ as well as whether it can be the target of focus events or not.
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

@@ -157,14 +157,7 @@ object.</p>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">E operator [](dynamic index) {
-  &#47;&#47; TODO(justinfagnani): fix the semantics for non-ints
-  &#47;&#47; dartbug.com&#47;14605
-  if (index is num &amp;&amp; index == index.toInt()) {
-    _checkIndex(index);
-  }
-  return super[index];
-}</code></pre>
+      <pre class="language-dart"><code class="language-dart">external E operator [](dynamic index);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -177,7 +170,7 @@ object.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

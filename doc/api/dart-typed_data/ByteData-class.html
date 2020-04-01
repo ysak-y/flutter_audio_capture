@@ -116,11 +116,11 @@ and time, by eliminating the need for data copies.
 Finally, <code>ByteData</code> may be used to intentionally reinterpret the bytes
 representing one arithmetic type as another.
 For example this code fragment determine what 32-bit signed integer
-is represented by the bytes of a 32-bit floating point number:</p>
-<pre class="language-dart"><code>var buffer = new Uint8List(8).buffer;
-var bdata = new ByteData.view(buffer);
+is represented by the bytes of a 32-bit floating point number
+(both stored as big endian):</p>
+<pre class="language-dart"><code>var bdata = new ByteData(8);
 bdata.setFloat32(0, 3.04);
-int huh = bdata.getInt32(0);
+int huh = bdata.getInt32(0); // 0x40428f5c
 </code></pre>
     </section>
     
@@ -154,6 +154,13 @@ int huh = bdata.getInt32(0);
         <dd>
           Creates a <a href="dart-typed_data/ByteData-class.html">ByteData</a> of the specified length (in elements), all of
 whose bytes are initially zero.
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="ByteData.sublistView" class="callable">
+          <span class="name"><a href="dart-typed_data/ByteData/ByteData.sublistView.html">ByteData.sublistView</a></span><span class="signature">(<span class="parameter" id="sublistView-param-data"><span class="type-annotation"><a href="dart-typed_data/TypedData-class.html">TypedData</a></span> <span class="parameter-name">data</span>, [</span> <span class="parameter" id="sublistView-param-start"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span> = <span class="default-value">0</span></span> <span class="parameter" id="sublistView-param-end"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">end</span></span> ])</span>
+        </dt>
+        <dd>
+          Creates a <a href="dart-typed_data/ByteData-class.html">ByteData</a> view on a range of elements of <code>data</code>. <a href="dart-typed_data/ByteData/ByteData.sublistView.html">[...]</a>
           <div class="constructor-modifier features">factory</div>
         </dd>
         <dt id="ByteData.view" class="callable">
@@ -490,6 +497,7 @@ which must fit in eight bytes. <a href="dart-typed_data/ByteData/setUint64.html"
     
       <li class="section-title"><a href="dart-typed_data/ByteData-class.html#constructors">Constructors</a></li>
       <li><a href="dart-typed_data/ByteData/ByteData.html">ByteData</a></li>
+      <li><a href="dart-typed_data/ByteData/ByteData.sublistView.html">sublistView</a></li>
       <li><a href="dart-typed_data/ByteData/ByteData.view.html">view</a></li>
     
       <li class="section-title inherited">
@@ -540,7 +548,7 @@ which must fit in eight bytes. <a href="dart-typed_data/ByteData/setUint64.html"
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

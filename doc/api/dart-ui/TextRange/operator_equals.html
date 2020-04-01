@@ -139,11 +139,9 @@ the <a href="dart-ui/TextRange/hashCode.html">hashCode</a> method as well to mai
 bool operator ==(dynamic other) {
   if (identical(this, other))
     return true;
-  if (other is! TextRange)
-    return false;
-  final TextRange typedOther = other;
-  return typedOther.start == start
-      &amp;&amp; typedOther.end == end;
+  return other is TextRange
+      &amp;&amp; other.start == start
+      &amp;&amp; other.end == end;
 }</code></pre>
     </section>
 
@@ -157,7 +155,7 @@ bool operator ==(dynamic other) {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

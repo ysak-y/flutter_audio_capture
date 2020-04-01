@@ -187,7 +187,7 @@
       <div><h1><span class="kind-class">InternetAddress</span> class </h1></div>
 
     <section class="desc markdown">
-      <p>An internet address.</p>
+      <p>An internet address or a Unix domain address.</p>
 <p>This object holds an internet address. If this internet address
 is the result of a DNS lookup, the address also holds the hostname
 used to make the lookup.
@@ -202,10 +202,17 @@ bind.</p>
 
       <dl class="constructor-summary-list">
         <dt id="InternetAddress" class="callable">
-          <span class="name"><a href="dart-io/InternetAddress/InternetAddress.html">InternetAddress</a></span><span class="signature">(<span class="parameter" id="-param-address"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">address</span></span>)</span>
+          <span class="name"><a href="dart-io/InternetAddress/InternetAddress.html">InternetAddress</a></span><span class="signature">(<span class="parameter" id="-param-address"><span class="type-annotation"><a href="dart-core/String-class.html">String</a></span> <span class="parameter-name">address</span>, {</span> <span class="parameter" id="-param-type"><span>@Since(&quot;2.8&quot;)</span> <span class="type-annotation"><a href="dart-io/InternetAddressType-class.html">InternetAddressType</a></span> <span class="parameter-name">type</span></span> })</span>
         </dt>
         <dd>
-          Creates a new <a href="dart-io/InternetAddress-class.html">InternetAddress</a> from a numeric address. <a href="dart-io/InternetAddress/InternetAddress.html">[...]</a>
+          Creates a new <a href="dart-io/InternetAddress-class.html">InternetAddress</a> from a numeric address or a file path. <a href="dart-io/InternetAddress/InternetAddress.html">[...]</a>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="InternetAddress.fromRawAddress" class="callable">
+          <span class="name"><a href="dart-io/InternetAddress/InternetAddress.fromRawAddress.html">InternetAddress.fromRawAddress</a></span><span class="signature">(<span class="parameter" id="fromRawAddress-param-rawAddress"><span class="type-annotation"><a href="dart-typed_data/Uint8List-class.html">Uint8List</a></span> <span class="parameter-name">rawAddress</span>, {</span> <span class="parameter" id="fromRawAddress-param-type"><span>@Since(&quot;2.8&quot;)</span> <span class="type-annotation"><a href="dart-io/InternetAddressType-class.html">InternetAddressType</a></span> <span class="parameter-name">type</span></span> })</span>
+        </dt>
+        <dd>
+          Creates a new <a href="dart-io/InternetAddress-class.html">InternetAddress</a> from the provided raw address bytes. <a href="dart-io/InternetAddress/InternetAddress.fromRawAddress.html">[...]</a>
           <div class="constructor-modifier features">factory</div>
         </dd>
       </dl>
@@ -220,9 +227,7 @@ bind.</p>
           <span class="signature">&#8594; <a href="dart-core/String-class.html">String</a></span>         
         </dt>
         <dd>
-          The numeric address of the host. For IPv4 addresses this is using
-the dotted-decimal notation. For IPv6 it is using the
-hexadecimal representation.
+          The numeric address of the host. <a href="dart-io/InternetAddress/address.html">[...]</a>
                   <div class="features">read-only</div>
 </dd>
         <dt id="host" class="property">
@@ -230,8 +235,7 @@ hexadecimal representation.
           <span class="signature">&#8594; <a href="dart-core/String-class.html">String</a></span>         
         </dt>
         <dd>
-          The host used to lookup the address. If there is no host
-associated with the address this returns the numeric address.
+          The host used to lookup the address. <a href="dart-io/InternetAddress/host.html">[...]</a>
                   <div class="features">read-only</div>
 </dd>
         <dt id="isLinkLocal" class="property">
@@ -263,9 +267,7 @@ associated with the address this returns the numeric address.
           <span class="signature">&#8594; <a href="dart-typed_data/Uint8List-class.html">Uint8List</a></span>         
         </dt>
         <dd>
-          Get the raw address of this <a href="dart-io/InternetAddress-class.html">InternetAddress</a>. The result is either a
-4 or 16 byte long list. The returned list is a copy, making it possible
-to change the list without modifying the <a href="dart-io/InternetAddress-class.html">InternetAddress</a>.
+          The raw address of this <a href="dart-io/InternetAddress-class.html">InternetAddress</a>. <a href="dart-io/InternetAddress/rawAddress.html">[...]</a>
                   <div class="features">read-only</div>
 </dd>
         <dt id="type" class="property">
@@ -273,7 +275,7 @@ to change the list without modifying the <a href="dart-io/InternetAddress-class.
           <span class="signature">&#8594; <a href="dart-io/InternetAddressType-class.html">InternetAddressType</a></span>         
         </dt>
         <dd>
-          The <a href="dart-io/InternetAddress/type.html">type</a> of the <a href="dart-io/InternetAddress-class.html">InternetAddress</a> specified what IP protocol.
+          The address family of the <a href="dart-io/InternetAddress-class.html">InternetAddress</a>.
                   <div class="features">read-only</div>
 </dd>
         <dt id="hashCode" class="property inherited">
@@ -304,8 +306,7 @@ to change the list without modifying the <a href="dart-io/InternetAddress-class.
           </span>
                   </dt>
         <dd>
-          Perform a reverse dns lookup on the <a href="dart-io/InternetAddress/address.html">address</a>, creating a new
-<a href="dart-io/InternetAddress-class.html">InternetAddress</a> where the host field set to the result.
+          Perform a reverse DNS lookup on this <a href="dart-io/InternetAddress/address.html">address</a> <a href="dart-io/InternetAddress/reverse.html">[...]</a>
                   
 </dd>
         <dt id="noSuchMethod" class="callable inherited">
@@ -448,6 +449,7 @@ change over time.
     
       <li class="section-title"><a href="dart-io/InternetAddress-class.html#constructors">Constructors</a></li>
       <li><a href="dart-io/InternetAddress/InternetAddress.html">InternetAddress</a></li>
+      <li><a href="dart-io/InternetAddress/InternetAddress.fromRawAddress.html">fromRawAddress</a></li>
     
       <li class="section-title">
         <a href="dart-io/InternetAddress-class.html#instance-properties">Properties</a>
@@ -492,7 +494,7 @@ change over time.
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

@@ -92,14 +92,20 @@
       <div class="features">override</div>
     </section>
     <section class="desc markdown">
-      <p>Moves to the next element.</p>
-<p>Returns true if <a href="dart-ui/PathMetricIterator/current.html">current</a> contains the next element.
-Returns false if no elements are left.</p>
-<p>It is safe to invoke <a href="dart-ui/PathMetricIterator/moveNext.html">moveNext</a> even when the iterator is already
-positioned after the last element.
-In this case <a href="dart-ui/PathMetricIterator/moveNext.html">moveNext</a> returns false again and has no effect.</p>
-<p>A call to <code>moveNext</code> may throw if iteration has been broken by
-changing the underlying collection.</p>
+      <p>Advances the iterator to the next element of the iteration.</p>
+<p>Should be called before reading <a href="dart-ui/PathMetricIterator/current.html">current</a>.
+It the call to <code>moveNext</code> returns <code>true</code>,
+then <a href="dart-ui/PathMetricIterator/current.html">current</a> will contain the next element of the iteration
+until <code>moveNext</code> is called again.
+If the call returns <code>false</code>, there are no further elements
+and <a href="dart-ui/PathMetricIterator/current.html">current</a> should not be used any more.</p>
+<p>It is safe to call <a href="dart-ui/PathMetricIterator/moveNext.html">moveNext</a> after it has already returned <code>false</code>,
+but it must keep returning <code>false</code> and not have any other effect.</p>
+<p>A call to <code>moveNext</code> may throw for various reasons,
+including a concurrent change to an underlying collection.
+If that happens, the iterator may be in an inconsistent
+state, and any further behavior of the iterator is unspecified,
+including the effect of reading <a href="dart-ui/PathMetricIterator/current.html">current</a>.</p>
     </section>
     
     <section class="summary source-code" id="source">
@@ -125,7 +131,7 @@ bool moveNext() {
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

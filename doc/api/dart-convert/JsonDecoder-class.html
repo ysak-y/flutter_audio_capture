@@ -115,7 +115,12 @@
       <div><h1><span class="kind-class">JsonDecoder</span> class </h1></div>
 
     <section class="desc markdown">
-      <p>This class parses JSON strings and builds the corresponding objects.</p>
+      <p>This class parses JSON strings and builds the corresponding value.</p>
+<p>A JSON input must be the JSON encoding of a single JSON value,
+which can be a list or map containing other values.</p>
+<p>When used as a <a href="dart-async/StreamTransformer-class.html">StreamTransformer</a>, the input stream may emit
+multiple strings. The concatenation of all of these strings must
+be a valid JSON encoding of a single JSON value.</p>
     </section>
     
     <section>
@@ -296,7 +301,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->

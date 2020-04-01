@@ -89,7 +89,7 @@
       <div><h1><span class="kind-method">cancel</span> method</h1></div>
 
     <section class="multi-line-signature">
-      <span class="returntype"><a href="dart-async/Future-class.html">Future</a></span>
+      <span class="returntype"><a href="dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
             <span class="name ">cancel</span>
 (<wbr>)
       
@@ -101,20 +101,19 @@
 the subscription is canceled.</p>
 <p>Returns a future that is completed once the stream has finished
 its cleanup.</p>
-<p>For historical reasons, may also return <code>null</code> if no cleanup was necessary.
+<p>Historically returned <code>null</code> if no cleanup was necessary.
 Returning <code>null</code> is deprecated and should be avoided.</p>
 <p>Typically, futures are returned when the stream needs to release resources.
 For example, a stream might need to close an open file (as an asynchronous
 operation). If the listener wants to delete the file after having
 canceled the subscription, it must wait for the cleanup future to complete.</p>
-<p>A returned future completes with a <code>null</code> value.
-If the cleanup throws, which it really shouldn't, the returned future
+<p>If the cleanup throws, which it really shouldn't, the returned future
 completes with that error.</p>
     </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">Future cancel();</code></pre>
+      <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; cancel();</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -127,7 +126,7 @@ completes with that error.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      0.0.1
+      0.0.2
   </span>
 
   <!-- footer-text placeholder -->
