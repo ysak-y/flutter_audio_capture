@@ -64,7 +64,7 @@ void onError(Object e) {
 
 FlutterAudioCapture plugin = new FlutterAudioCapture();
 // Start to capture audio stream buffer
-// sampleRate: sample rate you want (Android only)
+// sampleRate: sample rate you want
 // bufferSize: buffer size you want (iOS only)
 await plugin.start(listener, onError, sampleRate: 16000, bufferSize: 3000);
 // Stop to capture audio stream buffer
