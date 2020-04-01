@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_audio_capture'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'audio stream capture for iOS and Android OS'
   s.description      = <<-DESC
                         audio stream capture for iOS and Android OS.
