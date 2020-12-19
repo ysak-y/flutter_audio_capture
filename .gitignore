@@ -10,7 +10,7 @@
 .svn/
 
 # IntelliJ related
-*.iml
+#*.iml - Note, this interferes with the root iml file which wreaks havoc with intellij
 *.ipr
 *.iws
 .idea/
@@ -44,6 +44,3 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-# XCode related
-example/ios/Runner.xcodeproj/project.pbxproj
