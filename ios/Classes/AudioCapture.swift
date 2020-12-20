@@ -61,7 +61,7 @@ class AudioCapture {
 
   public func stopSession() throws {
     let audioSession: AVAudioSession = AVAudioSession.sharedInstance()
-	audioEngine.stop()
+    audioEngine.stop()
     try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
   }
 }
