@@ -9,7 +9,7 @@ Add this line to your pubspec.yaml file:
 
 ```
 dependencies:
-  flutter_audio_capture: ^0.0.2
+  flutter_audio_capture: ^0.0.3
 ```
 
 and execute
