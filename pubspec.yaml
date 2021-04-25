@@ -5,6 +5,7 @@ homepage: https://github.com/ysak-y/flutter_audio_capture
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
+  flutter: ">=1.19.0"
 
 dependencies:
   flutter:
@@ -17,5 +18,9 @@ dev_dependencies:
 
 flutter:
   plugin:
-    androidPackage: com.ymd.flutter_audio_capture
-    pluginClass: FlutterAudioCapturePlugin
+    platforms:
+      android:
+        package: com.ymd.flutter_audio_capture
+        pluginClass: FlutterAudioCapturePlugin
+      ios: 
+        pluginClass: FlutterAudioCapturePlugin
