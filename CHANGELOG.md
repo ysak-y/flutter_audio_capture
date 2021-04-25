@@ -9,3 +9,7 @@
 ## 0.0.3
 
 - Fix bugs for `onCancel` failed and remove unnecessary files
+
+## 1.0.0
+
+- Support sound null safety
