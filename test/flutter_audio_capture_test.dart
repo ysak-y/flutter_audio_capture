@@ -14,8 +14,8 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   const AUDIO_CAPTURE_EVENT_CHANNEL_NAME =
       "ymd.dev/audio_capture_event_channel";
-  MethodChannel channel;
-  MockCallbackClass mock;
+  late MethodChannel channel;
+  MockCallbackClass? mock;
 
   setUp(() {
     channel = MethodChannel(AUDIO_CAPTURE_EVENT_CHANNEL_NAME);
@@ -51,39 +51,39 @@ void main() {
 
   test('listens stream of ymd.dev/audio_capture_event_channel channel',
       () async {
-    setupMockMethodCallHandlerWithMockFunctions(mock.onListen, mock.onCancel);
+    setupMockMethodCallHandlerWithMockFunctions(mock!.onListen, mock!.onCancel);
 
     final client = FlutterAudioCapture();
     await client.start((dynamic obj) => {}, (Object e) => {});
-    verify(mock.onListen()).called(1);
-    verifyNever(mock.onCancel());
+    verify(mock!.onListen()).called(1);
+    verifyNever(mock!.onCancel());
   });
 
   test('cancels to listen stream ymd.dev/audio_capture_event_channel channel',
       () async {
-    setupMockMethodCallHandlerWithMockFunctions(mock.onListen, mock.onCancel);
+    setupMockMethodCallHandlerWithMockFunctions(mock!.onListen, mock!.onCancel);
 
     final client = FlutterAudioCapture();
     await client.start((dynamic obj) => {}, (Object e) => {});
     await client.stop();
-    verify(mock.onCancel()).called(1);
+    verify(mock!.onCancel()).called(1);
   });
 
   test('nothing happens if stop() is called before start()', () async {
-    setupMockMethodCallHandlerWithMockFunctions(mock.onListen, mock.onCancel);
+    setupMockMethodCallHandlerWithMockFunctions(mock!.onListen, mock!.onCancel);
 
     final client = FlutterAudioCapture();
     await client.stop();
     await client.start((dynamic obj) => {}, (Object e) => {});
-    verifyNever(mock.onCancel());
+    verifyNever(mock!.onCancel());
   });
 
   test('executes only once whether start() is called many times', () async {
-    setupMockMethodCallHandlerWithMockFunctions(mock.onListen, mock.onCancel);
+    setupMockMethodCallHandlerWithMockFunctions(mock!.onListen, mock!.onCancel);
 
     final client = FlutterAudioCapture();
     await client.stop();
     await client.start((dynamic obj) => {}, (Object e) => {});
-    verifyNever(mock.onCancel());
+    verifyNever(mock!.onCancel());
   });
 }
