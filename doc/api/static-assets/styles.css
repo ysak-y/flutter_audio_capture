@@ -245,7 +245,7 @@ a:hover {
 }
 
 pre.prettyprint {
-  font-family: 'Source Code Pro', Menlo, monospace;
+  font-family: 'Roboto Mono', Menlo, monospace;
   color: black;
   border-radius: 0;
   font-size: 15px;
@@ -273,7 +273,7 @@ pre {
 }
 
 code {
-  font-family: 'Source Code Pro', Menlo, monospace;
+  font-family: 'Roboto Mono', Menlo, monospace;
   /* overriding bootstrap */
   color: inherit;
   padding: 0.2em 0.4em;
@@ -476,6 +476,10 @@ h1 .category {
   font-size: 12px;
   padding: 1px 6px;
   margin: 0 8px 0 0;
+}
+
+a.feature:hover {
+  border-color: #13B9FD;
 }
 
 h1 .feature {
@@ -734,13 +738,13 @@ ul.subnav li:last-of-type {
 .sidebar ol li {
   text-overflow: ellipsis;
   overflow: hidden;
-  padding: 3px 0;
+  padding: 3px 0 3px 3px;
 }
 
 .sidebar h5 {
   color: #727272;
   font-size: 18px;
-  margin: 0 0 25px 0;
+  margin: 0 0 22px 0;
   padding-top: 0;
 }
 
@@ -765,7 +769,7 @@ ul.subnav li:last-of-type {
 }
 
 .sidebar ol li:first-child {
-  padding-top: 0;
+  padding-top: 3px;
   margin-top: 0;
 }
 
@@ -885,6 +889,17 @@ button {
   border-radius: 2px;
 }
 
+.tt-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tt-input {
+  position: relative;
+  vertical-align: top;
+  background-color: transparent;
+}
+
 .tt-query {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -892,7 +907,14 @@ button {
 }
 
 .tt-hint {
-  color: #999
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: none;
+  background: none 0 0 / auto repeat scroll padding-box border-box rgb(255, 255, 255);
+  border-color: transparent;
+  color: #999;
+  border-width: 0;
 }
 
 .navbar-right .tt-menu {
@@ -904,6 +926,10 @@ button {
 }
 
 .tt-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
   font-size: 14px;
   margin: 0;
   padding: 8px 0;
@@ -946,10 +972,6 @@ button {
 .search-from-lib {
   font-style: italic;
   color: gray;
-}
-
-#search-box {
-  background-color: #ffffff;
 }
 
 .search-body {
