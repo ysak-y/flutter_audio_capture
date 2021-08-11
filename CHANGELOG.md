@@ -13,3 +13,7 @@
 ## 1.0.0
 
 - Support sound null safety
+
+## 1.1.0
+
+- Support Linux [#9](https://github.com/ysak-y/flutter_audio_capture/pull/9)
