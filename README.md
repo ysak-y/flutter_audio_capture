@@ -18,6 +18,8 @@ and execute
 $ flutter pub get
 ```
 
+### Android
+
 If you want to use this package on Android OS, you need to set `RECORD_AUDIO` permission to `AndroindManifest.xml` like below.
 
 ```
@@ -29,6 +31,8 @@ If you want to use this package on Android OS, you need to set `RECORD_AUDIO` pe
 </manifest>
 ```
 
+### iOS
+
 If you want to use this package on iOS, you need to set `NSMicrophoneUsageDescription` to `Info.plist` like below.
 
 ```
@@ -37,6 +41,14 @@ If you want to use this package on iOS, you need to set `NSMicrophoneUsageDescri
     <string>Need microphone access to capture audio</string>
 ...
 ```
+
+### Linux
+
+On Linux, this package uses [`parec`](https://manpages.debian.org/testing/pulseaudio-utils/parec.1.en.html) to record audio.
+
+While things should just work on recent [Ubuntu versions](https://ubuntu.com/download/desktop),
+make sure to have `pulseaudio` installed on the target device.
+
 
 ## Example
 

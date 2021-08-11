@@ -24,3 +24,5 @@ flutter:
         pluginClass: FlutterAudioCapturePlugin
       ios: 
         pluginClass: FlutterAudioCapturePlugin
+      linux: 
+        pluginClass: FlutterAudioCapturePlugin
