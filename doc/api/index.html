@@ -69,11 +69,12 @@ Required OS version is iOS 12+ or Android 23+</p>
 <h2 id="getting-started">Getting Started</h2>
 <p>Add this line to your pubspec.yaml file:</p>
 <pre class="language-dart"><code>dependencies:
-  flutter_audio_capture: ^1.0.0
+  flutter_audio_capture: ^1.1.0
 </code></pre>
 <p>and execute</p>
 <pre class="language-dart"><code>$ flutter pub get
 </code></pre>
+<h3 id="android">Android</h3>
 <p>If you want to use this package on Android OS, you need to set <code>RECORD_AUDIO</code> permission to <code>AndroindManifest.xml</code> like below.</p>
 <pre class="language-dart"><code>&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.ymd.flutter_audio_capture"&gt;
@@ -82,12 +83,17 @@ Required OS version is iOS 12+ or Android 23+</p>
   &lt;uses-permission android:name="android.permission.RECORD_AUDIO"/&gt;
 &lt;/manifest&gt;
 </code></pre>
+<h3 id="ios">iOS</h3>
 <p>If you want to use this package on iOS, you need to set <code>NSMicrophoneUsageDescription</code> to <code>Info.plist</code> like below.</p>
 <pre class="language-dart"><code>&lt;dict&gt;
     &lt;key&gt;NSMicrophoneUsageDescription&lt;/key&gt;
     &lt;string&gt;Need microphone access to capture audio&lt;/string&gt;
 ...
 </code></pre>
+<h3 id="linux">Linux</h3>
+<p>On Linux, this package uses <a href="https://manpages.debian.org/testing/pulseaudio-utils/parec.1.en.html"><code>parec</code></a> to record audio.</p>
+<p>While things should just work on recent <a href="https://ubuntu.com/download/desktop">Ubuntu versions</a>,
+make sure to have <code>pulseaudio</code> installed on the target device.</p>
 <h2 id="example">Example</h2>
 <p>You can see full example in <code>example/lib/main.dart</code></p>
 <pre class="language-dart"><code class="language-dart">import 'package:flutter_audio_capture/flutter_audio_capture.dart';
@@ -143,7 +149,7 @@ await plugin.stop();
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      1.0.0
+      1.1.0
   </span>
 
   
