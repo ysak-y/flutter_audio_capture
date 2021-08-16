@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
 
 dev_dependencies:
   mockito: ^5.0.5
@@ -20,8 +22,8 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.ymd.flutter_audio_capture
         pluginClass: FlutterAudioCapturePlugin
+        package: com.ymd.flutter_audio_capture
       ios: 
         pluginClass: FlutterAudioCapturePlugin
       linux: 
