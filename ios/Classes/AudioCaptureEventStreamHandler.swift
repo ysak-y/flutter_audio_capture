@@ -7,6 +7,7 @@ class AudioCaptureEventStreamHandler: NSObject, FlutterStreamHandler {
   public let eventChannelName = "ymd.dev/audio_capture_event_channel"
   private let audioCapture: AudioCapture = AudioCapture()
   private var eventSink: FlutterEventSink?
+  public var actualSampleRate:Float64?;
 
   public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
     self.eventSink = events
@@ -25,6 +26,8 @@ class AudioCaptureEventStreamHandler: NSObject, FlutterStreamHandler {
       }
     }
     
+    self.actualSampleRate = sampleRate; // This should come from audioCapture
+    
     if let sink: FlutterEventSink = self.eventSink {
       do {
         try self.audioCapture.startSession(bufferSize: bufferSize, sampleRate: sampleRate) { buffer in
@@ -40,6 +43,8 @@ class AudioCaptureEventStreamHandler: NSObject, FlutterStreamHandler {
   }
 
   public func onCancel(withArguments arguments: Any?) -> FlutterError? {
+    self.actualSampleRate = nil
+
     if let sink: FlutterEventSink = self.eventSink {
       do {
         try self.audioCapture.stopSession()
