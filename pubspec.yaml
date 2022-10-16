@@ -1,10 +1,10 @@
 name: flutter_audio_capture
 description: Capture the audio buffer stream through microphone for iOS/Android.
-version: 1.1.0
+version: 1.1.1
 homepage: https://github.com/ysak-y/flutter_audio_capture
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=2.12.0 <3.0.0"
   flutter: ">=1.19.0"
 
 dependencies:
@@ -22,7 +22,7 @@ flutter:
       android:
         package: com.ymd.flutter_audio_capture
         pluginClass: FlutterAudioCapturePlugin
-      ios: 
+      ios:
         pluginClass: FlutterAudioCapturePlugin
-      linux: 
+      linux:
         pluginClass: FlutterAudioCapturePlugin

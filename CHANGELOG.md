@@ -1,6 +1,6 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+- TODO: Describe initial release.
 
 ## 0.0.2
 
@@ -17,3 +17,7 @@
 ## 1.1.0
 
 - Support Linux [#9](https://github.com/ysak-y/flutter_audio_capture/pull/9)
+
+## 1.1.1
+
+- General improvements and multithreading / start stop issues [#13](https://github.com/ysak-y/flutter_audio_capture/pull/13)
