@@ -1,7 +1,7 @@
 # flutter_audio_capture
 
 Capture the audio stream buffer through microphone for iOS/Android.
-Required OS version is iOS 12+ or Android 23+
+Required OS version is iOS 13+ or Android 23+
 
 ## Getting Started
 
@@ -9,7 +9,7 @@ Add this line to your pubspec.yaml file:
 
 ```
 dependencies:
-  flutter_audio_capture: ^1.1.1
+  flutter_audio_capture: ^1.1.2
 ```
 
 and execute
@@ -48,7 +48,6 @@ On Linux, this package uses [`parec`](https://manpages.debian.org/testing/pulsea
 
 While things should just work on recent [Ubuntu versions](https://ubuntu.com/download/desktop),
 make sure to have `pulseaudio` installed on the target device.
-
 
 ## Example
 

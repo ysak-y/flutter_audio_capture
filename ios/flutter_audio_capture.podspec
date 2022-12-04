@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_audio_capture'
-  s.version          = '1.0.0'
+  s.version          = '1.1.2'
   s.summary          = 'audio stream capture for iOS and Android OS'
   s.description      = <<-DESC
                         audio stream capture for iOS and Android OS.
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.platform = :ios, '12.4'
+  s.platform = :ios, '13.6'
 
   # Flutter.framework does not contain a i386 slice. Only x86_64 simulators are supported.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'VALID_ARCHS[sdk=iphonesimulator*]' => 'x86_64' }
