@@ -21,3 +21,7 @@
 ## 1.1.1
 
 - General improvements and multithreading / start stop issues [#13](https://github.com/ysak-y/flutter_audio_capture/pull/13)
+
+## 1.1.2
+
+- Bump iOS minimum deplyment target to 13.6 from 12.4
