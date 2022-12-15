@@ -1,30 +1,32 @@
 import Foundation
 import AVFoundation
 
-class AudioCapture {
-  private let audioEngine: AVAudioEngine = AVAudioEngine()
-
-  init() {}
-  
-  deinit{
-    audioEngine.inputNode.removeTap(onBus: 0)
-    audioEngine.reset()
-  }
-  
-  public func startSession(bufferSize: UInt32, sampleRate: Double, cb: @escaping (_ buffer: Array<Float>) -> Void) throws {
-    audioEngine.inputNode.removeTap(onBus: 0)
-    audioEngine.reset()
-
+public class AudioCapture {
+  let audioEngine: AVAudioEngine = AVAudioEngine()
+    private var outputFormat = AVAudioFormat(commonFormat: AVAudioCommonFormat.pcmFormatInt16, sampleRate: 44100, channels: 2, interleaved: true)
+  init() {
+      do{
     let audioSession: AVAudioSession = AVAudioSession.sharedInstance()
     try audioSession.setCategory(AVAudioSession.Category.playAndRecord,
                                   mode: AVAudioSession.Mode.default,
-                                  options: [.allowBluetoothA2DP, .allowAirPlay, .allowBluetooth])
+                                 options: [.defaultToSpeaker, .mixWithOthers, .allowBluetoothA2DP, .allowAirPlay, .allowBluetooth])
     try audioSession.setActive(true)
-
+      }
+      catch let err {
+          print(err)
+      }
+  }
+  
+  deinit{
+    audioEngine.inputNode.removeTap(onBus: 0)
+    audioEngine.stop()
+  }
+  
+  public func startSession(bufferSize: UInt32, sampleRate: Double, cb: @escaping (_ buffer: Array<Float>) -> Void) throws {
+  
     let inputNode = audioEngine.inputNode
-
     let inputFormat  = inputNode.inputFormat(forBus: 0)
-
+    try! audioEngine.start()
     inputNode.installTap(onBus: 0,
                           bufferSize: bufferSize,
                           format: inputFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
@@ -38,7 +40,8 @@ class AudioCapture {
                             var convertedBuffer: AVAudioPCMBuffer? = buffer
                             if let converter = AVAudioConverter(from: inputFormat, to: formatToConvert) {
                               convertedBuffer = AVAudioPCMBuffer(pcmFormat:  formatToConvert,
-                                                                  frameCapacity: AVAudioFrameCount( formatToConvert.sampleRate * 0.4))
+                                                                  // frameCapacity: AVAudioFrameCount( formatToConvert.sampleRate * 0.4))
+                                                                  frameCapacity: AVAudioFrameCount(self.outputFormat!.sampleRate) * buffer.frameLength / AVAudioFrameCount(buffer.format.sampleRate))
                               let inputBlock : AVAudioConverterInputBlock = { (inNumPackets, outStatus) -> AVAudioBuffer? in
                                 outStatus.pointee = AVAudioConverterInputStatus.haveData
                                 let audioBuffer : AVAudioBuffer = buffer
@@ -54,14 +57,11 @@ class AudioCapture {
                              cb(Array(UnsafeBufferPointer(start: buffer.floatChannelData![0], count:Int(buffer.frameLength))))
                           }
     }
-
-    audioEngine.prepare()
-    try audioEngine.start()
+          
   }
 
   public func stopSession() throws {
-    let audioSession: AVAudioSession = AVAudioSession.sharedInstance()
+    audioEngine.inputNode.removeTap(onBus: 0)
     audioEngine.stop()
-    try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
   }
 }
