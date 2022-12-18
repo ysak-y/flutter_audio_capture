@@ -25,3 +25,7 @@
 ## 1.1.2
 
 - Bump iOS minimum deplyment target to 13.6 from 12.4
+
+## 1.1.3
+
+- Fix using .defaultToSpeaker causes audio session initialization problems on iPhone [#14](https://github.com/ysak-y/flutter_audio_capture/issues/14)
