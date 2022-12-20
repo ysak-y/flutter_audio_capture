@@ -22,6 +22,14 @@ class FlutterAudioCapture {
 
   double? _actualSampleRate;
 
+  /// Starts listenening to audio.
+  ///
+  /// Uses [sampleRate] and [bufferSize] for capturing audio.
+  /// Uses [androidAudioSource] to determine recording type on Android.
+  /// When [waitForFirstDataOnAndroid] is set, it waits for [firstDataTimeout] duration on first data to arrive.
+  /// Will not listen if first date does not arrive in time. Set as [true] by default on Android.
+  /// When [waitForFirstDataOnIOS] is set, it waits for [firstDataTimeout] duration on first data to arrive.
+  /// Known to not work reliably on iOS and set as [false] by default.
   Future<void> start(Function listener, Function onError,
       {int sampleRate = 44000, int bufferSize = 5000, int androidAudioSource = ANDROID_AUDIOSRC_DEFAULT,
       Duration firstDataTimeout = const Duration(seconds: 1),
