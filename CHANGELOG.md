@@ -29,3 +29,8 @@
 ## 1.1.3
 
 - Fix using .defaultToSpeaker causes audio session initialization problems on iPhone [#14](https://github.com/ysak-y/flutter_audio_capture/issues/14)
+
+## 1.1.4
+
+- Disabled waiting for first data on iOS by default and timeout parameter added [#19](https://github.com/ysak-y/flutter_audio_capture/pull/19)
+  - It is reported on [#16](https://github.com/ysak-y/flutter_audio_capture/issues/16)
