@@ -34,3 +34,8 @@
 
 - Disabled waiting for first data on iOS by default and timeout parameter added [#19](https://github.com/ysak-y/flutter_audio_capture/pull/19)
   - It is reported on [#16](https://github.com/ysak-y/flutter_audio_capture/issues/16)
+
+## 1.1.5
+
+- Update Kotlin language version to 1.9.10 (3ed3923ab799c2882940cffed989613298e6ecb1)
+  - This version is to fix the bug that is reported in #20
