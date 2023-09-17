@@ -39,3 +39,8 @@
 
 - Update Kotlin language version to 1.9.10 (3ed3923ab799c2882940cffed989613298e6ecb1)
   - This version is to fix the bug that is reported in #20
+
+## 1.1.6
+
+- Change Kotlin language version to 1.7.10 (8f4cd5d26c92a79a089751bbdfd8dc030e3a6dff)
+  - This version is to fix the bug that is reported in #20
