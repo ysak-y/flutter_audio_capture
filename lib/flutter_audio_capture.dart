@@ -85,7 +85,14 @@ class FlutterAudioCapture {
     // Prevent stream for starting over because we have no listenre between firstWhere check and this line which initally was at the end of the code
     _audioCaptureEventChannelSubscription = audioStream.skipWhile((element) => !completer.isCompleted).listen(listener, onError: onError);
     if (waitForFirstData) {
-      await audioStream.firstWhere((element) => (_actualSampleRate ?? 0) > 10).timeout(firstDataTimeout);
+      try {
+        await audioStream.firstWhere((element) => (_actualSampleRate ?? 0) > 10).timeout(firstDataTimeout);
+      } catch (e) {
+        // If we timeout, cancel the stream and throw error
+        completer.completeError(e);
+        await stop();
+        rethrow;
+      }
     }
     completer.complete();
 
