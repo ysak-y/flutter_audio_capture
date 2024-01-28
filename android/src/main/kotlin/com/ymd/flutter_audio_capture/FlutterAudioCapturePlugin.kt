@@ -39,6 +39,10 @@ public class FlutterAudioCapturePlugin: FlutterPlugin, MethodCallHandler {
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     when (call.method) {
+      "init" -> {
+        // For now, we do nothing to init on android
+        result.success(true)
+      }
       "getSampleRate" -> {
         result.success(this.audioCaptureStreamHandler.actualSampleRate.toDouble())
       }

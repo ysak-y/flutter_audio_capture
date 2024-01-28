@@ -84,13 +84,16 @@ public class AudioCaptureStreamHandler: StreamHandler {
 
     private fun sendBuffer(audioBuffer: ArrayList<FloatArray>, bufferIndex: Int) {
         uiThreadHandler.post(object: Runnable {
-            var index: Int = -1 
+            var index: Int = -1
 
             override fun run() {
                 if (isCapturing) {
-                    // There was only one audio buffer, converted with .toList() here. Causes frequent GC runs.
-                    // Also, array might/should prevent overwriting samples while they are passed to Dart.
-                    _events?.success(audioBuffer[index])
+                    // Send the actualSampleRate as a special event
+                    val data = mapOf(
+                        "actualSampleRate" to actualSampleRate.toDouble(),
+                        "audioData" to audioBuffer[index]
+                    )
+                    _events?.success(data)
                 }
             }
 

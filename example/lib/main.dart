@@ -16,6 +16,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    // Need to initialize before use note that this is async!
+    _plugin.init();
   }
 
   Future<void> _startCapture() async {

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
 
@@ -15,12 +16,24 @@ const ANDROID_AUDIOSRC_UNPROCESSED = 9;
 
 class FlutterAudioCapture {
   static const _audioCaptureEventChannel = EventChannel(AUDIO_CAPTURE_EVENT_CHANNEL_NAME);
+
   // ignore: cancel_subscriptions
   StreamSubscription? _audioCaptureEventChannelSubscription;
 
   static const _audioCaptureMethodChannel = MethodChannel(AUDIO_CAPTURE_METHOD_CHANNEL_NAME);
 
   double? _actualSampleRate;
+
+  bool? _initialized;
+
+
+  Future<bool?> init() async {
+    // Only init once
+    if (_initialized != null) return _initialized;
+    _initialized = await _audioCaptureMethodChannel.invokeMethod<bool>("init");
+    return _initialized;
+  }
+
 
   /// Starts listenening to audio.
   ///
@@ -30,54 +43,59 @@ class FlutterAudioCapture {
   /// Will not listen if first date does not arrive in time. Set as [true] by default on Android.
   /// When [waitForFirstDataOnIOS] is set, it waits for [firstDataTimeout] duration on first data to arrive.
   /// Known to not work reliably on iOS and set as [false] by default.
-  Future<void> start(Function listener, Function onError,
-      {int sampleRate = 44000, int bufferSize = 5000, int androidAudioSource = ANDROID_AUDIOSRC_DEFAULT,
-      Duration firstDataTimeout = const Duration(seconds: 1),
-      bool waitForFirstDataOnAndroid = true, bool waitForFirstDataOnIOS = false}) async {
+  Future<void> start(void Function(Float32List) listener, Function onError,
+      {int sampleRate = 44100, int bufferSize = 5000, int androidAudioSource = ANDROID_AUDIOSRC_DEFAULT,
+        Duration firstDataTimeout = const Duration(seconds: 1),
+        bool waitForFirstDataOnAndroid = true, bool waitForFirstDataOnIOS = false}) async {
+    if (_initialized == null) {
+      throw Exception("FlutterAudioCapture must be initialized before use");
+    }
+
+    if (_initialized == false) {
+      throw Exception("FlutterAudioCapture failed to initialize");
+    }
+
+    // We are already listening
     if (_audioCaptureEventChannelSubscription != null) return;
+    // init channel stream
     final stream = _audioCaptureEventChannel.receiveBroadcastStream({
       "sampleRate": sampleRate,
       "bufferSize": bufferSize,
       "audioSource": androidAudioSource,
+    }).cast<Map>();
+    // The channel will have format:
+    // {
+    //   "audioData": Float32List,
+    //   "actualSampleRate": double,
+    // }
+
+    _actualSampleRate = null;
+    var audioStream = stream.map((event) {
+      _actualSampleRate = event.get('actualSampleRate');
+      return event.get('audioData') as Float32List;
     });
 
-    final waitForFirstData = (Platform.isAndroid && waitForFirstDataOnAndroid) || (Platform.isIOS && waitForFirstDataOnIOS);
-    if (waitForFirstData) {      
-      // wait for the first data, then we know we have actual values
-      final initCompleter = Completer<void>();
-      _actualSampleRate = null;
 
-      // be careful here: _audioCaptureEventChannel exists the whole time, callback may be called
-      // from what was already there when we called "listen" - so wait until "getSampleRate" returns
-      // meaningful value or we timeout
-      final tempListener = stream.listen(
-        (_) async {
-          if ((_actualSampleRate ?? 0) < 10) {
-            _actualSampleRate = await _audioCaptureMethodChannel.invokeMethod<double>("getSampleRate");
-            if ((_actualSampleRate ?? 0) >= 10 && !initCompleter.isCompleted) //
-              initCompleter.complete();
-          }
-        },
-        onError: (Object e) {
-          print('Microphone init error $e');
-          if (!initCompleter.isCompleted) //
-            initCompleter.complete();
-        },
-      );
+    // Do we need to wait for first data?
+    final waitForFirstData = (Platform.isAndroid && waitForFirstDataOnAndroid) ||
+        (Platform.isIOS && waitForFirstDataOnIOS);
 
-      // wait until first data processed (or timeout)
-      await initCompleter.future.timeout(
-        firstDataTimeout,
-        onTimeout: () => null,
-      );
-      await tempListener.cancel();
 
-      // start listening
-      if (_actualSampleRate != null && _actualSampleRate! > 0) //
-        _audioCaptureEventChannelSubscription = stream.listen(listener as void Function(dynamic)?, onError: onError);
-    } else {
-      _audioCaptureEventChannelSubscription = stream.listen(listener as void Function(dynamic)?, onError: onError);
+    Completer<void>? completer = Completer();
+    // Prevent stream for starting over because we have no listenre between firstWhere check and this line which initally was at the end of the code
+    _audioCaptureEventChannelSubscription = audioStream.skipWhile((element) => !completer.isCompleted).listen(listener, onError: onError);
+    if (waitForFirstData) {
+      try {
+        await audioStream.firstWhere((element) => (_actualSampleRate ?? 0) > 10).timeout(firstDataTimeout);
+      } catch (e) {
+        // If we timeout, cancel the stream and throw error
+        completer.completeError(e);
+        await stop();
+        rethrow;
+      }
     }
+    completer.complete();
+
   }
 
   Future<void> stop() async {
@@ -89,4 +107,15 @@ class FlutterAudioCapture {
   }
 
   double? get actualSampleRate => _actualSampleRate;
+}
+
+
+extension MapUtil on Map{
+  T get<T>(String key) {
+    return this[key]!;
+  }
+
+  T? getOrNull<T>(String key) {
+    return this[key];
+  }
 }
