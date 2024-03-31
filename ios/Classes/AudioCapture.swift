@@ -26,7 +26,13 @@ public class AudioCapture {
   
     let inputNode = audioEngine.inputNode
     let inputFormat  = inputNode.inputFormat(forBus: 0)
-    try! audioEngine.start()
+    // try! audioEngine.start()
+    do {
+      try audioEngine.start()
+    } catch {
+      print("Error starting audio engine: \(error)")
+      return
+    }
     inputNode.installTap(onBus: 0,
                           bufferSize: bufferSize,
                           format: inputFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in

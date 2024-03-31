@@ -31,7 +31,9 @@ class AudioCaptureEventStreamHandler: NSObject, FlutterStreamHandler {
     if let sink: FlutterEventSink = self.eventSink {
       do {
         try self.audioCapture.startSession(bufferSize: bufferSize, sampleRate: sampleRate) { buffer in
-          sink(buffer)
+          DispatchQueue.main.async {
+            sink(buffer)
+          }
         }
       } catch {
         sink(FlutterError(code: AudioCaptureEventStreamHandlerErrorCode.onListenFailed,
