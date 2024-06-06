@@ -2,15 +2,15 @@ import Foundation
 import AVFoundation
 
 public class AudioCapture {
+  var isAudioSessionActive: Bool = false
   let audioEngine: AVAudioEngine = AVAudioEngine()
     private var outputFormat = AVAudioFormat(commonFormat: AVAudioCommonFormat.pcmFormatInt16, sampleRate: 44100, channels: 2, interleaved: true)
   init() {
       do{
     let audioSession: AVAudioSession = AVAudioSession.sharedInstance()
-    try audioSession.setCategory(AVAudioSession.Category.playAndRecord,
-                                  mode: AVAudioSession.Mode.default,
-                                 options: [.defaultToSpeaker, .mixWithOthers, .allowBluetoothA2DP, .allowAirPlay, .allowBluetooth])
-    try audioSession.setActive(true)
+    try audioSession.setCategory(AVAudioSession.Category.record,
+                                  mode: AVAudioSession.Mode.measurement,
+                                 options: [])
       }
       catch let err {
           print(err)
@@ -18,21 +18,21 @@ public class AudioCapture {
   }
   
   deinit{
+    try! AVAudioSession.sharedInstance().setActive(false)
     audioEngine.inputNode.removeTap(onBus: 0)
     audioEngine.stop()
   }
   
   public func startSession(bufferSize: UInt32, sampleRate: Double, cb: @escaping (_ buffer: Array<Float>) -> Void) throws {
-  
+
+    if !isAudioSessionActive {
+      try AVAudioSession.sharedInstance().setActive(true)
+      isAudioSessionActive = true
+    }
+
     let inputNode = audioEngine.inputNode
     let inputFormat  = inputNode.inputFormat(forBus: 0)
-    // try! audioEngine.start()
-    do {
-      try audioEngine.start()
-    } catch {
-      print("Error starting audio engine: \(error)")
-      return
-    }
+    try! audioEngine.start()
     inputNode.installTap(onBus: 0,
                           bufferSize: bufferSize,
                           format: inputFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
