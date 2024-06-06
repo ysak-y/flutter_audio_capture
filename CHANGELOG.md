@@ -44,3 +44,7 @@
 
 - Change Kotlin language version to 1.7.10 (8f4cd5d26c92a79a089751bbdfd8dc030e3a6dff)
   - This version is to fix the bug that is reported in #20
+
+## 1.1.7
+
+- Use a setup and improve sampleRate transport #27

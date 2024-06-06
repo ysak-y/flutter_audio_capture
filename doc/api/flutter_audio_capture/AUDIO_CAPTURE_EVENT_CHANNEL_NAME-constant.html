@@ -39,18 +39,24 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="flutter_audio_capture&#47;flutter_audio_capture-library-sidebar.html"
+      data-below-sidebar="">
       <div>
 <h1><span class="kind-top-level-property">AUDIO_CAPTURE_EVENT_CHANNEL_NAME</span> top-level constant 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
  
 </h1></div>
 
@@ -74,42 +80,21 @@
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../index.html">flutter_audio_capture</a></li>
-  <li><a href="../flutter_audio_capture/flutter_audio_capture-library.html">flutter_audio_capture</a></li>
-  <li class="self-crumb">AUDIO_CAPTURE_EVENT_CHANNEL_NAME constant</li>
+    <li><a href="../index.html">flutter_audio_capture</a></li>
+    <li><a href="../flutter_audio_capture/flutter_audio_capture-library.html">flutter_audio_capture</a></li>
+    <li class="self-crumb">AUDIO_CAPTURE_EVENT_CHANNEL_NAME constant</li>
 </ol>
 
 
     <h5>flutter_audio_capture library</h5>
-    <ol>
-      <li class="section-title"><a href="../flutter_audio_capture/flutter_audio_capture-library.html#classes">Classes</a></li>
-        <li><a href="../flutter_audio_capture/FlutterAudioCapture-class.html">FlutterAudioCapture</a></li>
-
-
-
-      <li class="section-title"><a href="../flutter_audio_capture/flutter_audio_capture-library.html#constants">Constants</a></li>
-        <li><a href="../flutter_audio_capture/ANDROID_AUDIOSRC_CAMCORDER-constant.html">ANDROID_AUDIOSRC_CAMCORDER</a></li>
-        <li><a href="../flutter_audio_capture/ANDROID_AUDIOSRC_DEFAULT-constant.html">ANDROID_AUDIOSRC_DEFAULT</a></li>
-        <li><a href="../flutter_audio_capture/ANDROID_AUDIOSRC_MIC-constant.html">ANDROID_AUDIOSRC_MIC</a></li>
-        <li><a href="../flutter_audio_capture/ANDROID_AUDIOSRC_UNPROCESSED-constant.html">ANDROID_AUDIOSRC_UNPROCESSED</a></li>
-        <li><a href="../flutter_audio_capture/ANDROID_AUDIOSRC_VOICECOMMUNICATION-constant.html">ANDROID_AUDIOSRC_VOICECOMMUNICATION</a></li>
-        <li><a href="../flutter_audio_capture/ANDROID_AUDIOSRC_VOICERECOGNITION-constant.html">ANDROID_AUDIOSRC_VOICERECOGNITION</a></li>
-        <li><a href="../flutter_audio_capture/AUDIO_CAPTURE_EVENT_CHANNEL_NAME-constant.html">AUDIO_CAPTURE_EVENT_CHANNEL_NAME</a></li>
-        <li><a href="../flutter_audio_capture/AUDIO_CAPTURE_METHOD_CHANNEL_NAME-constant.html">AUDIO_CAPTURE_METHOD_CHANNEL_NAME</a></li>
-
-
-
-
-
-</ol>
-
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -120,7 +105,7 @@
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      1.1.4
+      1.1.7
   </span>
 
   
