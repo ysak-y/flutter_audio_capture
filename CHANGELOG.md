@@ -48,3 +48,7 @@
 ## 1.1.7
 
 - Use a setup and improve sampleRate transport #27
+
+## 1.1.8
+
+- Update gradle to 7.2 and target & compile SDK to API 34 #33
