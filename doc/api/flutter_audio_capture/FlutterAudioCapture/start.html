@@ -40,27 +40,35 @@
   <div class="toggle" id="theme-button">
     <label for="theme">
       <input type="checkbox" id="theme" value="light-theme">
-      <span class="material-symbols-outlined">
+      <span id="dark-theme-button" class="material-symbols-outlined">
         brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
       </span>
     </label>
   </div>
 </header>
 <main>
 
-  <div id="dartdoc-main-content" class="main-content">
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="flutter_audio_capture&#47;FlutterAudioCapture-class-sidebar.html"
+      data-below-sidebar="">
       <div>
 <h1><span class="kind-method">start</span> method 
-    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
       
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-<span class="name ">start</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="start-param-listener"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Function-class.html">Function</a></span> <span class="parameter-name">listener</span>, </span></li>
+<span class="name ">start</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="start-param-listener"><span class="type-annotation">void</span> <span class="parameter-name">listener</span>(<ol class="parameter-list"><li><span class="parameter" id="param-"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-typed_data/Float32List-class.html">Float32List</a></span></span></li>
+</ol>
+), </span></li>
 <li><span class="parameter" id="start-param-onError"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Function-class.html">Function</a></span> <span class="parameter-name">onError</span>, </span></li>
-<li><span class="parameter" id="start-param-sampleRate">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">sampleRate</span> = <span class="default-value">44000</span>, </span></li>
+<li><span class="parameter" id="start-param-sampleRate">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">sampleRate</span> = <span class="default-value">44100</span>, </span></li>
 <li><span class="parameter" id="start-param-bufferSize"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">bufferSize</span> = <span class="default-value">5000</span>, </span></li>
 <li><span class="parameter" id="start-param-androidAudioSource"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">androidAudioSource</span> = <span class="default-value">ANDROID_AUDIOSRC_DEFAULT</span>, </span></li>
 <li><span class="parameter" id="start-param-firstDataTimeout"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Duration-class.html">Duration</a></span> <span class="parameter-name">firstDataTimeout</span> = <span class="default-value">const Duration(seconds: 1)</span>, </span></li>
@@ -86,54 +94,59 @@ Known to not work reliably on iOS and set as <code>false</code> by default.</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; start(Function listener, Function onError,
-    {int sampleRate = 44000, int bufferSize = 5000, int androidAudioSource = ANDROID_AUDIOSRC_DEFAULT,
-    Duration firstDataTimeout = const Duration(seconds: 1),
-    bool waitForFirstDataOnAndroid = true, bool waitForFirstDataOnIOS = false}) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; start(void Function(Float32List) listener, Function onError,
+    {int sampleRate = 44100, int bufferSize = 5000, int androidAudioSource = ANDROID_AUDIOSRC_DEFAULT,
+      Duration firstDataTimeout = const Duration(seconds: 1),
+      bool waitForFirstDataOnAndroid = true, bool waitForFirstDataOnIOS = false}) async {
+  if (_initialized == null) {
+    throw Exception(&quot;FlutterAudioCapture must be initialized before use&quot;);
+  }
+
+  if (_initialized == false) {
+    throw Exception(&quot;FlutterAudioCapture failed to initialize&quot;);
+  }
+
+  &#47;&#47; We are already listening
   if (_audioCaptureEventChannelSubscription != null) return;
+  &#47;&#47; init channel stream
   final stream = _audioCaptureEventChannel.receiveBroadcastStream({
     &quot;sampleRate&quot;: sampleRate,
     &quot;bufferSize&quot;: bufferSize,
     &quot;audioSource&quot;: androidAudioSource,
+  }).cast&lt;Map&gt;();
+  &#47;&#47; The channel will have format:
+  &#47;&#47; {
+  &#47;&#47;   &quot;audioData&quot;: Float32List,
+  &#47;&#47;   &quot;actualSampleRate&quot;: double,
+  &#47;&#47; }
+
+  _actualSampleRate = null;
+  var audioStream = stream.map((event) {
+    _actualSampleRate = event.get(&#39;actualSampleRate&#39;);
+    return event.get(&#39;audioData&#39;) as Float32List;
   });
 
-  final waitForFirstData = (Platform.isAndroid &amp;&amp; waitForFirstDataOnAndroid) || (Platform.isIOS &amp;&amp; waitForFirstDataOnIOS);
+
+  &#47;&#47; Do we need to wait for first data?
+  final waitForFirstData = (Platform.isAndroid &amp;&amp; waitForFirstDataOnAndroid) ||
+      (Platform.isIOS &amp;&amp; waitForFirstDataOnIOS);
+
+
+  Completer&lt;void&gt;? completer = Completer();
+  &#47;&#47; Prevent stream for starting over because we have no listenre between firstWhere check and this line which initally was at the end of the code
+  _audioCaptureEventChannelSubscription = audioStream.skipWhile((element) =&gt; !completer.isCompleted).listen(listener, onError: onError);
   if (waitForFirstData) {
-    &#47;&#47; wait for the first data, then we know we have actual values
-    final initCompleter = Completer&lt;void&gt;();
-    _actualSampleRate = null;
-
-    &#47;&#47; be careful here: _audioCaptureEventChannel exists the whole time, callback may be called
-    &#47;&#47; from what was already there when we called &quot;listen&quot; - so wait until &quot;getSampleRate&quot; returns
-    &#47;&#47; meaningful value or we timeout
-    final tempListener = stream.listen(
-      (_) async {
-        if ((_actualSampleRate ?? 0) &lt; 10) {
-          _actualSampleRate = await _audioCaptureMethodChannel.invokeMethod&lt;double&gt;(&quot;getSampleRate&quot;);
-          if ((_actualSampleRate ?? 0) &gt;= 10 &amp;&amp; !initCompleter.isCompleted) &#47;&#47;
-            initCompleter.complete();
-        }
-      },
-      onError: (Object e) {
-        print(&#39;Microphone init error $e&#39;);
-        if (!initCompleter.isCompleted) &#47;&#47;
-          initCompleter.complete();
-      },
-    );
-
-    &#47;&#47; wait until first data processed (or timeout)
-    await initCompleter.future.timeout(
-      firstDataTimeout,
-      onTimeout: () =&gt; null,
-    );
-    await tempListener.cancel();
-
-    &#47;&#47; start listening
-    if (_actualSampleRate != null &amp;&amp; _actualSampleRate! &gt; 0) &#47;&#47;
-      _audioCaptureEventChannelSubscription = stream.listen(listener as void Function(dynamic)?, onError: onError);
-  } else {
-    _audioCaptureEventChannelSubscription = stream.listen(listener as void Function(dynamic)?, onError: onError);
+    try {
+      await audioStream.firstWhere((element) =&gt; (_actualSampleRate ?? 0) &gt; 10).timeout(firstDataTimeout);
+    } catch (e) {
+      &#47;&#47; If we timeout, cancel the stream and throw error
+      completer.completeError(e);
+      await stop();
+      rethrow;
+    }
   }
+  completer.complete();
+
 }</code></pre>
 </section>
 
@@ -141,48 +154,22 @@ Known to not work reliably on iOS and set as <code>false</code> by default.</p>
   </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
 </header>
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="../../index.html">flutter_audio_capture</a></li>
-  <li><a href="../../flutter_audio_capture/flutter_audio_capture-library.html">flutter_audio_capture</a></li>
-  <li><a href="../../flutter_audio_capture/FlutterAudioCapture-class.html">FlutterAudioCapture</a></li>
-  <li class="self-crumb">start method</li>
+    <li><a href="../../index.html">flutter_audio_capture</a></li>
+    <li><a href="../../flutter_audio_capture/flutter_audio_capture-library.html">flutter_audio_capture</a></li>
+    <li><a href="../../flutter_audio_capture/FlutterAudioCapture-class.html">FlutterAudioCapture</a></li>
+    <li class="self-crumb">start method</li>
 </ol>
 
 
     <h5>FlutterAudioCapture class</h5>
-    <ol>
-
-        <li class="section-title"><a href="../../flutter_audio_capture/FlutterAudioCapture-class.html#constructors">Constructors</a></li>
-          <li><a href="../../flutter_audio_capture/FlutterAudioCapture/FlutterAudioCapture.html">FlutterAudioCapture</a></li>
-
-
-        <li class="section-title">
-          <a href="../../flutter_audio_capture/FlutterAudioCapture-class.html#instance-properties">Properties</a>
-        </li>
-          <li><a href="../../flutter_audio_capture/FlutterAudioCapture/actualSampleRate.html">actualSampleRate</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-
-        <li class="section-title"><a href="../../flutter_audio_capture/FlutterAudioCapture-class.html#instance-methods">Methods</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li><a href="../../flutter_audio_capture/FlutterAudioCapture/start.html">start</a></li>
-          <li><a href="../../flutter_audio_capture/FlutterAudioCapture/stop.html">stop</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
-
-        <li class="section-title inherited"><a href="../../flutter_audio_capture/FlutterAudioCapture-class.html#operators">Operators</a></li>
-          <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
-
-
-
-
-</ol>
-
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
@@ -193,7 +180,7 @@ Known to not work reliably on iOS and set as <code>false</code> by default.</p>
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      1.1.4
+      1.1.7
   </span>
 
   
