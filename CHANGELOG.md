@@ -52,3 +52,7 @@
 ## 1.1.8
 
 - Update gradle to 7.2 and target & compile SDK to API 34 #33
+
+## 1.1.9
+
+- fixed terminating app due to uncaught exception 'com.apple.coreaudio.a… #38
