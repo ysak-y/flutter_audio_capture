@@ -56,3 +56,7 @@
 ## 1.1.9
 
 - fixed terminating app due to uncaught exception 'com.apple.coreaudio.a… #38
+
+## 1.1.10
+
+- Resolved android run issue for Inconsistent JVM-target #36
