@@ -60,3 +60,8 @@
 ## 1.1.10
 
 - Resolved android run issue for Inconsistent JVM-target #36
+
+## 1.1.11
+
+- Removed deprecated `PluginRegistry.Registrar` usage in Android plugin to
+  resolve build errors on recent Flutter versions
