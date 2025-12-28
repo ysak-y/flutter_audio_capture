@@ -1,19 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'trip_form.dart';
 import 'package:flutter_audio_capture/flutter_audio_capture.dart';
 
-void main() => runApp(const TripApp());
-class TripApp extends StatelessWidget {
-  const TripApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(home: TripFormPage());
-  }
-}
-
+void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
