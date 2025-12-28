@@ -30,17 +30,14 @@
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
-  <div class="toggle" id="theme-button" title="Toggle brightness">
-    <label for="theme">
-      <input type="checkbox" id="theme" value="light-theme">
-      <span id="dark-theme-button" class="material-symbols-outlined">
-        dark_mode
-      </span>
-      <span id="light-theme-button" class="material-symbols-outlined">
-        light_mode
-      </span>
-    </label>
-  </div>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
 </header>
 <main>
   <div id="dartdoc-main-content" class="main-content">
@@ -52,7 +49,7 @@ Required OS version is iOS 13+ or Android 23+</p>
 <h2 id="getting-started">Getting Started</h2>
 <p>Add this line to your pubspec.yaml file:</p>
 <pre class="language-dart"><code>dependencies:
-  flutter_audio_capture: ^1.1.11
+  flutter_audio_capture: ^1.1.12
 </code></pre>
 <p>and execute</p>
 <pre class="language-dart"><code>$ flutter pub get
@@ -113,7 +110,7 @@ await plugin.stop();
           <h2>Libraries</h2>
         <dl>
           <dt id="flutter_audio_capture">
-  <span class="name"><a href="flutter_audio_capture">flutter_audio_capture</a></span> 
+  <span class="name"><a href="flutter_audio_capture/">flutter_audio_capture</a></span> 
 
 </dt>
 <dd>
@@ -136,7 +133,7 @@ await plugin.stop();
     <h5 class="hidden-xs"><span class="package-name">flutter_audio_capture</span> <span class="package-kind">package</span></h5>
     <ol>
       <li class="section-title">Libraries</li>
-      <li><a href="flutter_audio_capture">flutter_audio_capture</a></li>
+      <li><a href="flutter_audio_capture/">flutter_audio_capture</a></li>
 </ol>
 
   </div>
@@ -146,7 +143,7 @@ await plugin.stop();
 <footer>
   <span class="no-break">
     flutter_audio_capture
-      1.1.11
+      1.1.12
   </span>
   
 </footer>
