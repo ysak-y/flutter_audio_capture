@@ -1,6 +1,6 @@
 name: flutter_audio_capture
 description: Capture the audio buffer stream through microphone for iOS/Android.
-version: 1.1.11
+version: 1.1.12
 homepage: https://github.com/ysak-y/flutter_audio_capture
 
 environment:
