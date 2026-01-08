@@ -46,6 +46,8 @@ await plugin.start(listener, onError, sampleRate: 16000, bufferSize: 3000);
 await plugin.stop();
 ```
 
+**Note**: `bufferSize` parameter only affects iOS. Android audio source can be configured via `androidAudioSource` parameter using constants like `ANDROID_AUDIOSRC_MIC`, `ANDROID_AUDIOSRC_VOICERECOGNITION`, etc.
+
 ### Platform Permissions Required
 - **Android**: `RECORD_AUDIO` permission in AndroidManifest.xml
 - **iOS**: `NSMicrophoneUsageDescription` in Info.plist
