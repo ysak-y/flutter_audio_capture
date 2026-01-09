@@ -3,22 +3,19 @@ description: Demonstrates how to use the flutter_audio_capture plugin.
 publish_to: "none"
 
 environment:
-  sdk: ">=2.12.0 <4.0.0"
+  sdk: ^3.0.0
 
 dependencies:
   flutter:
     sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  flutter_audio_capture:
+    path: ../
   cupertino_icons: ^1.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  flutter_audio_capture:
-    path: ../
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
