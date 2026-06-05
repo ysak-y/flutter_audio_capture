@@ -1,7 +1,7 @@
 import Flutter
 import UIKit
 
-public class SwiftFlutterAudioCapturePlugin: NSObject, FlutterPlugin {
+public class FlutterAudioCapturePlugin: NSObject, FlutterPlugin {
     var instance: AudioCaptureEventStreamHandler
 
     init(instance: AudioCaptureEventStreamHandler){
@@ -16,7 +16,7 @@ public class SwiftFlutterAudioCapturePlugin: NSObject, FlutterPlugin {
         FlutterEventChannel(name: instance.eventChannelName, binaryMessenger: registrar.messenger()).setStreamHandler(instance)
 
         let methodChannel = FlutterMethodChannel(name: methodChannelName, binaryMessenger: registrar.messenger())
-        registrar.addMethodCallDelegate(SwiftFlutterAudioCapturePlugin(instance: instance), channel: methodChannel)
+        registrar.addMethodCallDelegate(FlutterAudioCapturePlugin(instance: instance), channel: methodChannel)
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

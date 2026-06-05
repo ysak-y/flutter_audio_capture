@@ -31,7 +31,7 @@ This is a Flutter federated plugin with platform-specific implementations commun
 
 - **Dart API** (`lib/flutter_audio_capture.dart`): Main `FlutterAudioCapture` class using `EventChannel` for audio stream and `MethodChannel` for control commands
 - **Android** (`android/src/main/kotlin/`): Kotlin implementation using `AudioRecord` API with a background thread for capturing. `AudioCaptureStreamHandler` handles the actual recording loop
-- **iOS** (`ios/Classes/`): Swift implementation using `AVAudioEngine` with an audio tap for buffer capture. `AudioCapture` manages the audio session and engine
+- **iOS** (`ios/flutter_audio_capture/Sources/flutter_audio_capture/`): Swift implementation using `AVAudioEngine` with an audio tap for buffer capture. `AudioCapture` manages the audio session and engine. Supports both Swift Package Manager (`Package.swift`) and CocoaPods (`ios/flutter_audio_capture.podspec`)
 - **Linux** (`linux/`): C++ implementation spawning `parec` (PulseAudio recorder) subprocess and reading PCM data from its output
 
 ### Channel Names

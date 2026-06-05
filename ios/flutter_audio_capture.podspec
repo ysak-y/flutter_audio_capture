@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_audio_capture'
-  s.version          = '1.1.12'
+  s.version          = '1.2.0'
   s.summary          = 'audio stream capture for iOS and Android OS'
   s.description      = <<-DESC
                         audio stream capture for iOS and Android OS.
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Yoshiaki Yamada' => 'yoshiaki.0614@gmail.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'flutter_audio_capture/Sources/flutter_audio_capture/**/*.swift'
   s.dependency 'Flutter'
   s.platform = :ios, '13.6'
 
