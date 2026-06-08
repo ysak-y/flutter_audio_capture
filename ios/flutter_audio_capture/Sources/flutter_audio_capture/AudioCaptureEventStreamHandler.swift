@@ -1,3 +1,5 @@
+import Flutter
+
 enum AudioCaptureEventStreamHandlerErrorCode {
     static let onListenFailed = "ON_LISTEN_FAILED"
     static let whileListeningFailed = "WHILE_LISTENING_FAILED"

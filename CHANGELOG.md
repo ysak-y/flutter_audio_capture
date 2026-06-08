@@ -69,3 +69,11 @@
 ## 1.1.12
 
 - Synced iOS podspec version with pubspec.yaml
+
+## 1.2.0
+
+- Added Swift Package Manager support for iOS [#49](https://github.com/ysak-y/flutter_audio_capture/issues/49).
+  CocoaPods continues to be supported. iOS sources moved to
+  `ios/flutter_audio_capture/Sources/flutter_audio_capture/` and the
+  Objective-C registration shim was replaced with a pure Swift
+  `FlutterAudioCapturePlugin` class.
